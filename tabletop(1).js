@@ -1,4 +1,9 @@
 
+  /**
+  Developed by Jonathan Soma 
+  + https://github.com/jsoma/tabletop 
+  */
+
   var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1287Au7dsptWJN-qCI12zZE1sxI6vK_muFtES3j0uSHA/edit?usp=sharing';
 
   function init() {
