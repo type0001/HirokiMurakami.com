@@ -1,2 +1,2 @@
 # HirokiMurakami.com
-One-page website built with W3 and hosted on AWS S3
+A minimalist one-page portfolio website built on AWS S3 using W3 
