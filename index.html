@@ -13,6 +13,7 @@
   <meta name="author" content="Hiroki Murakami">
   <link rel="icon" type="image/png" href="/media/favicon.png"/>
 
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21199631-1"></script>
@@ -131,42 +132,103 @@
       border: 1px solid black;
     }
 
-    .work-table {
+    .work-container {
+      width: 100%;
+      display:flex;
+      flex-direction:row;
+      flex-wrap: wrap;
+      justify-content:flex-start;
+    }
+
+    .work-button {
+      font-family: 'Inconsolata', monospace;
+      font-size: 14px;
+      height: 150px;
+      width: 200px;
+      padding: 8px;
+      border:1px solid black;
+      border-radius: 3px;
+      margin-right:40px;
+      margin-bottom:40px;
+      box-shadow: 3px 3px #000;
+    }
+
+    .clients-container {
+      width: 66%;
+      display:flex;
+      flex-direction:row;
+      flex-wrap: wrap;
+      justify-content:flex-start;
+      padding: 16px;
+      border:1px solid black;
+      border-radius: 3px;
+      box-shadow: 3px 3px #000;
+    }
+
+    .fun-container {
+      max-width: 66%;
+    }
+
+    .fun-top {
+      z-index: 1000;
+      margin-top:-190px;
+      margin-left:10px;
+      border: 1px solid black;
       width:100%;
-      text-align: left;
-      vertical-align: top;
+      height:200px;
+      position:relative;
+      overflow:visible;
+      padding: 16px;
+      display:flex;
+      flex-direction:row;
+      flex-wrap: wrap;
+      justify-content:flex-start;
+      font-family: 'Inconsolata', monospace;
+      font-size: 14px;
+      background: transparent;
     }
 
-    .work-grid{
-      display:grid;
-      grid-template-columns: 200px 200px 200px;
-      justify-content: start;
-      grid-gap: 5%;
+    .fun-bottom {
+      background-color: black;
+      opacity: .15;
+      width:100%;
+      height:200px;
     }
+
+    .clients-button {
+      font-family: 'Inconsolata', monospace;
+      font-size: 14px;
+      height: 40px;
+      width: 100px;
+      margin-right:20px;
+      margin-bottom:20px;
+    }
+
 
     @media only screen and (max-width: 768px) {
-      .work-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        padding: 1em;
-        grid-row-gap: 0px;
+      .fun-container {
+        max-width: 100%;
       }
-    }
+      .fun-top {
+        height: 500px;
+        margin-top:-480px;
+        margin-left:10px;
+        border: 1px solid black;
+        width:100%;
+        position:relative;
+        overflow:visible;
+        padding: 16px;
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        font-family: 'Inconsolata', monospace;
+        font-size: 14px;
+        background: transparent;
+      }
+      .fun-bottom {
+        height: 500px;
 
-    .clients-grid{
-      display:grid;
-      grid-template-columns: 20% 20% 20% 20%;
-      justify-content: start;
-      grid-gap: 5% 5%;
-    }
-
-
-    @media only screen and (max-width: 768px) {
-      .clients-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding: 1em;
-        grid-row-gap: 0px;
       }
     }
 
@@ -396,12 +458,12 @@
     </div>
 
     <br>
-    <div class="weather">
-      <h4 id="brooklyn"></h4>
-      <h4 id="seattle"></h4>
-      <h4 id="tokyo"></h4>
-      <h4>  now playing <u><a id="tracktitle"></a></u>
-  		<br>	by <u><a href="#" id="trackartist"></a></u> 🎵</h4>
+        <div class="weather">
+          <h4 id="brooklyn"></h4>
+          <h4 id="seattle"></h4>
+          <h4>  now playing <u><a id="tracktitle"></a></u>
+      		<br>	by <u><a href="#" id="trackartist"></a></u> 🎵</h4>
+    </div>
   </nav>
 </div>
 
@@ -502,6 +564,9 @@
       In general, I think the web should be more spontaneous, free, and decentralized and I wanted to make my own corner of the net to reflect that. Welcome!
       </p>
 
+
+
+
       <div id="table-container">
         <table>
           <tr class="backlog-table">
@@ -581,120 +646,126 @@
       <br>
       <p>I’m a full-stack strategist that helps organizations change by thinking about people, ideas, and technology in new ways.
         Right now, I help lead digital product innovation teams at Sapient NYC.
-        <br><br>
-        Where I've been:
       </p>
 
       <!-- Employers grid -->
 
-      <div class="work-grid">
-       <div>
-         <table class='work-table'>
-         <tr>
-           <th style="width:10%">⇢</th>
-           <th>Publicis Sapient</th>
-         </tr>
-         <tr>
-           <td> </td>
-           <td>Manager, Customer Experience & Innovation Consulting</td>
-         </tr>
-        </table>
+      <p>Where I've been:</p>
+      <div class="work-container">
+        <div class="work-button">
+          <b>Publicis Sapient</b>
+          <br><br>
+          Manager, Customer Experience & Innovation Consulting
+        </div>
+        <div class="work-button">
+          <b>Deutsch</b>
+          <br><br>
+          Strategy Director
+        </div>
+        <div class="work-button">
+          <b>Hillary for America</b>
+          <br><br>
+          Senior Digital Strategist
+        </div>
+        <div class="work-button">
+          <b>Edelman Digital</b>
+          <br><br>
+          Strategist
+        </div>
       </div>
-      <div>
-        <table class='work-table'>
-        <tr>
-          <th style="width:10%">⇢</th>
-          <th>Deutsch</th>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>Strategy Director</td>
-        </tr>
-       </table>
-     </div>
-     <div>
-       <table class='work-table'>
-       <tr>
-         <th style="width:10%">⇢</th>
-         <th>Hillary for America</th>
-       </tr>
-       <tr>
-         <td> </td>
-         <td>Senior Digital Strategist</td>
-       </tr>
-      </table>
-    </div>
-  </div>
-  <br>
 
   <!-- Capabilities grid -->
 
   <p>What I do:</p>
-    <div class="work-grid">
-     <div>
-       <table class='work-table'>
-       <tr>
-         <th style="width:10%">⇢</th>
-         <th>Processes I use</th>
-       </tr>
-       <tr>
-         <td> </td>
-         <td>Design thinking<br>Lean startup<br>Jobs to be done<br>Scaled agile framework</td>
-       </tr>
-      </table>
-    </div>
-    <div>
-      <table class='work-table'>
-      <tr>
-        <th style="width:10%">⇢</th>
-        <th>Artifacts I make</th>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>Journey maps<br>Vision & value statements<br>Backlogs & roadmaps</td>
-      </tr>
-     </table>
-     </div>
-    <div>
-      <table class='work-table'>
-      <tr>
-        <th style="width:10%">⇢</th>
-        <th>Research chops</th>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>Ethnographies<br>Prototyping<br>Customer co-creation</td>
-      </tr>
-     </table>
-   </div>
-  </div>
-  <br>
+      <div class="work-container">
+        <div class="work-button">
+          <b>Processes I use</b>
+          <br>
+          <br>Design thinking
+          <br>Lean startup
+          <br>Jobs to be done
+          <br>Scaled agile framework
+        </div>
+        <div class="work-button">
+          <b>Artifacts I make</b>
+          <br>
+          <br>Design thinking
+          <br>Journey maps
+          <br>Vision & value statements
+          <br>Backlogs & roadmaps
+        </div>
+        <div class="work-button">
+          <b>Research chops</b>
+          <br>
+          <br>Ethnographies
+          <br>Prototyping
+          <br>Customer co-creation
+        </div>
+      </div>
 
   <!-- Clients grid -->
 
   <p>Who I've worked with:</p>
-    <div class="clients-grid">
-      <div class="clients-item">⇢ Anheuser Busch</div>
-      <div class="clients-item">⇢ Citi</div>
-      <div class="clients-item">⇢ Comcast</div>
-      <div class="clients-item">⇢ CVS</div>
-      <div class="clients-item">⇢ eBay</div>
-      <div class="clients-item">⇢ Energizer</div>
-      <div class="clients-item">⇢ Everytown Gun Safety</div>
-      <div class="clients-item">⇢ GE</div>
-      <div class="clients-item">⇢ Hillary Clinton</div>
-      <div class="clients-item">⇢ Johnson & Johnson</div>
-      <div class="clients-item">⇢ Mastercard</div>
-      <div class="clients-item">⇢ PNC</div>
-      <div class="clients-item">⇢ Samsung</div>
-      <div class="clients-item">⇢ Siemens</div>
-      <div class="clients-item">⇢ Verizon</div>
-    </h3>
+
+      <div class="fun-container">
+
+        <div class="fun-bottom">
+        </div>
+
+        <div class="fun-top">
+          <div class="clients-button">
+          <b>Anheuser Busch</b>
+        </div>
+        <div class="clients-button">
+          <b>Citi</b>
+        </div>
+        <div class="clients-button">
+          <b>Comcast</b>
+        </div>
+        <div class="clients-button">
+          <b>CVS</b>
+        </div>
+        <div class="clients-button">
+          <b>eBay</b>
+        </div>
+        <div class="clients-button">
+          <b>Energizer</b>
+        </div>
+        <div class="clients-button">
+          <b>Everytown Gun Safety</b>
+        </div>
+        <div class="clients-button">
+          <b>GE</b>
+        </div>
+        <br>
+        <div class="clients-button">
+          <b>Hillary Clinton</b>
+        </div>
+        <div class="clients-button">
+          <b>Johnson & Johnson</b>
+        </div>
+        <div class="clients-button">
+          <b>Mastercard</b>
+        </div>
+        <div class="clients-button">
+          <b>PNC</b>
+        </div>
+        <div class="clients-button">
+          <b>Samsung</b>
+        </div>
+        <div class="clients-button">
+          <b>Siemens</b>
+        </div>
+        <div class="clients-button">
+          <b>Verizon</b>
+        </div>
+        </div>
+
+      </div>
     </div>
-    <br><br><br>
-  </div>
+<br><br>
 </div>
-</div>
+
 
 
   <!-- Section 4 -->
@@ -714,6 +785,7 @@
       <br><br>
       Some of our latest things:
       <br>
+
       <div class="music-grid">
         <div>
           <h3>Mix 1</h3>
