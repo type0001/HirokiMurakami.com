@@ -165,13 +165,13 @@
       box-shadow: 3px 3px #000;
     }
 
-    .dragdrop {
+    #dragdrop {
       position: absolute;
       z-index: 9;
       text-align: center;
     }
 
-    .dragdropheader {
+    #dragdropheader {
       cursor: move;
       z-index: 10;
     }
@@ -683,14 +683,14 @@
 
   <div>
     <div class="label" id="music">
-      <h3>TECHNO</h3>
+      <h3>DRAG & DROP</h3>
     </div>
 
   <div class="w3-container" style="margin-top:0px;margin-bottom:0px;border-bottom:1px solid black">
     <div style="height:500px;margin-left:40px;margin-right:40px">
 
-  <div class="dragdrop">
-      <div class="dragdropheader">
+  <div id="dragdrop">
+      <div id="dragdropheader">
         <img src="media/fastcasual.png" style="height:200px;width:200px;margin-left: 0px;margin-top: 0px;">
       </div>
     </div>
@@ -802,7 +802,7 @@
 
     <script>
       //Make the DIV element draggagle:
-      dragElement(document.getElementById("dragdrop"));
+      dragElement(document.getElementByID("dragdrop"));
 
       function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
