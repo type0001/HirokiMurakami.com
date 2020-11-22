@@ -168,7 +168,6 @@
     #dragdrop {
       position: absolute;
       z-index: 9;
-      text-align: center;
     }
 
     #dragdropheader {
@@ -689,11 +688,11 @@
   <div class="w3-container" style="margin-top:0px;margin-bottom:0px;border-bottom:1px solid black">
     <div style="height:500px;margin-left:40px;margin-right:40px">
 
-  <div id="dragdrop">
-      <div id="dragdropheader">
-        <img src="media/fastcasual.png" style="height:200px;width:200px;margin-left: 0px;margin-top: 0px;">
+      <div id="container">
+        <div id="dragdrop">
+          <div id="dragdropheader"><img src="fastcasual.png"></div>
+        </div>
       </div>
-    </div>
 
 
   </div>
@@ -755,7 +754,7 @@
 
     <script>
       //Make the DIV element draggagle:
-      dragElement(document.getElementByID("dragdrop"));
+      dragElement(document.getElementById("dragdrop"));
 
       function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
