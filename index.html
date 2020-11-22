@@ -165,13 +165,13 @@
       box-shadow: 3px 3px #000;
     }
 
-    #dragdrop1 {
+    .dragdrop {
       position: absolute;
       z-index: 9;
       text-align: center;
     }
 
-    #dragdrop1header {
+    .dragdropheader {
       cursor: move;
       z-index: 10;
     }
@@ -689,56 +689,56 @@
   <div class="w3-container" style="margin-top:0px;margin-bottom:0px;border-bottom:1px solid black">
     <div style="height:500px;margin-left:40px;margin-right:40px">
 
-  <div id="dragdrop1">
-      <div id="dragdrop1header">
+  <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/fastcasual.png" style="height:200px;width:200px;margin-left: 0px;margin-top: 0px;">
       </div>
     </div>
 
-    <div id="dragdrop">
-      <div id="dragdropheader">
+    <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/caphill.jpg" style="max-height:150px;margin-left: 90px;margin-top: 200px;">
       </div>
     </div>
 
-    <div id="dragdrop">
-      <div id="dragdropheader">
+    <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/garden.jpg" style="max-height:75px;margin-left: 15px;margin-top: 175px;">
       </div>
     </div>
 
-    <div id="dragdrop">
-      <div id="dragdropheader">
+    <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/morocco.png" style="max-height:110px;margin-left: 350px;margin-top: 150px;">
       </div>
     </div>
 
-    <div id="dragdrop">
-      <div id="dragdropheader">
+    <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/nyc.jpg" style="max-height:200px;;margin-left: 100px;margin-top: 175px;">
       </div>
     </div>
 
-    <div id="dragdrop">
-      <div id="dragdropheader">
+    <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/deutsch.jpg" style="max-height:200px;margin-left:200px;margin-top:200px;">
       </div>
     </div>
 
-    <div id="dragdrop">
-      <div id="dragdropheader">
+    <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/renton.jpg" style="max-height:120px;margin-left:110px;margin-top:250px;">
       </div>
     </div>
 
-    <div id="dragdrop">
-      <div id="dragdropheader">
+    <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/utah.png" style="max-height:50px;margin-left:250px;margin-top:300px;">
       </div>
     </div>
 
-    <div id="dragdrop">
-      <div id="dragdropheader">
+    <div class="dragdrop">
+      <div class="dragdropheader">
         <img src="media/wfh.jpg" style="max-height:66px;margin-left:265px;margin-top:110px;">
       </div>
     </div>
@@ -799,6 +799,54 @@
   </div>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+
+    <script>
+
+      //Make the DIV element draggagle:
+      dragElement(document.getElementsByClassName("dragdrop"));
+
+      function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementsByClassName(elmnt.id + "header")) {
+          /* if present, the header is where you move the DIV from:*/
+          document.getElementsByClassName(elmnt.id + "header").onmousedown = dragMouseDown;
+        } else {
+          /* otherwise, move the DIV from anywhere inside the DIV:*/
+          elmnt.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // get the mouse cursor position at startup:
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          // call a function whenever the cursor moves:
+          document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // calculate the new cursor position:
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          // set the element's new position:
+          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+          /* stop moving when mouse button is released:*/
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+      }
+
+    </script>
 
 </body>
 </html>
