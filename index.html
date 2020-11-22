@@ -265,6 +265,13 @@
       z-index: 10;
     }
 
+    .music-grid{
+      display:grid;
+      grid-template-columns: 33% 33%;
+      justify-content: start;
+      grid-gap: 0% 2.5%;
+    }
+
     @media only screen and (max-width: 768px) {
       #dragdropcontainer {
         visibility: hidden;
@@ -272,9 +279,6 @@
         margin:0px;
         padding:0px;
         border-bottom:0px
-      }
-      #specialmobile {
-        margin:-11px;
       }
     }
 
@@ -664,7 +668,7 @@
 
   <!-- Section 3 -->
 
-  <div id="specialmobile">
+  <div>
     <div class="label" id="work">
       <h3>WORK</h3>
     </div>
