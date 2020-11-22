@@ -165,6 +165,19 @@
       box-shadow: 3px 3px #000;
     }
 
+    #dragdrop {
+      position: absolute;
+      z-index: 9;
+      text-align: center;
+    }
+
+    #dragdropheader {
+      margin-left: 20px;
+      margin-top: 35px;
+      cursor: move;
+      z-index: 10;
+    }
+
     .music-grid{
       display:grid;
       grid-template-columns: 33% 33%;
@@ -668,6 +681,23 @@
 <br><br>
 </div>
 
+  <!-- Section 4 -->
+
+  <div>
+    <div class="label" id="music">
+      <h3>TECHNO</h3>
+    </div>
+
+  <div class="w3-container" style="margin-top:0px;margin-bottom:0px;border-bottom:1px solid black">
+    <div style="height:500px;margin-left:40px;margin-right:40px">
+
+  <div id="dragdrop">
+    <div id="dragdropheader"><img src="https://i.imgur.com/WqhNquf.png" style="height:300px;width:300px;"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
 
 
   <!-- Section 4 -->
@@ -719,6 +749,54 @@
   </div>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+
+
+    <script>
+      //Make the DIV element draggagle:
+      dragElement(document.getElementById("dragdrop"));
+
+      function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementById(elmnt.id + "header")) {
+          /* if present, the header is where you move the DIV from:*/
+          document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+        } else {
+          /* otherwise, move the DIV from anywhere inside the DIV:*/
+          elmnt.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // get the mouse cursor position at startup:
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          // call a function whenever the cursor moves:
+          document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // calculate the new cursor position:
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          // set the element's new position:
+          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+          /* stop moving when mouse button is released:*/
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+      }
+
+      </script>
 
 </body>
 </html>
