@@ -8,10 +8,10 @@
   <title>Hiroki Murakami</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hiroki is a product and experience strategist in Brooklyn, NY">
+  <meta name="description" content="Hiroki is an independent strategist at the intersection of innovation consulting and creative strategy.">
   <meta name="keywords" content="Hiroki, Murakami, strategist, strategy, consulting">
   <meta name="author" content="Hiroki Murakami">
-  <link rel="icon" type="image/png" href="/media/favicon.png"/>
+  <link rel="icon" type="image/png" href="media/favicon.png"/>
 
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -30,397 +30,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-  <script src="tabletop.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="nowplaying.js"></script>
+
 
   <!-- Fonts -->
 
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inconsolata">
+  <link rel="stylesheet" href="styles.css">
 
   <style>
-
-  <!-- Responsive navigation -->
-
-  @media (max-width: 768px) {
-      #mySidebar {
-          display: none;
-      }
-  }
-
-  <!-- Custom cursor -->
-
-  body,a,a:hover,h1,h2,h3,h4,h5,h6 {
-    cursor: url("https://i.imgur.com/eGwJ9rl.png"), default;
-  }
-
-
-  .parallax, .parallax2, .parallax3, .parallax4, .parallax5, .parallax6, .parallax7, .parallax8, .parallax9, .parallax10 {
-    position: absolute;
-    z-index: -1:
-  }
-
-    body {
-
-    <!-- Gradient background -->
-    <!-- credit: https://cssgradient.io -->
-
-      background-color: none;
-      background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,229,168,1) 0%, rgba(251,174,222,1) 100.7% );
-    }
-
-    .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-    .w3-half img:hover{opacity:1}
-
-    p {
-      font-family: 'Work sans', sans-serif;
-      font-size: 18px;
-    }
-
-    h1 {
-      font-family: 'Playfair Display', sans-serif;
-      font-size: 74px;
-      line-height: 100%;
-    }
-
-    @media only screen and (max-width: 768px) {
-      h1 {
-        font-size: 60px;
-      }
-    }
-
-    h2 {
-      font-family: 'Work sans', sans-serif;
-      font-size: 18px;
-    }
-
-    h3 {
-      font-family: 'Inconsolata', monospace;
-      font-size: 14px;
-    }
-
-    h4 {
-      font-family: 'Inconsolata', monospace;
-      font-size: 12px;
-    }
-
-    h5 {
-      font-family: 'Playfair Display', sans-serif;
-      font-size:21px;
-    }
-
-    h6 {
-      font-family: 'Work sans', sans-serif;
-      font-size: 16px;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    table, th, td {
-      padding: 5px;
-      text-align: left;
-      font-family: "Inconsolata", monospace;
-      font-size: 14px;
-    }
-
-    .backlog-table {
-      border: 1px solid black;
-    }
-
-    .work-container {
-      width: 100%;
-      display:flex;
-      flex-direction:row;
-      flex-wrap: wrap;
-      justify-content:flex-start;
-    }
-
-    .work-button {
-      font-family: 'Inconsolata', monospace;
-      font-size: 14px;
-      height: 150px;
-      width: 200px;
-      padding: 8px;
-      border:1px solid black;
-      border-radius: 3px;
-      margin-right:40px;
-      margin-bottom:40px;
-      box-shadow: 3px 3px #000;
-    }
-
-    .clients-container {
-      width: 66%;
-      display:flex;
-      flex-direction:row;
-      flex-wrap: wrap;
-      justify-content:flex-start;
-      padding: 16px;
-      border:1px solid black;
-      border-radius: 3px;
-      box-shadow: 3px 3px #000;
-    }
-
-    #dragdrop1 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop1header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop2 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop2header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop3 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop3header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop4 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop4header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop5 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop5header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop6 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop6header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop7 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop7header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop8 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop8header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop9 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop9header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    #dragdrop10 {
-      position: absolute;
-      z-index: 9;
-    }
-
-    #dragdrop10header {
-      cursor: move;
-      z-index: 10;
-    }
-
-    .music-grid{
-      display:grid;
-      grid-template-columns: 33% 33%;
-      justify-content: start;
-      grid-gap: 0% 2.5%;
-    }
-
-    @media only screen and (max-width: 768px) {
-      #dragdropcontainer {
-        visibility: hidden;
-        height: 0px;
-        margin:0px;
-        padding:0px;
-        border-bottom:0px
-      }
-    }
-
-    @media only screen and (max-width: 768px) {
-      .music-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        padding: 0em;
-        grid-row-gap: 0px;
-      }
-    }
-
-    .clients-item {
-      font-family: "Inconsolata", monospace;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .button-container {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      }
-
-    a:link {
-      text-decoration: none;
-    }
-
-    .button {
-      position: relative;
-      left: 16px;
-      height:50px;
-      width:100px;
-      text-align:center;
-      line-height: 15px;
-      border-radius: 3px;
-      margin-right: 9px;
-      margin-bottom: 9px;
-      padding: 0px;
-      position:relative;
-      border: 1px solid black;
-      box-shadow: 3px 3px #000;
-    }
-
-    .label {
-      text-align: center;
-      margin-left: 56px;
-      margin-top: 0px;
-      padding: 8px;
-      height:50px;
-      width: 100px;
-      vertical-align: middle;
-      border-left: 1px solid black;
-      border-right: 1px solid black;
-      border-bottom: 1px solid black;
-    }
-
-    .button:hover {
-        background-color: black;
-        color: white;
-      }
-
-    .weather {
-      position: relative;
-      width:100%;
-      bottom: 0px;
-      left: 16px;
-    }
-
-    .nowplaying {
-      position: absolute;
-      width:100%;
-      bottom: 24px;
-      left: 32px;
-    }
-
-    .wrapper {
-        background: transparent;
-        box-shadow: ;
-        margin: auto;
-        text-align: center;
-        position: relative;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        margin-bottom: 20px !important;
-        width: 100%;
-        height:525px;
-        padding-top: 5px;
-    }
-    .scrolls {
-        overflow-x: scroll;
-        overflow-y: hidden;
-        height: 500px;
-        white-space:nowrap
-    }
-
-    .zineitem {
-          transform-origin:top left;
-          transition: transform .2s;
-          max-height: 400px;
-          margin-right: 20px;
-          cursor: pointer;
-          display:inline-block;
-          *display:inline;
-          *zoom:1;
-          vertical-align:top;
-          border-radius: 3px;
-          box-shadow: 3px 3px #000;
-      }
-
-      .zineitem:hover {
-        background: #FFF;
-        opacity: 0.95;
-        box-shadow: none;
-        border: transparent;
-        background
-        -ms-transform: scale(1.25); /* IE 9 */
-        -webkit-transform: scale(1.25); /* Safari 3-8 */
-        transform: scale(1.25);
-      }
-
-
-    #table-container {
-      width: 50%;
-      height: 200px;
-      overflow: scroll;
-      position: static;
-    }
-
-    @media only screen and (max-width: 768px) {
-      #table-container {
-      width:100%;
-      }
-    }
-
-    #nav {
-      overflow: hidden;
-    }
-
   </style>
+
 </head>
 
 </html>
@@ -429,510 +50,1318 @@
 
 <body>
 
-  <!-- Sidebar/menu -->
-
-  <div id="nav">
-    <nav class="w3-sidebar w3-transparent w3-collapse w3-top w3-large w3-padding" style="overflow:hidden;z-index:3;width:300px;font-weight:bold;border-right:1px solid black" id="mySidebar"><br>
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:18px"></a>
-
-  <!-- Text circle animation -->
-
-    <div style="width:90%; margin-left:16px;">
-      <img src="media/keyart.gif" alt="Hiroki Murakami logo"  width="100%" alt="Hiroki Murakami">
-    </div>
-    <br>
-
-    <div class="button-container">
-      <div class="button" style="width:100px">
-        <p><a href="#home">Home</a></p>
-        </div>
-
-      <div class="button" style="width:125px">
-        <p><a href="#bot">Hiroki bot</a></p>
-        </div>
-      </div>
-
-      <div class="button-container">
-      <div class="button" style="width:75px">
-        <p><a href="#work">Work</a></p>
-        </div>
-
-      <div class="button" style="width:75px">
-        <p><a href="#music">Techno</a></p>
-        </div>
-
-        <div class="button" style="width:75px">
-          <p><a href="#zines">Zines</a></p>
-          </div>
-    </div>
-
-    <div class="button-container">
-    <div class="button" style="width:125px">
-      <p><a href="https://www.instagram.com/hnmurakami/" target="_blank">Instagram ↗</a></p>
-      </div>
-
-    <div class="button" style="width:85px">
-      <p><a href="mailto:hnmurakami@gmail.com" target="_blank">Email ↗</a></p>
-      </div>
-  </div>
-
-      <div class="button-container">
-      <div class="button" style="width:105px">
-        <p><a href="https://www.linkedin.com/in/hnmurakami/" target="_blank">LinkedIn ↗</a></p>
-        </div>
-
-      <div class="button" style="width:90px">
-        <p><a href="https://github.com/type0001" target="_blank">Github ↗</a></p>
-        </div>
-    </div>
-
-    <br>
-        <div class="weather">
-          <h4 id="brooklyn"></h4>
-          <h4 id="seattle"></h4>
-          <h4>  now playing <u><a id="tracktitle"></a></u>
-      		<br>	by <u><a href="#" id="trackartist"></a></u> 🎵</h4>
-    </div>
-  </nav>
-</div>
 
 <!-- !PAGE CONTENT! -->
 
-<div class="w3-main" id="main-container" style="margin-left:300px;margin-right:0px">
+  <!-- Background start -->
 
-  <!-- !Parallax shapes! -->
+    <div class="background" style="background-color: #000;">
 
-  <img class="parallax" style="z-index:-1;top:40%;left:70%" src="media/blob-blue.png" alt="image">
-    <script>
-    var image = document.getElementsByClassName('parallax');
-    new simpleParallax(image, {
-     delay: 0,
-     orientation: 'down right',
-     scale: 1.35,
-     overflow: true,
-    });
-    </script>
+    <!-- Section 0 -->
 
-  <img class="parallax2" style="z-index:-1;top:80%;left:65%" src="media/asteroid-orange.png" alt="image">
-    <script>
-    var image = document.getElementsByClassName('parallax2');
-    new simpleParallax(image, {
-     delay: 0,
-     orientation: 'up',
-     scale: 1.25,
-     overflow: true,
-    });
-    </script>
+      <div class="section" style="border-top: 1px white solid; margin-top: 1%;">
 
-  <img class="parallax3" style="z-index:-1;top:115%;left:20%" src="media/asteroid-pink.png" alt="image">
-    <script>
-    var image = document.getElementsByClassName('parallax3');
-    new simpleParallax(image, {
-     delay: 0,
-     orientation: 'up left',
-     scale: 2,
-     overflow: true,
-    });
-    </script>
+      <!-- Section - Header -->
 
-  <img class="parallax4" style="z-index:-1;top:180%;left:80%" src="media/squiggle-orange.png" alt="image">
-    <script>
-    var image = document.getElementsByClassName('parallax4');
-    new simpleParallax(image, {
-     delay: 0,
-     orientation: 'down',
-     scale: 1.3,
-     overflow: true,
-    });
-    </script>
-
-  <img class="parallax5" style="z-index:-1;top:166%;left:15%" src="media/blob-green.png" alt="image">
-    <script>
-    var image = document.getElementsByClassName('parallax5');
-    new simpleParallax(image, {
-     delay: 0,
-     orientation: 'right',
-     scale: 1.5,
-     overflow: true,
-    });
-    </script>
-
-  <img class="parallax8" style="z-index:-1;top:275%;left:10%" src="media/square-purple.png" alt="image">
-    <script>
-    var image = document.getElementsByClassName('parallax8');
-    new simpleParallax(image, {
-     delay: 0,
-     orientation: 'up right',
-     scale: 1.1,
-     overflow: true,
-    });
-    </script>
-
-    <img class="parallax9" style="z-index:-1;top:340%;left:80%" src="media/blob-green.png" alt="image">
-      <script>
-      var image = document.getElementsByClassName('parallax9');
-      new simpleParallax(image, {
-       delay: 0,
-       orientation: 'top',
-       scale: 1.3,
-       overflow: true,
-      });
-      </script>
-
-
-  <!-- Section 1 -->
-
-  <div class="w3-container" style="margin-top:80px;margin-bottom:0px;border-bottom:1px solid black" id="home">
-    <div style="margin-left:40px;margin-right:40px">
-    <br><h1>Hello world 👋🏼</h1>
-      <h3>VERSION 3.09 / LAST UPDATE 12.09.2020</h3>
-      <p>
-      <br>
-      As an experiment, I've been coding this website by hand on AWS S3 using W3 and many other open source references. You can view and are welcome to use <u><a href="https://github.com/type0001/HirokiMurakami.com" target="_blank">my code on Github</a></u>.
-      <br><br>
-      In general, I think the web should be more spontaneous, free, and decentralized and I wanted to make my own corner of the net to reflect that. Welcome!
-      </p>
+          <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
 
 
 
+          <div class="widebox">
+            <p>
+              Now playing ♫ <u><u><a id="tracktitle"></a></u>
+            </p>
+          </div>
 
-      <div id="table-container">
-        <table>
-          <tr class="backlog-table">
-            <th class="backlog-table">BACKLOG</th>
-            <th><u><a href="https://en.wikipedia.org/wiki/Planning_poker">LOE</a></u></th>
-          </tr>
-          <tr>
-            <td class="backlog-table">Mobile nav</td>
-            <td class="backlog-table">20</td>
-          </tr>
-          <tr>
-            <td class="backlog-table">Cursor hover effect</td>
-            <td class="backlog-table">8</td>
-          <tr class="backlog-table">
-            <td class="backlog-table">HTTPS</td>
-            <td class="backlog-table">13</td>
-          </tr>
-          <tr>
-            <td class="backlog-table">ADA accessability audit</td>
-            <td class="backlog-table">13</td>
-          </tr>
-          <tr>
-            <td class="backlog-table">Custom scroll bar</td>
-            <td class="backlog-table">5</td>
-          </tr>
-          <tr>
-            <td class="backlog-table">Randomize background colors</td>
-            <td class="backlog-table">13</td>
-          </tr>
-          <tr>
-            <td class="backlog-table">404 page</td>
-            <td class="backlog-table">3</td>
-          </tr>
-          <tr>
-            <td class="backlog-table">Hover state images</td>
-            <td class="backlog-table">13</td>
-          </tr>
-          <tr>
-            <td class="backlog-table">Clippy?</td>
-            <td class="backlog-table">100</td>
-          </tr>
-        </table>
+        </div>
+
+
+      <!-- Section - Intro -->
+
+        <div class="grid">
+
+          <div class="break" style="">
+          </div>
+
+          <div class="widebox">
+            <img src="media/placeholder2.png" style="width: 100%;">
+          </div>
+
+          <div class="half-break">
+          </div>
+
+          <div class="widebox">
+            <h2>
+              Hiroki Murakami is an independent strategist at the intersection of innovation consulting and creative strategy.
+            </h2>
+          </div>
+
+          <div class="half-break">
+          </div>
+
+      <!-- Section - TLDR -->
+
+          <div class="leftbox">
+            <p>
+              10 years of strategy experience at NYC product design and advertising agencies
+            </p>
+          </div>
+
+          <div class="mobile-quarter-break">
+          </div>
+
+          <div class="middlebox">
+            <p>
+              Freelance availability for agencies and brands
+            </p>
+          </div>
+
+          <div class="mobile-quarter-break">
+          </div>
+
+          <div class="rightbox">
+            <p>
+              hnmurakami@gmail
+              <br>917 791 0774
+            </p>
+          </div>
+
+          <div class="break">
+          </div>
+
+          <div class="line" style="">
+          </div>
+
+        </div>
+
+      <!-- Section - Navigation -->
+
+        <div class="grid" id="navigation">
+
+          <div class="break">
+          </div>
+
+          <div class="widebox">
+            <h2>
+              Start here, end up anywhere
+            </h2>
+          </div>
+
+          <div class="half-break">
+          </div>
+
+          <div class="line">
+          </div>
+
+          <div class="" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
+            <h3><b>
+              <a href="#aboutme" style="text-decoration: none;"> About me</a>
+            </b></h3>
+          </div>
+
+          <div class="" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
+            <h3>
+              01.
+            </h3>
+          </div>
+
+          <div class="line">
+          </div>
+
+          <div class="" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
+            <h3><b>
+              <a href="#practiceareas" style="text-decoration: none;">Practice areas</a>
+            </b></h3>
+          </div>
+
+          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
+            <h3>
+              02.
+            </h3>
+          </div>
+
+          <div class="line">
+          </div>
+
+          <div class="widebox-left" style="grid-column-start: 2; grid-column-end: 5; padding-top: 1em; padding-bottom: 1em;">
+            <h3><b>
+              <a href="#casestudies" style="text-decoration: none;">Case studies</a>
+            </b></h3>
+          </div>
+
+          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
+            <h3>
+              03.
+            </h3>
+          </div>
+
+          <div class="line">
+          </div>
+
+          <div class="widebox-left" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
+            <h3><b>
+              <a href="#workwithme" style="text-decoration: none;">Work with me</a>
+            </b></h3>
+          </div>
+
+          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
+            <h3>
+              04.
+            </h3>
+          </div>
+
+          <div class="line">
+          </div>
+
+          </div>
+
+      <!-- Section - Shout-outs -->
+
+          <div class="grid">
+
+          <div class="break">
+          </div>
+
+          <div class="widebox">
+            <h2>
+              Designed and developed by Hiroki Murakami
+              <br>Illustrations by <a href="https://minamir.com" target="_blank">Mina Mir</a>
+              <br><a href="https://github.com/type0001/HirokiMurakami.com" target="_blank">View on Github</a>
+            </h2>
+          </div>
+
+          <div class="break">
+          </div>
+
+        </div>
+
       </div>
-    </div>
-        <br>
-  </div>
 
-  <!-- Section 2 -->
-<div>
-  <div class="label" id="bot">
-    <h3>HIROKI BOT</h3>
-  </div>
-  <div class="w3-container" style="margin-top:0px;margin-bottom:0px;border-bottom:1px solid black">
-    <div style="margin-left:40px;margin-right:40px">
-      <br><h3>HIROKI LOCATOR BOT SAYS:</h3>
-      <h1>I'm currently ...</h1>
-      <h1 id="tweet" class="banner-header"></h1>
-      <br>
-      <p>Hiroki locator bot is a homegrown and incredibly bootstrapped way to automatically put my real-time, personally identifiable information on the web! It uses a combination of IFTTT, Twitter, and <u><a href="https://github.com/jsoma/tabletop" target="_blank">Tabletop.js</a></u>.
-      <br><br>
-    </div>
-</div>
-</div>
+    <!-- Section 1 -->
 
+      <div class="section">
 
+      <!-- Header -->
 
-  <!-- Section 3 -->
+      <header class="header" id="aboutme">
 
-  <div>
-    <div class="label" id="work">
-      <h3>WORK</h3>
-    </div>
+        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
 
-  <div class="w3-container" style="margin-top: 0px;margin-bottom: 0px;border-bottom:1px solid black">
-    <div style="margin-left:40px;margin-right:40px">
-      <br><h1>I'm a product & ux strategist</h1>
-      <br>
-      <p>I’m a full-stack strategist that helps organizations change by thinking about people, ideas, and technology in new ways.
-        Right now, I help lead digital product innovation teams at Sapient NYC.
-      </p>
-
-      <!-- Employers grid -->
-
-      <p>Where I've been:</p>
-      <div class="work-container">
-        <div class="work-button">
-          <b>Publicis Sapient</b>
-          <br><br>
-          Manager, Customer Experience & Innovation Consulting
+        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
+          <p>
+            About me
+          </p>
         </div>
-        <div class="work-button">
-          <b>Deutsch</b>
-          <br><br>
-          Strategy Director
+
+        <div class="" style="text-align: right; grid-column-start: 6; grid-column-end: 7; ">
+          <p>
+            <a href="#navigation" style="text-decoration: none;">Back to top</a>
+          </p>
         </div>
-        <div class="work-button">
-          <b>Hillary for America</b>
-          <br><br>
-          Senior Digital Strategist
+
+      </div>
+
+      </header>
+
+      <!-- Section content -->
+
+      <div class="grid">
+
+      <!-- Key art -->
+
+        <div class="break" style="height:100vh">
+          <img src="media/placeholder_big.png" style="width: 100%; height: 100%;">
         </div>
-        <div class="work-button">
-          <b>Edelman Digital</b>
-          <br><br>
+
+      <!-- Header -->
+
+        <div class="line">
+        </div>
+
+        <div class="break">
+        </div>
+
+        <div class="leftbox">
+          <h1>
+            01.
+          </h1>
+        </div>
+
+        <div class="mobile-half-break">
+        </div>
+
+        <div class="widebox-right">
+          <h3>
+            I’ve spent 10 years as a strategist at NYC product design and advertising agencies. During that time, I’ve spent years learning how to unravel complex problems and help organizations design the next versions of themselves.
+            <br><br>I’ve helped create disruptive products and brands, led multidisciplinary teams, mentor strategy departments, and champion change within large organizations.
+          </h3>
+        </div>
+
+        <div class="break">
+        </div>
+
+      <!-- Tables -->
+
+      <!-- Employers -->
+
+      <div class="mobile-leftbox" style="">
+        <h3><b>
+          Where I’ve been
+        </b></h3>
+      </div>
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Freelance
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
           Strategist
-        </div>
+        </p>
       </div>
 
-  <!-- Capabilities grid -->
-
-  <p>What I do:</p>
-      <div class="work-container">
-        <div class="work-button">
-          <b>Processes I use:</b>
-          <br>
-          <br>Design thinking
-          <br>Lean startup
-          <br>Jobs to be done
-          <br>Scaled agile framework
-        </div>
-        <div class="work-button">
-          <b>Artifacts I make:</b>
-          <br>
-          <br>Journey maps
-          <br>Service design blueprints
-          <br>Vision & value statements
-          <br>Backlogs & roadmaps
-        </div>
-        <div class="work-button">
-          <b>Research chops:</b>
-          <br>
-          <br>Ethnographies
-          <br>Prototyping
-          <br>Customer co-creation
-        </div>
+      <div class="widebox-right" style="border-top: 1px white solid;">
       </div>
 
-  <!-- Clients grid -->
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Publicis Sapient
+        </b></p>
+      </div>
 
-  <p>Who I've worked with:</p>
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Manager, CX & Innovation Consulting
+        </p>
+      </div>
 
-    <div class="work-container">
-      <div class="work-button">
-        <b>Consumer & retail:</b>
-        <br>
-        <br>Anheuser Busch
-        <br>CVS
-        <br>Energizer
-        <br>Johnson & Johnson
+      <div class="widebox-right" style="border-top: 1px white solid;">
       </div>
-      <div class="work-button">
-        <b>Financial services:</b>
-        <br>
-        <br>Citi
-        <br>Mastercard
-        <br>PNC
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Deutsch
+        </b></p>
       </div>
-      <div class="work-button">
-        <b>Technology:</b>
-        <br>
-        <br>Comcast
-        <br>GE
-        <br>Samsung
-        <br>Verizon
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Strategy Director
+        </p>
       </div>
-      <div class="work-button">
-        <b>Purpose:</b>
-        <br>
-        <br>Everytown for Gun Safety
-        <br>Hillary Clinton
-        <br>Iowa Democratic Party
+
+      <div class="widebox-right" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Hillary Clinton
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Senior Strategist
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Edelman Digital
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Strategist
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="break">
+      </div>
+
+      <!-- Clients -->
+
+      <div class="mobile-leftbox" style="">
+        <h3><b>
+          Who I've worked with
+        </b></h3>
+      </div>
+
+      <!-- Consumer goods -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Consumer goods
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Anheuser Busch
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Energizer
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Johnson & Johnson
+        </p>
+      </div>
+
+      <!-- Energy -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Energy
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          GE
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Siemens
+        </p>
+      </div>
+
+      <!-- Financial services -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Financial services
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Citibank
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          PNC
+        </p>
+      </div>
+
+      <!-- Politics -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Politics
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Everytown for Gun Safety
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Hillary Clinton
+        </p>
+      </div>
+
+      <!-- Technology -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Technology
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Comcast
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          eBay
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Mastercard
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Samsung
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Verizon
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="break">
+      </div>
+
       </div>
     </div>
 
+      <!-- Section end -->
 
     </div>
-<br><br>
-</div>
+
+    <!-- Section 2 -->
+
+      <div class="section">
+
+      <!-- Header -->
+
+      <header class="header" id="practiceareas">
+
+        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
+
+        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
+          <p>
+            Practice areas
+          </p>
+        </div>
+
+        <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right">
+          <p>
+            <a href="#navigation" style="text-decoration: none;">Back to top</a>
+          </p>
+        </div>
+
+      </div>
+
+      </header>
+
+      <!-- Section content -->
+
+      <div class="grid">
+
+      <!-- Key art -->
+
+        <div class="break" style="height:100vh">
+          <img src="media/placeholder_big.png" style="width: 100%; height: 100%;">
+        </div>
+
+      </div>
+
+      <!-- Header -->
+
+      <div class="grid">
+
+        <div class="line">
+        </div>
+
+        <div class="break">
+        </div>
+
+        <div class="leftbox">
+          <h1>
+            02.
+          </h1>
+        </div>
+
+        <div class="mobile-half-break">
+        </div>
+
+        <div class="widebox-right">
+          <h3>
+            I help organizations add structure and substance to their challenges and ambitions. Having trained in multiple strategy methodologies—human-centered design and brand and creative strategy—I bring years of experience applying rigorous strategy frameworks to big unknowns.
+            <br><br>But more importantly, I know how to partner with customers, creatives, and executives alike to uncover the unexpected human insights and ambitious ideas that breathe life to any strategic endeavor.
+          </h3>
+        </div>
+
+        <div class="break">
+        </div>
+
+      <!-- Tables -->
+
+      <!-- Methodologies -->
+
+      <div class="mobile-leftbox" style="">
+        <h3><b>
+          Methodologies and artifacts
+        </b></h3>
+      </div>
+
+      <!-- HCD -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Human-centered design
+        </b></p>
+        <br>
+        <p>Or,
+        <br>Design thinking
+        <br>Experience strategy
+        <br>Innovation consulting
+        </p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Workshops
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Journey maps
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Personas
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Rapid prototyping
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          North star visioning
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Product roadmapping
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-break">
+      </div>
+
+      <!-- Brand strategy -->
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Brand strategy
+        </b></p>
+        <br>
+        <p>Or,
+        <br>Brand planning
+        <br>Creative strategy
+        </p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Brand positioning
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Campaign strategies
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Creative briefs
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Customer and channel insights
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="break">
+      </div>
+
+      </div>
+
+      <!-- Section end -->
+
+    </div>
+
+    <!-- Section 3 -->
+
+    <div class="section">
+
+    <!-- Header -->
+
+      <header class="header" id="casestudies">
+
+        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
+
+        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
+          <p>
+            Case studies
+          </p>
+        </div>
+
+        <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right">
+          <p>
+            <a href="#navigation" style="text-decoration: none;">Back to top</a>
+          </p>
+        </div>
+
+      </div>
+
+      </header>
+
+    <!-- Section content -->
+
+    <div class="grid">
+
+    <!-- Key art -->
+
+      <div class="break" style="height:100vh">
+        <img src="media/placeholder_big.png" style="width: 100%; height: 100%;">
+      </div>
+
+    <!-- Header -->
+
+      <div class="line">
+      </div>
+
+      <div class="break">
+      </div>
+
+      <div class="leftbox">
+        <h1>
+          03.
+        </h1>
+      </div>
+
+      <div class="mobile-half-break">
+      </div>
+
+      <div class="widebox-right">
+        <h3>
+          As a strategist, I’ve had the opportunity to partner with incredible teams and organizations that have produced ambitious products and brands.
+          <br><br>These are several of the projects I’m most proud of. If you’d like more details or would like to hear about my experience with a different industry or subject matter, please reach out.
+        </h3>
+      </div>
+
+      <div class="break">
+      </div>
+
+    <!-- Tables -->
+
+    <!-- Methodologies -->
+
+    <div class="mobile-leftbox" style="">
+      <h3><b>
+        Human-centered innovation
+      </b></h3>
+    </div>
+
+    <!-- Innovation strategy -->
+
+    <div class="widebox-right" style="border-top: 3px white solid;">
+    </div>
+
+    <div class="mobile-middlebox" style="">
+      <p>
+        Crafted a 3-year product innovation strategy using human centered design for a global financial technology provider that led to multiple new products being funded for development.
+      </p>
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Customer interviews
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Journey mapping
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Personas
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        North star visioning
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Design sprint workshop
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Business case development
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="break">
+    </div>
+
+    <!-- Experience strategy -->
+
+    <div class="widebox-right" style="border-top: 3px white solid;">
+    </div>
+
+    <div class="mobile-leftbox" style="">
+      <h3><b>
+        Experience strategy
+      </b></h3>
+    </div>
+
+    <div class="mobile-middlebox" style="">
+      <p>
+        Reimagined and redesigned the primary ecommerce channel for a top US telecom provider using iterative prototyping and usability testing which led to increased conversion, revenue per customer, and less time per purchase.
+      </p>
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Customer interviews
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Design sprint workshop
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Iterative prototyping
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Usability testing
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="break">
+    </div>
+
+    <!-- Brand and creative strategy -->
+
+    <div class="widebox-right" style="border-top: 3px white solid;">
+    </div>
+
+    <div class="mobile-leftbox" style="">
+      <h3><b>
+        Brand and creative strategy
+      </b></h3>
+    </div>
+
+    <div class="mobile-middlebox" style="">
+      <p>
+        Pitched, won, and led the rebranding of an iconic dot-com era SaaS provider working directly with the CEO and CMO on a global expansion and reimagined product offering.
+      </p>
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Ethnographies
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Conjoint analysis
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Customer personas
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Brand positioning and purpose
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        North star visioning
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Logo redesign
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        TV and digital
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        CRM
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+
+
+    <div class="break">
+    </div>
+
+    </div>
+
+    <!-- Section end -->
+
+  </div>
 
   <!-- Section 4 -->
 
-  <div>
-    <div class="label" id="dragdropcontainer">
-      <h3>DRAG & DROP</h3>
+  <div class="section">
+
+  <!-- Header -->
+
+    <header class="header" id="workwithme">
+
+      <div class="grid" style="background: black; border-bottom: 1px white solid; ">
+
+      <div class="" style="grid-column-start: 2; grid-column-end: 5; padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Work with me
+        </p>
+      </div>
+
+      <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right; padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          <a href="#navigation" style="text-decoration: none;">Back to top</a>
+        </p>
+      </div>
+
     </div>
 
-  <div class="w3-container" id="dragdropcontainer" style="margin-top:0px;margin-bottom:0px;border-bottom:1px solid black">
-    <div style="height:500px;margin-left:40px;margin-right:40px">
+    </header>
 
-      <div id="container">
-        <div id="dragdrop1">
-          <div id="dragdrop1header"><img src="media/fastcasual.png" alt="FastCasual DJ group" style="max-width:250px;margin-left:-2vw;margin-top:40px;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;"></div>
-        </div>
-      </div>
+  <!-- Section content -->
 
-      <div id="dragdrop2">
-        <div id="dragdrop2header">
-          <img src="media/caphill.jpg" alt="Picture of Seattle" style="max-height:275px;margin-left: 15vw;margin-top: 6vw;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;">
-        </div>
-      </div>
+  <div class="grid">
 
-      <div id="dragdrop3">
-        <div id="dragdrop3header">
-          <img src="media/garden.jpg" alt="Picture of garden" style="max-height:150px;margin-left: 27vw;margin-top: 14vw;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;">
-        </div>
-      </div>
+    <!-- Key art -->
 
-      <div id="dragdrop4">
-        <div id="dragdrop4header">
-          <img src="media/morocco.png" alt="Picture of Morocco" style="max-height:110px;margin-left: 50vw;margin-top: 150px; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;">
-        </div>
-      </div>
+    <div class="break" style="height:100vh">
+      <img src="media/placeholder_big.png" style="width: 100%; height: 100%;">
+    </div>
 
-      <div id="dragdrop5">
-        <div id="dragdrop5header">
-          <img src="media/nyc.jpg" alt="Picture of NYC" style="max-height:235px;;margin-left: 55vw;margin-top: 19vw;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;">
-        </div>
-      </div>
+  <!-- Header -->
 
-      <div id="dragdrop6">
-        <div id="dragdrop6header">
-          <img src="media/deutsch.jpg" alt="Picture of Hiroki Murakami" style="max-height:200px;margin-left:38vw;margin-top:-1vw;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;">
-        </div>
-      </div>
+    <div class="line">
+    </div>
 
-      <div id="dragdrop7">
-        <div id="dragdrop7header">
-          <img src="media/renton.jpg" alt="Picture of Renton" style="max-height:190px;margin-left:60vw;margin-top:-2vw;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;">
-        </div>
-      </div>
+    <div class="break">
+    </div>
 
-      <div id="dragdrop8">
-        <div id="dragdrop8header">
-          <img src="media/utah.png" alt="Picture of Utah" style="max-height:130px;margin-left:33vw;margin-top:22vw;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;">
-        </div>
-      </div>
+    <div class="leftbox">
+      <h1>
+        04.
+      </h1>
+    </div>
 
-      <div id="dragdrop9">
-        <div id="dragdrop9header">
-          <img src="media/wfh.jpg" alt="Picture of work from home" style="max-height:150px;margin-left:4vw;margin-top:22vw;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.15);opacity:0.95;">
-        </div>
-      </div>
+    <div class="mobile-half-break">
+    </div>
 
+    <div class="widebox-right">
+      <h3>
+        I’m excited to learn about what you’re working on. Even if you or your project doesn't sound like any of the descriptions below, let’s talk.
+      </h3>
+    </div>
+
+    <div class="break">
+    </div>
+
+    <div class="break">
+    </div>
+
+  <!-- Tables -->
+
+  <!-- I often work with -->
+
+  <div class="mobile-leftbox" style="">
+    <h3><b>
+      I often work with
+    </b></h3>
+  </div>
+
+  <div class="widebox-right" style="border-top: 3px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Product design agencies
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Advertising agencies
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Product management groups
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Brand management group
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Causes and movements at discounted rates
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="break">
+  </div>
+
+  <!-- I can help with -->
+
+  <div class="mobile-leftbox" style="">
+    <h3><b>
+      I can help with
+    </b></h3>
+  </div>
+
+  <div class="widebox-right" style="border-top: 3px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Strategy leadership for a project
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Human-centered product innovation
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      End-to-end experience strategy
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Brand positioning and creative strategy
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Customer insights and trendcasting
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="break">
+  </div>
+
+  <!-- Get in touch -->
+
+  <div class="mobile-leftbox" style="">
+    <h3><b>
+      Get in touch
+    </b></h3>
+  </div>
+
+  <div class="widebox-right" style="border-top: 3px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Contact me for availability and rates
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      hnmurakami@gmail
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      917 791 0774
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="break">
+  </div>
 
   </div>
 
-    </div>
-  </div>
-</div>
+  <!-- Section end -->
 
-
-  <!-- Section 5 -->
-
-  <div>
-    <div class="label" id="music">
-      <h3>TECHNO</h3>
-    </div>
-
-  <div class="w3-container" style="margin-top:0px;margin-bottom:0px; border-bottom: 1px solid black;">
-    <div style="margin-left:40px;margin-right:40px">
-      <br>
-      <h1>I sometimes play techno music</h1>
-      <br>
-      <p><u><a href="https://www.instagram.com/fastcaj/" target="_blank">FastCasual</u></a> is an audio-visual DJ project by my wife <u><a href="https://www.minamir.com/" target="_blank">Mina Mir</a></u> and I.
-        After growing up with techno music and aesthetics, I finally decided to start playing it for others.
-      <br><br>
-      Some of our latest things:
-      <br>
-
-      <div class="music-grid">
-        <div>
-          <h3>Mix 1</h3>
-          <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/748798627&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family:Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div>
-        </div>
-
-        <div>
-          <h3>Mix 2</h3>
-          <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/843362572&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div>
-        </div>
-
-        <div>
-          <h3>At home playlist</h3>
-          <iframe src="https://open.spotify.com/embed/playlist/2tZ91C620Z4VsbUjR6ZdqT" width="100%" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
-        <br>
-        <br>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Section 4 -->
-
-<div>
-  <div class="label" id="zines">
-    <h3>ZINES</h3>
   </div>
 
-<div class="w3-container" style="margin-top:0px;margin-bottom:0px; border-bottom: 1px solid black;">
-  <div style="margin-left:40px;margin-right:40px">
-    <br>
-    <h1>Homegrown zines</h1>
-    <br>
-    <p>Zines are a form of small batch DIY self-publishing. If you would enjoy a physical copy of one of my zines, email me and I will happily mail you one.
-    <br><br>
-    <h3>[Previews] Zine. 1 | A primer on community organizing. Select excerpts from Saul Alinsky’s 1946 <i>Reveille for Radicals</i> </h3>
+  <!-- Footer -->
+
+  <div class="section">
+    <div class="grid">
+
+    <div class="half-break">
+    </div>
+
+    <div class="leftbox">
+      <h4>
+        © Hiroki Murakami 2021
+      </h4>
+    </div>
+
+    <div class="mobile-quarter-break">
+    </div>
+
+    <div class="middlebox">
+      <h4>
+        hnmurakami@gmail
+        <br>917 791 0774
+      </h4>
+    </div>
+
+    <div class="mobile-quarter-break">
+    </div>
+
+    <div class="rightbox">
+      <h4>
+        Open-source
+        <br><a href="https://github.com/type0001/HirokiMurakami.com" target="_blank">View on Github</a>
+      </h4>
+    </div>
+
+    <div class="half-break">
+    </div>
+
+  </div>
+  </div>
 
 
-    <div class="wrapper">
-      <div class="scrolls">
-           <img class="zineitem" src="media/page1c.png" alt="Saul Alinksy Reveille for Radicals zine page 1">
-           <img class="zineitem" src="media/page2d.png" alt="Saul Alinksy Reveille for Radicals zine page 2">
-           <img class="zineitem" src="media/page4d.png" alt="Saul Alinksy Reveille for Radicals zine page 3">
-           <img class="zineitem" src="media/page5d.png" alt="Saul Alinksy Reveille for Radicals zine page 4">
-           <img class="zineitem" src="media/page6d.png" alt="Saul Alinksy Reveille for Radicals zine page 5">
+  <!-- Background end -->
 
-
-      </div>
-      </div>
-
-      <br>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-
-      </div>
+    </div>
 
 <!-- End page content -->
-
-  </div>
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-    <script src='dragdrop.js'></script>
 
 </body>
 </html>
