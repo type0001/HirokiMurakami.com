@@ -1,8 +1,9 @@
 # HirokiMurakami.com
-A quirky and spontaneous one-page portfolio website built on AWS S3 using W3. 
 
-Use or reference however you'd like! 
+A one-page freelance portfolio website designed and developed by Hiroki Murakami. 
 
-Numerous third-party authors are credited inline within my HTML and JS files. 
+Hiroki Murakami is an independent strategist at the intersection of innovation consulting and creative strategy.
+
+Open-source and free to use. Any third-party contributors are credited inline 
 
 Email me at hnmurakami@gmail.com with any questions! 
