@@ -6,4 +6,4 @@ Hiroki Murakami is an independent strategist at the intersection of innovation c
 
 Open-source and free to use. Any third-party contributors are credited inline 
 
-Email me at hnmurakami@gmail.com with any questions! 
+Email me at hnmurakami@gmail with any questions! 
