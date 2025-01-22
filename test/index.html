@@ -3,82 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiroki Murakami - Test</title>
+    <title>Hiroki Murakami - AI Assistant</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #0000AA;
-            color: #FFFFFF;
+        body {
+            background-color: blue;
+            color: white;
+            font-family: monospace;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            height: 100vh;
+            margin: 0;
         }
-
-        .input-container {
+        h1 {
+            margin-bottom: 20px;
+        }
+        #response {
             margin-top: 20px;
-        }
-
-        input[type="text"] {
-            width: 400px;
-            padding: 10px;
-            font-size: 16px;
-            color: #00FF00;
-            background: #000066;
-            border: none;
-            outline: none;
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: #333333;
-            color: #FFFFFF;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #555555;
-        }
-
-        .response {
-            margin-top: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            color: #FFFFFF;
             white-space: pre-wrap;
+            max-width: 80%;
+            text-align: center;
+        }
+        #error {
+            color: red;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Ask Hiroki's AI</h1>
-    <div class="input-container">
-        <input type="text" id="userInput" placeholder="Type your question here...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-    <div class="response" id="responseContainer"></div>
-    <script>
-        async function sendMessage() {
-            const userInput = document.getElementById('userInput').value;
-            const responseContainer = document.getElementById('responseContainer');
+    <h1>Hiroki Murakami</h1>
+    <p>Hiroki Murakami is an independent strategist at the intersection of innovation consulting and creative strategy.</p>
+    <input type="text" id="userInput" placeholder="Ask me anything..." style="width: 80%; padding: 10px; margin-top: 20px;">
+    <button id="submit" style="padding: 10px 20px; margin-top: 10px;">Submit</button>
+    <div id="response"></div>
+    <div id="error"></div>
 
-            if (!userInput.trim()) {
-                responseContainer.textContent = 'Please enter a valid question.';
+    <script>
+        document.getElementById("submit").addEventListener("click", async () => {
+            const userInput = document.getElementById("userInput").value;
+            const responseDiv = document.getElementById("response");
+            const errorDiv = document.getElementById("error");
+
+            responseDiv.innerText = "";
+            errorDiv.innerText = "";
+
+            if (!userInput) {
+                errorDiv.innerText = "Please enter a question.";
                 return;
             }
 
-            responseContainer.textContent = 'Thinking...';
-
             try {
-                const response = await fetch('https://rq93nmuad7.execute-api.us-east-2.amazonaws.com', {
-                    method: 'POST',
+                const response = await fetch("https://rq93nmuad7.execute-api.us-east-2.amazonaws.com/hirokimurakami", {
+                    method: "POST",
                     headers: {
-                        'Content-Type': 'application/json',
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ prompt: userInput }),
                 });
@@ -88,12 +67,17 @@
                 }
 
                 const data = await response.json();
-                responseContainer.textContent = data.choices[0].message.content.trim();
+
+                if (data.choices && data.choices[0] && data.choices[0].message) {
+                    responseDiv.innerText = data.choices[0].message.content;
+                } else {
+                    errorDiv.innerText = "Unexpected response format.";
+                }
             } catch (error) {
-                console.error('Error communicating with AI:', error);
-                responseContainer.textContent = 'Error communicating with AI. Please try again.';
+                console.error("Error communicating with AI:", error);
+                errorDiv.innerText = "Error communicating with AI. Please try again.";
             }
-        }
+        });
     </script>
 </body>
 </html>
