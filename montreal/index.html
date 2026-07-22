@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#F1F2F5">
-<title>MTL — six of us</title>
+<title>Montréal</title>
 
 <!--
   ─────────────────────────────────────────────────────────────
@@ -29,114 +29,76 @@
   --rule:#E5E6EB;
   --shade:#EDEEF2;
 
-  /* interface accents */
   --blue:#3B45E8;
   --coral:#EE4E6E;
 
-  /* who's going */
   --hm:#7A4DE0;
   --kj:#C7452E;
   --pd:#17886F;
   --all:#22242E;
 
   --font:'Outfit','Helvetica Neue',Arial,sans-serif;
-  --r-card:16px;
-  --barH:100px;
-  --navH:72px;
+  --r:18px;
 }
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--font);font-size:15px;line-height:1.45;
-  font-weight:400;overflow:hidden;
+  font-family:var(--font);font-size:15px;line-height:1.45;font-weight:400;
 }
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-align:left}
-:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:8px}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:10px}
 
-/* ══════════ TOP ══════════ */
-.top{
-  position:fixed;top:0;left:0;right:0;height:var(--barH);z-index:40;
-  background:rgba(241,242,245,.92);
-  -webkit-backdrop-filter:saturate(1.6) blur(14px);
-  backdrop-filter:saturate(1.6) blur(14px);
+.page{
+  max-width:1160px;margin:0 auto;
+  padding:0 20px calc(150px + env(safe-area-inset-bottom));
 }
-.top-row{padding:.85rem 1rem .35rem}
-.eyebrow{
-  color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;display:block;margin-bottom:.1rem;
-}
-.brand{font-size:21px;font-weight:800;letter-spacing:-.03em;line-height:1}
-.people{display:flex;gap:.32rem;padding:.55rem 1rem .5rem;overflow-x:auto;scrollbar-width:none}
-.people::-webkit-scrollbar{display:none}
-.who-chip{
-  display:inline-flex;align-items:center;gap:.38rem;white-space:nowrap;
-  padding:.36rem .66rem;border-radius:99px;border:1px solid var(--rule);
-  background:var(--card);color:var(--ink-2);
-  font-size:12px;font-weight:600;
-}
-.who-chip i{width:9px;height:9px;border-radius:99px;background:var(--all);display:block}
-.who-chip[data-who="hm"] i{background:var(--hm)}
-.who-chip[data-who="kj"] i{background:var(--kj)}
-.who-chip[data-who="pd"] i{background:var(--pd)}
-.who-chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
 
-/* ══════════ BOARD ══════════ */
-.board{
-  position:absolute;top:var(--barH);left:0;right:0;bottom:0;
-  display:flex;overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x mandatory;scrollbar-width:none;
-  -webkit-overflow-scrolling:touch;
+/* ══════════ HERO ══════════ */
+.hero{padding:clamp(46px,9vw,84px) 0 clamp(20px,3vw,30px)}
+.hero h1{
+  margin:0;font-weight:800;letter-spacing:-.042em;line-height:.96;
+  font-size:clamp(38px,8.4vw,72px);max-width:15ch;
 }
-.board::-webkit-scrollbar{display:none}
-.col{
-  flex:0 0 100%;scroll-snap-align:start;
-  display:flex;flex-direction:column;min-width:0;
+.hero h1 span{color:var(--ink-3);display:block}
+.hero-meta{
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  margin-top:clamp(18px,2.4vw,26px);
 }
-.col-head{padding:.7rem 1rem .55rem}
-.col-eyebrow{
-  color:var(--blue);font-size:10.5px;font-weight:700;letter-spacing:.11em;
-  text-transform:uppercase;display:block;
-}
-.col-title{display:flex;align-items:baseline;gap:.5rem;margin-top:.05rem}
-.col-title h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-.035em;line-height:1}
-.col-title .count{
-  font-size:12px;font-weight:600;color:var(--ink-3);
-  background:var(--shade);padding:.1rem .48rem;border-radius:99px;
-}
-.col-title .add-btn{
-  margin-left:auto;font-size:12px;font-weight:600;color:var(--ink-2);
+.hero-count{color:var(--ink-3);font-size:14px;font-weight:500}
+.filter-btn{
+  margin-left:auto;display:inline-flex;align-items:center;gap:.45rem;
+  padding:.5rem .8rem .5rem .68rem;border-radius:99px;
   border:1px solid var(--rule);background:var(--card);
-  border-radius:99px;padding:.26rem .66rem;
+  font-size:13px;font-weight:600;color:var(--ink);
+  box-shadow:0 1px 2px rgba(17,18,25,.04);
 }
-.col-title .add-btn:active{background:var(--shade)}
-.col-sub{color:var(--ink-3);font-size:13px;margin-top:.15rem}
+.filter-btn i{width:9px;height:9px;border-radius:99px;background:var(--all);flex:none}
+.filter-btn[data-who="hm"] i{background:var(--hm)}
+.filter-btn[data-who="kj"] i{background:var(--kj)}
+.filter-btn[data-who="pd"] i{background:var(--pd)}
+.filter-btn u{text-decoration:none;color:var(--ink-3);font-weight:500}
 
-.col-body{
-  flex:1;overflow-y:auto;padding:.55rem 1rem calc(var(--navH) + 26px);
-  -webkit-overflow-scrolling:touch;
-}
+/* ══════════ GRID ══════════ */
+.grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media (min-width:680px){ .grid{grid-template-columns:repeat(2,1fr);gap:16px} }
+@media (min-width:1000px){ .grid{grid-template-columns:repeat(3,1fr);gap:18px} }
 
-.day-sep{
-  font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--ink-3);margin:.9rem 0 .5rem;display:flex;align-items:center;gap:.6rem;
-}
-.day-sep:first-child{margin-top:.1rem}
-.day-sep::after{content:'';flex:1;height:1px;background:var(--rule)}
-
-/* ══════════ CARDS ══════════ */
 .card{
   position:relative;background:var(--card);
-  border:1px solid var(--rule);border-radius:var(--r-card);
-  margin-bottom:.6rem;padding:.7rem .6rem .75rem .95rem;
-  display:flex;gap:.3rem;align-items:stretch;
-  box-shadow:0 1px 2px rgba(17,18,25,.03);
-  touch-action:pan-y;
+  border:1px solid var(--rule);border-radius:var(--r);
+  padding:1rem 1.05rem 1.05rem;
+  display:flex;flex-direction:column;
+  box-shadow:0 1px 2px rgba(17,18,25,.035);
+  user-select:none;-webkit-user-select:none;
+  transition:box-shadow .18s ease,transform .18s ease;
+}
+@media (hover:hover){
+  .card:hover{box-shadow:0 6px 20px rgba(17,18,25,.09);transform:translateY(-2px)}
 }
 .card::before{
-  content:'';position:absolute;left:0;top:12px;bottom:12px;width:3px;
+  content:'';position:absolute;left:0;top:18px;bottom:18px;width:3px;
   border-radius:0 3px 3px 0;background:var(--all);
 }
 .card[data-who="hm"]::before{background:var(--hm)}
@@ -149,82 +111,82 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-a
   background:linear-gradient(var(--hm) 33.3%,var(--kj) 33.3% 66.6%,var(--pd) 66.6%);
 }
 
-.card-main{flex:1;min-width:0;padding:0}
-.card-top{display:flex;align-items:center;gap:.35rem;margin-bottom:.4rem}
+.card-top{display:flex;align-items:center;gap:.4rem;margin-bottom:.55rem}
 .subtag{
-  display:inline-flex;align-items:center;gap:.3rem;
-  font-size:10.5px;font-weight:600;letter-spacing:.02em;
-  color:var(--ink-2);background:var(--shade);
-  padding:.22rem .5rem;border-radius:99px;white-space:nowrap;
+  font-size:11px;font-weight:600;color:var(--ink-2);background:var(--shade);
+  padding:.24rem .55rem;border-radius:99px;white-space:nowrap;
 }
-.subtag i{width:5px;height:5px;border-radius:99px;background:var(--ink-3);flex:none}
 .pin{
-  margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.06em;
+  margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.05em;
   text-transform:uppercase;color:#fff;background:var(--ink);
-  padding:.2rem .45rem;border-radius:99px;white-space:nowrap;
+  padding:.24rem .5rem;border-radius:99px;white-space:nowrap;
 }
-.card-main h3{margin:0;font-size:15.5px;font-weight:700;letter-spacing:-.015em;line-height:1.25}
-.card-main .meta{
-  display:block;margin-top:.1rem;color:var(--ink-3);font-size:12.5px;font-weight:500;
-}
-.card-main .note{margin:.35rem 0 0;font-size:13.5px;line-height:1.42;color:var(--ink-2)}
-.badges{display:flex;flex-wrap:wrap;gap:.28rem;margin-top:.5rem}
+.card h3{margin:0;font-size:17px;font-weight:700;letter-spacing:-.022em;line-height:1.22}
+.card .meta{display:block;margin-top:.18rem;color:var(--ink-3);font-size:12.5px;font-weight:500}
+.card .note{margin:.5rem 0 0;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+.badges{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.75rem}
 .badge{
   font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:.2rem .45rem;border-radius:99px;
-  background:var(--shade);color:var(--ink-2);
+  padding:.22rem .48rem;border-radius:99px;background:var(--shade);color:var(--ink-2);
 }
 .badge.is-booked{background:var(--ink);color:#fff}
 .badge.is-tobook{background:rgba(238,78,110,.1);color:#C43757}
 .badge.is-free{background:rgba(59,69,232,.09);color:var(--blue)}
 
-.grip{
-  flex:none;width:28px;display:grid;place-items:center;
-  color:var(--ink-3);font-size:15px;touch-action:none;cursor:grab;border-radius:8px;
-}
-.grip:active{cursor:grabbing;background:var(--shade)}
-
 .card.is-done{opacity:.5}
-.card.is-done .card-main h3{text-decoration:line-through;text-decoration-thickness:1px}
-.card.is-dim{opacity:.22}
-.card.is-dragging{display:none}
+.card.is-done h3{text-decoration:line-through;text-decoration-thickness:1px}
+.card.is-hidden{display:none}
+.card.is-lifted{opacity:.25}
+
+.add-tile{
+  border:1px dashed var(--rule);border-radius:var(--r);
+  min-height:104px;display:grid;place-items:center;
+  color:var(--ink-3);font-size:14px;font-weight:600;
+}
+.add-tile:active{background:var(--shade)}
+.empty{
+  grid-column:1/-1;border:1px dashed var(--rule);border-radius:var(--r);
+  padding:2.2rem 1rem;text-align:center;color:var(--ink-3);font-size:14.5px;
+}
 
 .ghost{
   position:fixed;z-index:200;pointer-events:none;margin:0;
-  box-shadow:0 16px 38px rgba(17,18,25,.2);transform:rotate(-1deg);
+  box-shadow:0 18px 42px rgba(17,18,25,.22);transform:rotate(-1deg) scale(1.02);
+  border-radius:var(--r);
 }
 .slot{
-  height:58px;border:2px dashed var(--ink-3);border-radius:var(--r-card);
-  margin-bottom:.6rem;background:rgba(17,18,25,.02);
+  border:2px dashed var(--ink-3);border-radius:var(--r);
+  background:rgba(17,18,25,.02);min-height:104px;
 }
-.empty{
-  border:1px dashed var(--rule);border-radius:var(--r-card);
-  padding:1.3rem 1rem;text-align:center;color:var(--ink-3);font-size:14px;
-}
+
+/* card entrance */
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.grid.animate > *{animation:rise .32s cubic-bezier(.22,1,.36,1) both}
 
 /* ══════════ NAV ══════════ */
 .nav{
-  position:fixed;z-index:45;left:10px;right:10px;
-  bottom:calc(10px + env(safe-area-inset-bottom));
+  position:fixed;z-index:45;left:12px;right:12px;
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  max-width:760px;margin:0 auto;
   display:flex;align-items:center;gap:.3rem;padding:.3rem;
-  background:rgba(255,255,255,.88);
-  -webkit-backdrop-filter:saturate(1.8) blur(18px);
-  backdrop-filter:saturate(1.8) blur(18px);
+  background:rgba(255,255,255,.9);
+  -webkit-backdrop-filter:saturate(1.8) blur(20px);
+  backdrop-filter:saturate(1.8) blur(20px);
   border:1px solid rgba(17,18,25,.06);
   border-radius:99px;
-  box-shadow:0 10px 30px rgba(17,18,25,.12), 0 2px 6px rgba(17,18,25,.05);
+  box-shadow:0 10px 34px rgba(17,18,25,.13), 0 2px 6px rgba(17,18,25,.05);
 }
 .nav-scroll{
-  flex:1;min-width:0;display:flex;gap:.08rem;
+  flex:1;min-width:0;display:flex;gap:.1rem;
   overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
 }
 .nav-scroll::-webkit-scrollbar{display:none}
 .nav-scroll button{
   flex:none;display:flex;align-items:center;gap:.35rem;white-space:nowrap;
-  padding:.5rem .74rem;border-radius:99px;color:var(--ink-2);
-  font-size:13px;font-weight:600;letter-spacing:-.01em;
+  padding:.52rem .82rem;border-radius:99px;color:var(--ink-2);
+  font-size:13.5px;font-weight:600;letter-spacing:-.01em;
 }
 .nav-scroll button i{width:6px;height:6px;border-radius:99px;background:#fff;display:none;flex:none}
 .nav-scroll button b{
@@ -234,7 +196,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-a
 .nav-scroll button.on{background:var(--ink);color:#fff;box-shadow:0 3px 10px rgba(17,18,25,.22)}
 .nav-scroll button.on i{display:block}
 .nav-scroll button.on b{background:rgba(255,255,255,.2);color:#fff}
-
 .nav-div{flex:none;width:1px;height:20px;background:var(--rule)}
 .nav-action{
   flex:none;width:36px;height:36px;border-radius:99px;
@@ -251,90 +212,89 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-a
 .scrim.open{opacity:1;pointer-events:auto}
 .sheet{
   position:fixed;left:0;right:0;bottom:0;z-index:100;
-  background:var(--paper);border-radius:22px 22px 0 0;
-  padding:.7rem 1.1rem calc(1.4rem + env(safe-area-inset-bottom));
+  max-width:560px;margin:0 auto;
+  background:var(--paper);border-radius:24px 24px 0 0;
+  padding:.7rem 1.2rem calc(1.5rem + env(safe-area-inset-bottom));
   transform:translateY(102%);transition:transform .24s cubic-bezier(.22,1,.36,1);
   max-height:88vh;overflow-y:auto;box-shadow:0 -8px 40px rgba(17,18,25,.18);
 }
 .sheet.open{transform:translateY(0)}
-.handle{width:36px;height:4px;border-radius:99px;background:var(--rule);margin:.2rem auto .9rem}
-.sheet h3{margin:.15rem 0 .1rem;font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1.15}
-.sheet .sheet-meta{color:var(--ink-3);font-size:13px;font-weight:500;margin-bottom:.7rem}
+.handle{width:36px;height:4px;border-radius:99px;background:var(--rule);margin:.2rem auto .95rem}
+.sheet h3{margin:.35rem 0 .1rem;font-size:24px;font-weight:800;letter-spacing:-.032em;line-height:1.13}
+.sheet .sheet-meta{color:var(--ink-3);font-size:13.5px;font-weight:500;margin-bottom:.75rem}
 .sheet .lbl{
   font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--blue);margin:1.15rem 0 .45rem;
+  color:var(--blue);margin:1.2rem 0 .5rem;
 }
-.opts{display:flex;flex-wrap:wrap;gap:.34rem}
+.opts{display:flex;flex-wrap:wrap;gap:.36rem}
 .opt{
-  padding:.5rem .8rem;border-radius:99px;border:1px solid var(--rule);
-  background:var(--card);font-size:13px;font-weight:600;color:var(--ink-2);
+  padding:.52rem .85rem;border-radius:99px;border:1px solid var(--rule);
+  background:var(--card);font-size:13.5px;font-weight:600;color:var(--ink-2);
 }
 .opt.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .opt[data-w="hm"].on{background:var(--hm);border-color:var(--hm)}
 .opt[data-w="kj"].on{background:var(--kj);border-color:var(--kj)}
 .opt[data-w="pd"].on{background:var(--pd);border-color:var(--pd)}
+.opt i{display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:.4rem;vertical-align:-1px}
+.opt[data-f="all"] i{background:var(--all)}
+.opt[data-f="hm"] i{background:var(--hm)}
+.opt[data-f="kj"] i{background:var(--kj)}
+.opt[data-f="pd"] i{background:var(--pd)}
+.opt.on i{background:#fff!important}
+
 .big-btn{
-  display:block;width:100%;text-align:center;margin-top:1.2rem;padding:.88rem;
+  display:block;width:100%;text-align:center;margin-top:1.25rem;padding:.9rem;
   border-radius:99px;font-size:14.5px;font-weight:700;
   background:linear-gradient(100deg,#F4607C,#E8455E);color:#fff;
   box-shadow:0 4px 14px rgba(232,69,94,.28);
 }
 .big-btn.dark{background:var(--ink);box-shadow:none}
-.big-btn.quiet{
-  background:transparent;color:var(--ink-2);
-  border:1px solid var(--rule);box-shadow:none;margin-top:.5rem;
-}
-.prose{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.big-btn.quiet{background:transparent;color:var(--ink-2);border:1px solid var(--rule);box-shadow:none;margin-top:.5rem}
+.prose{font-size:14.5px;line-height:1.58;color:var(--ink-2)}
 .prose b{color:var(--ink);font-weight:600}
-.prose p{margin:0 0 .8rem}
+.prose p{margin:0 0 .85rem}
 
 .toast{
   position:fixed;left:50%;transform:translateX(-50%) translateY(14px);
-  bottom:calc(var(--navH) + 22px);z-index:150;
-  background:var(--ink);color:#fff;padding:.62rem 1rem;border-radius:99px;
+  bottom:88px;z-index:150;
+  background:var(--ink);color:#fff;padding:.64rem 1rem;border-radius:99px;
   font-size:13px;font-weight:600;opacity:0;pointer-events:none;
   transition:opacity .2s,transform .2s;max-width:90vw;
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-@media (min-width:860px){
-  .board{scroll-snap-type:none}
-  .col{flex:0 0 348px;border-right:1px solid var(--rule)}
-}
 @media (prefers-reduced-motion:reduce){
-  *{transition:none!important;scroll-behavior:auto!important}
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
   .ghost{transform:none}
 }
 </style>
 </head>
 <body>
 
-<header class="top">
-  <div class="top-row">
-    <span class="eyebrow">MTL · Thu–Mon</span>
-    <div class="brand">Six of us</div>
-  </div>
-  <div class="people" id="people">
-    <button class="who-chip on" data-who="all"><i></i>Everyone</button>
-    <button class="who-chip" data-who="hm"><i></i>H &amp; M</button>
-    <button class="who-chip" data-who="kj"><i></i>K &amp; J</button>
-    <button class="who-chip" data-who="pd"><i></i>Mom &amp; Dad</button>
-  </div>
-</header>
+<main class="page">
+  <header class="hero">
+    <h1 id="heroTitle">Places to eat<span>in Montréal</span></h1>
+    <div class="hero-meta">
+      <span class="hero-count" id="heroCount"></span>
+      <button class="filter-btn" id="filterBtn" data-who="all">
+        <i></i><span id="filterLabel">Everyone</span> <u>▾</u>
+      </button>
+    </div>
+  </header>
+  <div class="grid" id="grid"></div>
+</main>
 
-<div class="board" id="board"></div>
-
-<nav class="nav" aria-label="Jump to a category">
+<nav class="nav" aria-label="Categories">
   <div class="nav-scroll" id="navScroll"></div>
   <span class="nav-div" aria-hidden="true"></span>
-  <button class="nav-action" id="btnMenu" aria-label="Board options">⋯</button>
+  <button class="nav-action" id="btnMenu" aria-label="Options">⋯</button>
 </nav>
 
 <div class="scrim" id="scrim"></div>
 
-<div class="sheet" id="cardSheet" role="dialog" aria-modal="true" aria-label="Edit card">
+<div class="sheet" id="cardSheet" role="dialog" aria-modal="true" aria-label="Edit place">
   <div class="handle"></div>
-  <span class="subtag" id="csTag"><i></i><span></span></span>
+  <span class="subtag" id="csTag"></span>
   <h3 id="csTitle">—</h3>
   <div class="sheet-meta" id="csMeta"></div>
   <div class="prose" id="csNote"></div>
@@ -347,6 +307,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-a
     <button class="opt" data-w="pd">Mom &amp; Dad</button>
   </div>
   <button class="big-btn dark" id="csDone">Mark as done</button>
+  <button class="big-btn quiet" data-close>Close</button>
+</div>
+
+<div class="sheet" id="whoSheet" role="dialog" aria-modal="true" aria-label="Show cards for">
+  <div class="handle"></div>
+  <h3>Show</h3>
+  <div class="sheet-meta">Dim everything that isn't yours</div>
+  <div class="opts" id="whoOpts" style="margin-top:1rem">
+    <button class="opt on" data-f="all"><i></i>Everyone</button>
+    <button class="opt" data-f="hm"><i></i>H &amp; M</button>
+    <button class="opt" data-f="kj"><i></i>K &amp; J</button>
+    <button class="opt" data-f="pd"><i></i>Mom &amp; Dad</button>
+  </div>
   <button class="big-btn quiet" data-close>Close</button>
 </div>
 
@@ -367,12 +340,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-a
   <button class="big-btn quiet" data-close>Close</button>
 </div>
 
-<div class="sheet" id="menuSheet" role="dialog" aria-modal="true" aria-label="Board options">
+<div class="sheet" id="menuSheet" role="dialog" aria-modal="true" aria-label="Options">
   <div class="handle"></div>
   <h3>This board</h3>
   <div class="sheet-meta">Changes save on this phone automatically</div>
   <div class="prose">
-    <p>Your board lives on whichever phone you opened it on — move a card here and nobody else's screen changes. To get everyone onto the same plan, copy a link and text it to the group. Opening it loads your exact board.</p>
+    <p>Your board lives on whichever phone you opened it on. To get everyone onto the same plan, copy a link and text it to the group — opening it loads your exact board.</p>
   </div>
   <button class="big-btn" id="btnShare">Copy a link to this plan</button>
   <button class="big-btn quiet" id="btnInfo">Things worth knowing</button>
@@ -386,92 +359,86 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-a
 (function(){
 'use strict';
 
-/* ═════ CATEGORIES ═════ */
-var LISTS=[
-  {k:'plan', name:'Plan',  eyebrow:'What we said', title:'The plan',  sub:'Anything pinned to a day, in order.'},
-  {k:'eat',  name:'Eat',   eyebrow:'Dining',       title:'Eat',       sub:'Breakfast through dinner, plus markets and sweets.'},
-  {k:'drink',name:'Drink', eyebrow:'Cafés & bars', title:'Drink',     sub:'Coffee by day, cocktails by night.'},
-  {k:'see',  name:'See',   eyebrow:'Sights',       title:'See',       sub:'Museums, churches, the family-roots stops.'},
-  {k:'walk', name:'Walk',  eyebrow:'Outdoors',     title:'Walk',      sub:'Water, parks, gardens, one beach.'},
-  {k:'shop', name:'Shop',  eyebrow:'Boutiques',    title:'Shop',      sub:'Old Montreal and the Mile End strip.'},
-  {k:'done', name:'Done',  eyebrow:'Behind us',    title:'Done',      sub:'Everything already crossed off.'}
+var CATS=[
+  {k:'eat',  name:'Eat',   h1:'Places to eat',   h2:'in Montréal'},
+  {k:'drink',name:'Drink', h1:'Places to drink', h2:'in Montréal'},
+  {k:'see',  name:'See',   h1:'Things to see',   h2:'in Montréal'},
+  {k:'walk', name:'Walk',  h1:'Places to walk',  h2:'in Montréal'},
+  {k:'shop', name:'Shop',  h1:'Places to shop',  h2:'in Montréal'},
+  {k:'done', name:'Done',  h1:'Already done',    h2:'and dusted'}
 ];
 var DAYS=[{k:'thu',n:'Thu'},{k:'fri',n:'Fri'},{k:'sat',n:'Sat'},{k:'sun',n:'Sun'},{k:'mon',n:'Mon'}];
 var ALL='hm kj pd';
 
-/* ═════ CARDS ═════ */
-/* c = category · s = sub-type · d = pinned day · tm = sort time · w = who */
 var CARDS=[
   /* EAT */
-  {id:'e1',c:'eat',s:'Dinner',t:'Bar George',m:'Downtown · 15 min',d:'fri',tm:'18:00',w:ALL,n:'1440 Drummond, in the Mount Stephen mansion. Wide menu, so nobody is stuck. Smart-casual.',b:['booked · fri 6pm']},
-  {id:'e2',c:'eat',s:'Lunch',t:'Crew Collective',m:'Old MTL · 6 min',d:'fri',tm:'13:00',w:ALL,n:'Café inside a 1920s bank hall. Brunch 10–3, far calmer on a Friday than a weekend.',b:['walk-in']},
-  {id:'e3',c:'eat',s:'Dinner',t:'Cook-in at the hotel',m:'Le Nomade · kitchen in the unit',d:'sat',tm:'18:30',w:ALL,n:'The market haul plus wine from the SAQ. Apéro-style so people drift in and out.'},
-  {id:'e4',c:'eat',s:'Dinner',t:'Stem Bar',m:'Little Burgundy · 30 min',d:'sun',tm:'19:30',w:ALL,n:'Natural wine and small plates. No reservations — easy to arrive in twos and threes.',b:['walk-in']},
-  {id:'e5',c:'eat',s:'Breakfast',t:'Arthur\u2019s',m:'Le Cathcart, downtown',d:'mon',tm:'10:00',w:ALL,n:'Only this location takes reservations. The St-Henri original has a 40-minute line.',b:['to book']},
+  {id:'e1',c:'eat',s:'Dinner',t:'Bar George',m:'Downtown · 15 min',d:'fri',tm:'18:00',w:ALL,n:'In the Mount Stephen mansion. Wide menu, so nobody is stuck. Smart-casual.',b:['booked · fri 6pm']},
+  {id:'e2',c:'eat',s:'Lunch',t:'Crew Collective',m:'Old MTL · 6 min',d:'fri',tm:'13:00',w:ALL,n:'A café inside a 1920s bank hall. Brunch 10–3, calmer on a Friday.',b:['walk-in']},
+  {id:'e3',c:'eat',s:'Dinner',t:'Cook-in at the hotel',m:'Kitchen in the unit',d:'sat',tm:'18:30',w:ALL,n:'The market haul plus wine from the SAQ. Apéro-style, so people drift in and out.'},
+  {id:'e4',c:'eat',s:'Dinner',t:'Stem Bar',m:'Little Burgundy · 30 min',d:'sun',tm:'19:30',w:ALL,n:'Natural wine and small plates. Easy to arrive in twos and threes.',b:['walk-in']},
+  {id:'e5',c:'eat',s:'Breakfast',t:'Arthur\u2019s',m:'Le Cathcart, downtown',d:'mon',tm:'10:00',w:ALL,n:'Only this location takes reservations. The original has a 40-minute line.',b:['to book']},
   {id:'e6',c:'eat',s:'Market',t:'Jean-Talon Market',m:'Little Italy · 25 min',d:'sat',tm:'09:30',w:ALL,n:'Open 8–6. Buy for tonight: produce, cheese, bread, charcuterie.'},
-  {id:'e7',c:'eat',s:'Breakfast',t:'St-Viateur Bagel',m:'Mile End · 25 min',d:'sat',tm:'11:30',w:ALL,n:'Wood-fired, open all hours. Buy a dozen and two mornings are handled.',b:['walk-in']},
+  {id:'e7',c:'eat',s:'Breakfast',t:'St-Viateur Bagel',m:'Mile End · 25 min',d:'sat',tm:'11:30',w:ALL,n:'Wood-fired, open all hours. A dozen covers two mornings.',b:['walk-in']},
   {id:'e8',c:'eat',s:'Sweets',t:'Dalmata gelato',m:'Mile End · 24 Bernard O.',d:'sat',tm:'16:00',w:ALL,n:'The regroup point after the Mile End shops.',b:['walk-in']},
   {id:'e9',c:'eat',s:'Groceries',t:'IGA Complexe Desjardins',m:'10 min walk',d:'thu',tm:'21:00',w:ALL,n:'Closest real supermarket. Snacks and fruit for the room.'},
-  {id:'e10',c:'eat',s:'Dinner',t:'Mon Lapin',m:'Little Italy · 25 min',w:ALL,n:'Vegetable-forward small plates and the best wine list in the country. Books 30 days out, caps at six.',b:['to book']},
+  {id:'e10',c:'eat',s:'Dinner',t:'Mon Lapin',m:'Little Italy · 25 min',w:ALL,n:'Vegetable-forward plates, the best wine list in the country. Books 30 days out, caps at six.',b:['to book']},
   {id:'e11',c:'eat',s:'Dinner',t:'Hiatus',m:'Ville-Marie · 15 min',w:ALL,n:'46th floor of Place Ville Marie. Franco-Japanese, the whole skyline.',b:['to book']},
   {id:'e12',c:'eat',s:'Dinner',t:'Bar Henrietta',m:'Mile End · 25 min',w:ALL,n:'Portuguese-style small plates and cocktails.',b:['walk-in']},
-  {id:'e13',c:'eat',s:'Brunch',t:'Dandy',m:'Old MTL · 8 min',w:ALL,n:'All-day brunch, walk-in only. Be there at 10 or wait 40 minutes.',b:['walk-in']},
-  {id:'e14',c:'eat',s:'Poutine',t:'Patati Patata',m:'Plateau · 20 min',w:ALL,n:'A dozen seats, poutine under C$10, open till 2am. Crowd skews young.',b:['walk-in']},
-  {id:'e15',c:'eat',s:'Poutine',t:'Montreal Poutine',m:'Old MTL · 5 min',w:ALL,n:'Courtyard with a projector. Food is standard; the proximity is the point.',b:['walk-in']},
+  {id:'e13',c:'eat',s:'Brunch',t:'Dandy',m:'Old MTL · 8 min',w:ALL,n:'All-day brunch. Be there at 10 or wait 40 minutes.',b:['walk-in']},
+  {id:'e14',c:'eat',s:'Poutine',t:'Patati Patata',m:'Plateau · 20 min',w:ALL,n:'A dozen seats, poutine under C$10, open till 2am.',b:['walk-in']},
+  {id:'e15',c:'eat',s:'Poutine',t:'Montreal Poutine',m:'Old MTL · 5 min',w:ALL,n:'Courtyard with a projector. The proximity is the point.',b:['walk-in']},
   {id:'e16',c:'eat',s:'Sweets',t:'Maison Intense',m:'Hochelaga · 30 min',w:ALL,n:'Algerian sweets and trompe-l\u2019œil pastries. Sells out early.',b:['walk-in']},
-  {id:'e17',c:'eat',s:'Market',t:'Atwater Market',m:'Lachine Canal · 20 min',w:ALL,n:'Smaller and prettier than Jean-Talon. Same idea, less walking.'},
+  {id:'e17',c:'eat',s:'Market',t:'Atwater Market',m:'Lachine Canal · 20 min',w:ALL,n:'Smaller and prettier than Jean-Talon. Less walking.'},
 
   /* DRINK */
   {id:'d1',c:'drink',s:'Coffee',t:'Mama C Café',m:'Old MTL · 5 min',d:'fri',tm:'14:30',w:'pd',n:'Inside Hôtel Nelligan. Airy and quiet while the others shop.',b:['walk-in']},
   {id:'d2',c:'drink',s:'Coffee',t:'Café Olimpico',m:'Mile End · 25 min',d:'sat',tm:'14:00',w:'pd',n:'The Euro espresso bar, a block from the shops. Cash-friendly.',b:['walk-in']},
-  {id:'d3',c:'drink',s:'Cocktails',t:'Clandestino',m:'Old MTL · 6 min',d:'thu',tm:'22:30',w:ALL,n:'Hidden agave bar below Boho. Over 100 mezcals and tequilas. Closed Sundays.',b:['walk-in']},
+  {id:'d3',c:'drink',s:'Cocktails',t:'Clandestino',m:'Old MTL · 6 min',d:'thu',tm:'22:30',w:ALL,n:'Hidden agave bar below Boho. Over 100 mezcals. Closed Sundays.',b:['walk-in']},
   {id:'d4',c:'drink',s:'Coffee',t:'Café Brut',m:'Griffintown · 25 min',w:ALL,n:'Matcha, banana-bread latte, a terrace. Open 8–4.',b:['walk-in']},
-  {id:'d5',c:'drink',s:'Cocktails',t:'StillLife',m:'Old MTL · 7 min',w:ALL,n:'Down an alley at 640 St-Paul O. Cocktails, cheese, charcuterie. RSVP by email.'},
+  {id:'d5',c:'drink',s:'Cocktails',t:'StillLife',m:'Old MTL · 7 min',w:ALL,n:'Down an alley at 640 St-Paul O. Cheese and charcuterie. RSVP by email.'},
 
   /* SEE */
   {id:'v1',c:'see',s:'Church',t:'Notre-Dame Basilica',m:'Old MTL · 5 min',d:'fri',tm:'09:30',w:ALL,n:'C$16. Opens 9am. Buy the timed ticket the night before.',b:['ticket']},
-  {id:'v2',c:'see',s:'Museum',t:'Pointe-à-Callière',m:'Old MTL · 7 min',d:'fri',tm:'10:45',w:ALL,n:'Built over the founding site — you walk through the excavated foundations. C$29, about two hours. Closed Mondays.'},
-  {id:'v3',c:'see',s:'Museum',t:'Château Dufresne',m:'Pie-IX · 25 min',d:'sun',tm:'13:00',w:'hm pd',n:'Beaux-Arts mansion with Nincheri interiors, about C$13. Wed–Sun 9:30–5, last entry 4.'},
-  {id:'v4',c:'see',s:'Spa',t:'Bota Bota',m:'Old Port · 10 min',d:'sat',tm:'14:00',w:'pd',n:'Spa on a boat. From about C$35, 18+. Call 514-284-0333 — no online booking.',b:['phone ahead']},
-  {id:'v5',c:'see',s:'Festival',t:'Piknic Électronik',m:'Jean-Drapeau · yellow line',d:'sun',tm:'14:00',w:'kj',n:'Sundays 2–9:30pm, house and minimal techno. Loud, standing, 18+. Tickets online.',b:['ticket']},
-  {id:'v6',c:'see',s:'Roots',t:'BAnQ archives',m:'Old MTL · 10 min',w:ALL,n:'The real genealogy stop — parish registers, notarial records, censuses. Free, no appointment. Closed Sun & Mon.',b:['free']},
+  {id:'v2',c:'see',s:'Museum',t:'Pointe-à-Callière',m:'Old MTL · 7 min',d:'fri',tm:'10:45',w:ALL,n:'Built over the founding site — you walk the excavated foundations. C$29, two hours. Closed Mondays.'},
+  {id:'v3',c:'see',s:'Museum',t:'Château Dufresne',m:'Pie-IX · 25 min',d:'sun',tm:'13:00',w:'hm pd',n:'Beaux-Arts mansion, about C$13. Wed–Sun 9:30–5, last entry 4.'},
+  {id:'v4',c:'see',s:'Spa',t:'Bota Bota',m:'Old Port · 10 min',d:'sat',tm:'14:00',w:'pd',n:'Spa on a boat. From about C$35, 18+. Call 514-284-0333.',b:['phone ahead']},
+  {id:'v5',c:'see',s:'Festival',t:'Piknic Électronik',m:'Jean-Drapeau · yellow line',d:'sun',tm:'14:00',w:'kj',n:'Sundays 2–9:30pm, house and minimal techno. Loud, standing, 18+.',b:['ticket']},
+  {id:'v6',c:'see',s:'Roots',t:'BAnQ archives',m:'Old MTL · 10 min',w:ALL,n:'Parish registers, notarial records, censuses. Free, no appointment. Closed Sun & Mon.',b:['free']},
   {id:'v7',c:'see',s:'Roots',t:'Maison Saint-Gabriel',m:'Pointe-St-Charles · 20 min',w:ALL,n:'1660s farmhouse that housed the Filles du Roi. Costumed guides.'},
-  {id:'v8',c:'see',s:'Roots',t:'Notre-Dame-des-Neiges',m:'Mount Royal · half day',w:ALL,n:'Largest cemetery in Canada. Only worth it if we go in with surnames.'},
+  {id:'v8',c:'see',s:'Roots',t:'Notre-Dame-des-Neiges',m:'Mount Royal · half day',w:ALL,n:'Largest cemetery in Canada. Worth it if we go in with surnames.'},
   {id:'v9',c:'see',s:'Museum',t:'Château Ramezay',m:'Old MTL · 6 min',w:ALL,n:'New France governance and daily life. Short and light.'},
   {id:'v10',c:'see',s:'Museum',t:'McCord Stewart Museum',m:'Downtown · 15 min',w:ALL,n:'The city\u2019s social history and photography archive.'},
   {id:'v11',c:'see',s:'Museum',t:'Redpath Museum',m:'McGill · 15 min',w:ALL,n:'Victorian natural-history hall. Free, and genuinely optional.',b:['free']},
-  {id:'v12',c:'see',s:'Show',t:'AURA at Notre-Dame',m:'Old MTL · 5 min',w:ALL,n:'Light and sound show inside the basilica, Mon–Sat evenings. Separate ticket.',b:['ticket']},
+  {id:'v12',c:'see',s:'Show',t:'AURA at Notre-Dame',m:'Old MTL · 5 min',w:ALL,n:'Light and sound show inside the basilica, Mon–Sat evenings.',b:['ticket']},
 
   /* WALK */
   {id:'w1',c:'walk',s:'Waterfront',t:'Old Port promenade',m:'Old MTL · 7 min',d:'thu',tm:'21:30',w:ALL,n:'Ten minutes of air along the St. Lawrence, lit up at night.',b:['free']},
   {id:'w2',c:'walk',s:'Beach',t:'Clock Tower Beach',m:'Old Port · 10 min',d:'sun',tm:'11:00',w:ALL,n:'Free, 11–6. Sand, loungers, misting stations. No swimming.',b:['free']},
-  {id:'w3',c:'walk',s:'Garden',t:'Jardin botanique',m:'Pie-IX · 25 min',d:'sun',tm:'14:30',w:'hm pd',n:'About C$24, next door to the château. Quiet, and deliberately not the festival.'},
+  {id:'w3',c:'walk',s:'Garden',t:'Jardin botanique',m:'Pie-IX · 25 min',d:'sun',tm:'14:30',w:'hm pd',n:'About C$24, next door to the château. Quiet, and not the festival.'},
   {id:'w4',c:'walk',s:'Waterfront',t:'Lachine Canal',m:'From the Old Port',w:ALL,n:'Carries on west from Clock Tower Beach. Shuttle runs in summer.',b:['free']},
   {id:'w5',c:'walk',s:'Park',t:'Parc Jean-Drapeau',m:'Islands · yellow line',w:ALL,n:'River views and open green space — on a non-festival day.',b:['free']},
   {id:'w6',c:'walk',s:'Park',t:'Parc La Fontaine',m:'Plateau · 20 min',w:ALL,n:'Ponds, paths, a café. The closest thing to doing nothing outdoors.',b:['free']},
 
   /* SHOP */
-  {id:'p1',c:'shop',s:'Flagship',t:'Ssense',m:'Old MTL · 5 min',d:'fri',tm:'14:30',w:'hm kj',n:'418 St-Sulpice. Five storeys by David Chipperfield, the only physical location.',b:['walk-in']},
+  {id:'p1',c:'shop',s:'Flagship',t:'Ssense',m:'Old MTL · 5 min',d:'fri',tm:'14:30',w:'hm kj',n:'Five storeys by David Chipperfield, the only physical location.',b:['walk-in']},
   {id:'p2',c:'shop',s:'Designer',t:'Rooney',m:'Old MTL · 6 min',d:'fri',tm:'15:15',w:'hm kj',n:'395 Notre-Dame O. Acne, Margiela, Comme, Our Legacy.',b:['walk-in']},
-  {id:'p3',c:'shop',s:'Boutique',t:'Boutique Odeyalo',m:'Mile End · 25 min',d:'sat',tm:'14:00',w:'hm kj',n:'5687 St-Laurent. Slow fashion, made locally, alterations on site.',b:['walk-in']},
+  {id:'p3',c:'shop',s:'Boutique',t:'Boutique Odeyalo',m:'Mile End · 25 min',d:'sat',tm:'14:00',w:'hm kj',n:'Slow fashion, made locally, alterations on site.',b:['walk-in']},
   {id:'p4',c:'shop',s:'Consignment',t:'Ruse Boutique',m:'Mile End · 25 min',d:'sat',tm:'14:45',w:'hm kj',n:'5141 St-Laurent. Luxury designer consignment.',b:['walk-in']},
-  {id:'p5',c:'shop',s:'Menswear',t:'Estudio Niksen',m:'St-Henri · 25 min',w:'hm kj',n:'655 Desnoyers. Unisex with a Japanese lean. Quieter than the Mile End strip.',b:['walk-in']}
+  {id:'p5',c:'shop',s:'Menswear',t:'Estudio Niksen',m:'St-Henri · 25 min',w:'hm kj',n:'Unisex with a Japanese lean. Quieter than the Mile End strip.',b:['walk-in']}
 ];
 
 var byId={};
 CARDS.forEach(function(c){ byId[c.id]=c; });
 
 /* ═════ STATE ═════ */
-var KEY='mtl-board-v2';
-var state=null, memoryOnly=false, filter='all';
+var KEY='mtl-v3';
+var state=null, memoryOnly=false, filter='all', active='eat';
 
 function defaults(){
   var s={who:{},done:{},day:{},order:{},custom:[]};
-  LISTS.forEach(function(l){ s.order[l.k]=[]; });
+  CATS.forEach(function(c){ s.order[c.k]=[]; });
   CARDS.forEach(function(c){
-    s.who[c.id]=c.w;
-    s.day[c.id]=c.d||'';
-    s.order[c.c].push(c.id);
+    s.who[c.id]=c.w; s.day[c.id]=c.d||''; s.order[c.c].push(c.id);
   });
   return s;
 }
@@ -491,9 +458,9 @@ function load(){
 function merge(s){
   if(!s||!s.order) return defaults();
   s.custom=s.custom||[]; s.done=s.done||{}; s.who=s.who||{}; s.day=s.day||{};
-  LISTS.forEach(function(l){ s.order[l.k]=s.order[l.k]||[]; });
+  CATS.forEach(function(c){ s.order[c.k]=s.order[c.k]||[]; });
   var seen={};
-  LISTS.forEach(function(l){ s.order[l.k].forEach(function(id){ seen[id]=1; }); });
+  CATS.forEach(function(c){ s.order[c.k].forEach(function(id){ seen[id]=1; }); });
   CARDS.forEach(function(c){
     if(!seen[c.id]){
       s.order[c.c].push(c.id);
@@ -531,106 +498,79 @@ function readLink(){
   }catch(e){ return null; }
 }
 
-/* ═════ LIST CONTENTS ═════ */
+/* ═════ CONTENTS ═════ */
 function idsFor(key){
   if(key==='done'){
     var out=[];
-    LISTS.forEach(function(l){
-      (state.order[l.k]||[]).forEach(function(id){ if(state.done[id]) out.push(id); });
+    CATS.forEach(function(c){
+      (state.order[c.k]||[]).forEach(function(id){ if(state.done[id]) out.push(id); });
     });
     return out;
-  }
-  if(key==='plan'){
-    var all=[];
-    LISTS.forEach(function(l){
-      (state.order[l.k]||[]).forEach(function(id){
-        if(!state.done[id] && state.day[id]) all.push(id);
-      });
-    });
-    all.sort(function(a,b){
-      var da=DAYS.map(function(d){return d.k;}).indexOf(state.day[a]);
-      var db=DAYS.map(function(d){return d.k;}).indexOf(state.day[b]);
-      if(da!==db) return da-db;
-      var ta=(cardData(a)||{}).tm||'99:99', tb=(cardData(b)||{}).tm||'99:99';
-      return ta<tb?-1:(ta>tb?1:0);
-    });
-    return all;
   }
   return (state.order[key]||[]).filter(function(id){ return !state.done[id]; });
 }
 
 /* ═════ RENDER ═════ */
-var board=document.getElementById('board');
+var grid=document.getElementById('grid');
 var nav=document.getElementById('navScroll');
+var heroTitle=document.getElementById('heroTitle');
+var heroCount=document.getElementById('heroCount');
 
 function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
-
-function render(keepScroll){
-  var x=board.scrollLeft;
-  board.innerHTML='';
-  LISTS.forEach(function(l){
-    var col=document.createElement('section');
-    col.className='col'; col.dataset.list=l.k;
-    var ids=idsFor(l.k);
-
-    var head=document.createElement('div');
-    head.className='col-head';
-    head.innerHTML='<span class="col-eyebrow">'+l.eyebrow+'</span>'+
-      '<div class="col-title"><h2>'+l.title+'</h2>'+
-      '<span class="count">'+ids.length+'</span></div>'+
-      '<div class="col-sub">'+l.sub+'</div>';
-    if(l.k!=='done' && l.k!=='plan'){
-      var add=document.createElement('button');
-      add.className='add-btn'; add.textContent='+ Add'; add.dataset.add=l.k;
-      head.querySelector('.col-title').appendChild(add);
-    }
-    col.appendChild(head);
-
-    var body=document.createElement('div');
-    body.className='col-body';
-
-    if(!ids.length){
-      var e=document.createElement('div');
-      e.className='empty';
-      e.textContent = l.k==='done' ? 'Nothing done yet. Open a card and mark it off.'
-        : l.k==='plan' ? 'Nothing pinned yet. Open any card and pin it to a day.'
-        : 'Empty.';
-      body.appendChild(e);
-    }
-
-    var lastDay=null;
-    ids.forEach(function(id){
-      if(l.k==='plan'){
-        var dk=state.day[id];
-        if(dk!==lastDay){
-          lastDay=dk;
-          var sep=document.createElement('div');
-          sep.className='day-sep';
-          var dn=DAYS.filter(function(d){return d.k===dk;})[0];
-          sep.textContent=dn?dn.n:'';
-          body.appendChild(sep);
-        }
-      }
-      body.appendChild(makeCard(id,l.k));
-    });
-
-    col.appendChild(body);
-    board.appendChild(col);
-  });
-  renderNav();
-  applyFilter();
-  if(keepScroll!==false) board.scrollLeft=x;
+function prettyTime(t){
+  var h=parseInt(t.split(':')[0],10), m=t.split(':')[1];
+  var ap=h>=12?'pm':'am', hh=h%12; if(hh===0) hh=12;
+  return hh+(m==='00'?'':':'+m)+ap;
 }
 
-function makeCard(id,listKey){
+function render(animate){
+  var cat=CATS.filter(function(c){return c.k===active;})[0];
+  heroTitle.innerHTML=esc(cat.h1)+'<span>'+esc(cat.h2)+'</span>';
+
+  var ids=idsFor(active);
+  var pinned=ids.filter(function(id){ return state.day[id]; }).length;
+  heroCount.textContent = ids.length + (ids.length===1?' place':' places') +
+    (pinned?' · '+pinned+' pinned to a day':'');
+
+  grid.classList.remove('animate');
+  grid.innerHTML='';
+
+  if(!ids.length){
+    var e=document.createElement('div');
+    e.className='empty';
+    e.textContent = active==='done'
+      ? 'Nothing crossed off yet. Open a card and mark it done.'
+      : 'Nothing here yet.';
+    grid.appendChild(e);
+  }
+  ids.forEach(function(id){ grid.appendChild(makeCard(id)); });
+
+  if(active!=='done'){
+    var add=document.createElement('button');
+    add.className='add-tile'; add.id='addTile'; add.textContent='+ Add a place';
+    add.addEventListener('click',addPlace);
+    grid.appendChild(add);
+  }
+
+  if(animate!==false){
+    void grid.offsetWidth;
+    grid.classList.add('animate');
+  }
+  renderNav();
+  applyFilter();
+}
+
+function makeCard(id){
   var c=cardData(id);
   var el=document.createElement('article');
   if(!c) return el;
   el.className='card'+(state.done[id]?' is-done':'');
   el.dataset.id=id;
   el.dataset.who=state.who[id]||ALL;
+  el.tabIndex=0;
+  el.setAttribute('role','button');
 
   var badges='';
   (c.b||[]).forEach(function(b){
@@ -641,101 +581,88 @@ function makeCard(id,listKey){
     badges+='<span class="'+cls+'">'+esc(b)+'</span>';
   });
 
-  var dayKey=state.day[id];
-  var dayName=dayKey?(DAYS.filter(function(d){return d.k===dayKey;})[0]||{}).n:'';
-  var pin='';
-  if(listKey==='plan'){
-    if(c.tm) pin='<span class="pin">'+esc(prettyTime(c.tm))+'</span>';
-  } else if(dayName && listKey!=='done'){
-    pin='<span class="pin">'+esc(dayName)+(c.tm?' '+prettyTime(c.tm):'')+'</span>';
-  }
+  var dk=state.day[id];
+  var dn=dk?(DAYS.filter(function(d){return d.k===dk;})[0]||{}).n:'';
+  var pin=(dn && active!=='done')
+    ? '<span class="pin">'+esc(dn+(c.tm?' '+prettyTime(c.tm):''))+'</span>' : '';
 
-  var main=document.createElement('button');
-  main.className='card-main';
-  main.innerHTML=
-    '<div class="card-top"><span class="subtag"><i></i>'+esc(c.s||'')+'</span>'+pin+'</div>'+
+  el.innerHTML=
+    '<div class="card-top"><span class="subtag">'+esc(c.s||'')+'</span>'+pin+'</div>'+
     '<h3>'+esc(c.t)+'</h3>'+
     (c.m?'<span class="meta">'+esc(c.m)+'</span>':'')+
     (c.n?'<p class="note">'+esc(c.n)+'</p>':'')+
     (badges?'<div class="badges">'+badges+'</div>':'');
-  main.addEventListener('click',function(){ openCard(id); });
-  el.appendChild(main);
 
-  if(listKey!=='plan' && listKey!=='done'){
-    var grip=document.createElement('div');
-    grip.className='grip'; grip.setAttribute('aria-hidden','true'); grip.textContent='⠿';
-    el.appendChild(grip);
-    attachDrag(el,grip,listKey);
-  }
+  el.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openCard(id); }
+  });
+  attachPress(el,id);
   return el;
-}
-
-function prettyTime(t){
-  var h=parseInt(t.split(':')[0],10), m=t.split(':')[1];
-  var ap=h>=12?'pm':'am', hh=h%12; if(hh===0) hh=12;
-  return hh+(m==='00'?'':':'+m)+ap;
 }
 
 function renderNav(){
   nav.innerHTML='';
-  LISTS.forEach(function(l,i){
+  CATS.forEach(function(c){
     var b=document.createElement('button');
-    b.innerHTML='<i></i>'+l.name+' <b>'+idsFor(l.k).length+'</b>';
+    b.innerHTML='<i></i>'+c.name+' <b>'+idsFor(c.k).length+'</b>';
+    b.classList.toggle('on',c.k===active);
     b.addEventListener('click',function(){
-      var cols=board.querySelectorAll('.col');
-      if(cols[i]) board.scrollTo({left:cols[i].offsetLeft,behavior:'smooth'});
+      if(active===c.k){ window.scrollTo({top:0,behavior:'smooth'}); return; }
+      active=c.k;
+      render(true);
+      window.scrollTo({top:0,behavior:'smooth'});
+      var self=nav.children[CATS.map(function(x){return x.k;}).indexOf(active)];
+      if(self){
+        var l=self.offsetLeft, r=l+self.offsetWidth;
+        if(l<nav.scrollLeft+16) nav.scrollLeft=l-16;
+        else if(r>nav.scrollLeft+nav.clientWidth-16) nav.scrollLeft=r-nav.clientWidth+16;
+      }
     });
     nav.appendChild(b);
   });
-  syncNav();
 }
-function syncNav(){
-  var cols=board.querySelectorAll('.col');
-  var best=0,min=1e9;
-  Array.prototype.forEach.call(cols,function(c,i){
-    var d=Math.abs(c.offsetLeft-board.scrollLeft);
-    if(d<min){min=d;best=i;}
-  });
-  Array.prototype.forEach.call(nav.querySelectorAll('button'),function(b,i){
-    var was=b.classList.contains('on');
-    b.classList.toggle('on',i===best);
-    if(i===best && !was){
-      var l=b.offsetLeft, r=l+b.offsetWidth;
-      if(l<nav.scrollLeft+18) nav.scrollLeft=l-18;
-      else if(r>nav.scrollLeft+nav.clientWidth-18) nav.scrollLeft=r-nav.clientWidth+18;
-    }
-  });
-}
-board.addEventListener('scroll',function(){
-  clearTimeout(board._t); board._t=setTimeout(syncNav,60);
-});
 
-/* ═════ PEOPLE FILTER ═════ */
-document.getElementById('people').addEventListener('click',function(e){
-  var chip=e.target.closest('.who-chip'); if(!chip) return;
-  filter=chip.dataset.who;
-  Array.prototype.forEach.call(this.querySelectorAll('.who-chip'),function(c){
-    c.classList.toggle('on',c===chip);
+/* ═════ FILTER ═════ */
+var filterBtn=document.getElementById('filterBtn');
+var filterLabel=document.getElementById('filterLabel');
+var LABELS={all:'Everyone',hm:'H & M',kj:'K & J',pd:'Mom & Dad'};
+
+filterBtn.addEventListener('click',function(){ openSheet(whoSheet); });
+document.getElementById('whoOpts').addEventListener('click',function(e){
+  var b=e.target.closest('.opt'); if(!b) return;
+  filter=b.dataset.f;
+  Array.prototype.forEach.call(this.querySelectorAll('.opt'),function(o){
+    o.classList.toggle('on',o===b);
   });
+  filterBtn.dataset.who=filter;
+  filterLabel.textContent=LABELS[filter];
   applyFilter();
+  closeSheets();
 });
 function applyFilter(){
-  Array.prototype.forEach.call(document.querySelectorAll('.card'),function(el){
+  var shown=0;
+  Array.prototype.forEach.call(grid.querySelectorAll('.card'),function(el){
     var w=el.dataset.who||'';
-    el.classList.toggle('is-dim', !(filter==='all' || w.indexOf(filter)>-1));
+    var hit=(filter==='all'||w.indexOf(filter)>-1);
+    el.classList.toggle('is-hidden',!hit);
+    if(hit) shown++;
   });
+  if(filter!=='all'){
+    heroCount.textContent=shown+(shown===1?' place':' places')+' for '+LABELS[filter];
+  }
 }
 
 /* ═════ SHEETS ═════ */
 var scrim=document.getElementById('scrim');
 var cardSheet=document.getElementById('cardSheet');
+var whoSheet=document.getElementById('whoSheet');
 var infoSheet=document.getElementById('infoSheet');
 var menuSheet=document.getElementById('menuSheet');
 var current=null;
 
 function closeSheets(){
   scrim.classList.remove('open');
-  [cardSheet,infoSheet,menuSheet].forEach(function(s){ s.classList.remove('open'); });
+  [cardSheet,whoSheet,infoSheet,menuSheet].forEach(function(s){ s.classList.remove('open'); });
   current=null;
 }
 function openSheet(s){ scrim.classList.add('open'); s.classList.add('open'); }
@@ -766,8 +693,7 @@ var csDays=document.getElementById('csDays');
 function openCard(id){
   current=id;
   var c=cardData(id); if(!c) return;
-  var tag=document.getElementById('csTag');
-  tag.querySelector('span').textContent=c.s||'';
+  document.getElementById('csTag').textContent=c.s||'';
   document.getElementById('csTitle').textContent=c.t;
   document.getElementById('csMeta').textContent=c.m||'';
   document.getElementById('csNote').innerHTML=c.n?'<p>'+esc(c.n)+'</p>':'';
@@ -778,7 +704,7 @@ function openCard(id){
   Array.prototype.forEach.call(document.querySelectorAll('#csWho .opt'),function(b){
     b.classList.toggle('on',w.indexOf(b.dataset.w)>-1);
   });
-  document.getElementById('csDone').textContent=state.done[id]?'Put it back on the board':'Mark as done';
+  document.getElementById('csDone').textContent=state.done[id]?'Put it back':'Mark as done';
   openSheet(cardSheet);
 }
 
@@ -792,104 +718,131 @@ document.getElementById('csWho').addEventListener('click',function(e){
   Array.prototype.forEach.call(this.querySelectorAll('.opt'),function(o){
     o.classList.toggle('on',cur.indexOf(o.dataset.w)>-1);
   });
-  save(); render();
+  save(); render(false);
 });
 
 function pinDay(id,day){
   if(!id) return;
-  state.day[id]=day;
-  save(); render(); closeSheets();
+  state.day[id]=day; save(); render(false); closeSheets();
   toast(day?('Pinned to '+DAYS.filter(function(d){return d.k===day;})[0].n):'Unpinned');
 }
-
 document.getElementById('csDone').addEventListener('click',function(){
   if(!current) return;
   var was=!!state.done[current];
   state.done[current]=!was;
-  save(); render(); closeSheets();
-  toast(was?'Back on the board':'Done — moved to the pile');
+  save(); render(false); closeSheets();
+  toast(was?'Back on the board':'Done');
 });
 
-/* add your own */
-board.addEventListener('click',function(e){
-  var b=e.target.closest('[data-add]'); if(!b) return;
+function addPlace(){
   var t=prompt('What do you want to add?');
   if(!t||!t.trim()) return;
   var id='x'+Date.now().toString(36);
-  state.custom.push({id:id,t:t.trim(),c:b.dataset.add});
+  state.custom.push({id:id,t:t.trim(),c:active});
   state.who[id]=ALL; state.day[id]='';
-  state.order[b.dataset.add].push(id);
-  save(); render();
-});
+  state.order[active].push(id);
+  save(); render(false);
+}
 
-/* ═════ DRAG — reorder inside a category ═════ */
+/* ═════ TAP vs LONG-PRESS DRAG ═════ */
 var drag=null;
-function attachDrag(el,grip,listKey){
-  grip.addEventListener('pointerdown',function(e){
-    e.preventDefault();
+function attachPress(el,id){
+  var timer=null, start=null, moved=false;
+
+  el.addEventListener('pointerdown',function(e){
+    if(e.button && e.button!==0) return;
+    start={x:e.clientX,y:e.clientY,pid:e.pointerId};
+    moved=false;
+    timer=setTimeout(function(){
+      timer=null;
+      if(!moved) lift(e);
+    },420);
+  });
+
+  el.addEventListener('pointermove',function(e){
+    if(!start) return;
+    var dx=Math.abs(e.clientX-start.x), dy=Math.abs(e.clientY-start.y);
+    if(!drag && (dx>9||dy>9)){
+      moved=true;
+      if(timer){ clearTimeout(timer); timer=null; }
+      start=null;
+      return;
+    }
+    if(drag) move(e);
+  });
+
+  function up(e){
+    if(timer){
+      clearTimeout(timer); timer=null;
+      if(!moved && !drag) openCard(id);
+    }
+    if(drag) drop();
+    start=null;
+  }
+  el.addEventListener('pointerup',up);
+  el.addEventListener('pointercancel',function(){
+    if(timer){ clearTimeout(timer); timer=null; }
+    if(drag) drop();
+    start=null;
+  });
+
+  function lift(e){
+    if(active==='done') return;
     var rect=el.getBoundingClientRect();
     var ghost=el.cloneNode(true);
     ghost.classList.add('ghost');
     ghost.style.width=rect.width+'px';
+    ghost.style.height=rect.height+'px';
     ghost.style.left=rect.left+'px';
     ghost.style.top=rect.top+'px';
     document.body.appendChild(ghost);
 
     var slot=document.createElement('div');
     slot.className='slot';
+    slot.style.height=rect.height+'px';
     el.parentNode.insertBefore(slot,el.nextSibling);
-    el.classList.add('is-dragging');
+    el.classList.add('is-lifted');
+    el.style.display='none';
 
-    drag={el:el,ghost:ghost,slot:slot,dx:e.clientX-rect.left,dy:e.clientY-rect.top,
-          id:el.dataset.id,list:listKey};
-    try{ grip.setPointerCapture(e.pointerId); }catch(err){}
-  });
+    drag={el:el,id:id,ghost:ghost,slot:slot,dx:start.x-rect.left,dy:start.y-rect.top};
+    try{ el.setPointerCapture(start.pid); }catch(err){}
+    if(navigator.vibrate) navigator.vibrate(8);
+  }
 
-  grip.addEventListener('pointermove',function(e){
-    if(!drag) return;
+  function move(e){
     e.preventDefault();
     drag.ghost.style.left=(e.clientX-drag.dx)+'px';
     drag.ghost.style.top=(e.clientY-drag.dy)+'px';
+    drag.ghost.style.pointerEvents='none';
 
     var under=document.elementFromPoint(e.clientX,e.clientY);
     if(!under) return;
-    var body=under.closest('.col-body'); if(!body) return;
-    var col=body.closest('.col');
-    if(!col || col.dataset.list!==drag.list) return;  /* stay in your own category */
-
     var over=under.closest('.card');
-    if(over && over!==drag.el){
+    if(over && over!==drag.el && over.parentNode===grid){
       var r=over.getBoundingClientRect();
-      body.insertBefore(drag.slot,(e.clientY>r.top+r.height/2)?over.nextSibling:over);
+      var after=(e.clientX>r.left+r.width/2) || (e.clientY>r.top+r.height);
+      grid.insertBefore(drag.slot, after?over.nextSibling:over);
     }
-  });
-
-  function finish(){
-    if(!drag) return;
-    var slot=drag.slot, id=drag.id, key=drag.list;
-    drag.ghost.remove();
-    drag.el.classList.remove('is-dragging');
-
-    var body=slot.parentNode;
-    if(body){
-      var ids=[];
-      Array.prototype.forEach.call(body.children,function(ch){
-        if(ch===slot) ids.push(id);
-        else if(ch.classList && ch.classList.contains('card') && ch.dataset.id!==id) ids.push(ch.dataset.id);
-      });
-      /* keep any done cards that live in this category but aren't shown */
-      (state.order[key]||[]).forEach(function(x){
-        if(ids.indexOf(x)===-1) ids.push(x);
-      });
-      state.order[key]=ids;
-      save();
-    }
-    slot.remove();
-    drag=null;
-    render();
   }
-  grip.addEventListener('pointerup',finish);
-  grip.addEventListener('pointercancel',finish);
+
+  function drop(){
+    if(!drag) return;
+    drag.ghost.remove();
+    drag.el.classList.remove('is-lifted');
+    drag.el.style.display='';
+
+    var ids=[];
+    Array.prototype.forEach.call(grid.children,function(ch){
+      if(ch===drag.slot) ids.push(drag.id);
+      else if(ch.classList.contains('card') && ch.dataset.id!==drag.id) ids.push(ch.dataset.id);
+    });
+    (state.order[active]||[]).forEach(function(x){ if(ids.indexOf(x)===-1) ids.push(x); });
+    state.order[active]=ids;
+    save();
+    drag.slot.remove();
+    drag=null;
+    render(false);
+  }
 }
 
 /* ═════ MENU ═════ */
@@ -904,8 +857,8 @@ document.getElementById('btnShare').addEventListener('click',function(){
   closeSheets();
 });
 document.getElementById('btnReset').addEventListener('click',function(){
-  if(!window.confirm('Put every card back where it started?')) return;
-  state=defaults(); save(); render(); closeSheets();
+  if(!window.confirm('Put every place back where it started?')) return;
+  state=defaults(); save(); render(false); closeSheets();
   toast('Back to the original plan');
 });
 
@@ -920,11 +873,8 @@ function toast(msg){
 
 /* ═════ GO ═════ */
 load();
-render(false);
-setTimeout(function(){
-  syncNav();
-  if(memoryOnly) toast('Preview only — saving works on the real site');
-},80);
+render(true);
+if(memoryOnly) setTimeout(function(){ toast('Preview only — saving works on the real site'); },300);
 
 })();
 </script>
