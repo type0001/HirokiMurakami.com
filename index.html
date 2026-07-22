@@ -1,1098 +1,1372 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Montréal — a long weekend, six of us</title>
-<meta name="description" content="A swappable long-weekend plan for Montréal.">
 
-<!--
-  ─────────────────────────────────────────────────────────────
-  HOW TO PUBLISH THIS
-  1. Drop this folder into the repo that serves hirokimurakami.com
-  2. Path: /montreal/index.html  →  hirokimurakami.com/montreal
-  3. Commit, push. Live in about a minute.
-  No build step, no dependencies. Edit the HTML directly to change plans.
-  ─────────────────────────────────────────────────────────────
--->
+<!-- Meta  -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..800;1,62..125,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap" rel="stylesheet">
+<html>
+  <head>
+  <html lang="en">
+  <title>Hiroki Murakami</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hiroki is an independent strategist at the intersection of innovation consulting and creative strategy.">
+  <meta name="keywords" content="Hiroki, Murakami, strategist, strategy, consulting">
+  <meta name="author" content="Hiroki Murakami">
+  <link rel="icon" type="image/png" href="media/favicon.png"/>
+    
+  <!--  Essential META Tags -->
 
-<style>
-/* ============ TOKENS ============ */
-:root{
-  --paper:#F2F3F1;
-  --card:#FFFFFF;
-  --ink:#14161A;
-  --ink-2:#565D66;
-  --ink-3:#878E96;
-  --rule:#DCDFDA;
+  <meta property="og:title" content="Hiroki Murakami">
+  <meta property="og:description" content="Hiroki is an independent strategist at the intersection of innovation consulting and creative strategy.">
+  <meta property="og:image" content="http://hirokimurakami.com/media/warp2.png">
+  <meta property="og:url" content="http://hirokimurakami.com">
+  <meta name="twitter:card" content="summary_large_image">
 
-  /* STM line colours — the day-coding system */
-  --green:#007E4E;
-  --orange:#DD6B0D;
-  --yellow:#F2C200;
-  --blue:#0079C1;
-  --graphite:#6B7280;
+  <!-- AdSense --> 
 
-  --display:'Archivo','Helvetica Neue',Arial,sans-serif;
-  --body:'Newsreader',Georgia,'Times New Roman',serif;
-  --util:'Archivo','Helvetica Neue',Arial,sans-serif;
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7593128865636278"
+     crossorigin="anonymous"></script>
 
-  --measure:34rem;
-  --rail:14px;
-}
+  <!--  Non-Essential, But Recommended -->
 
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--body);
-  font-size:17px;
-  line-height:1.55;
-  font-optical-sizing:auto;
-}
-h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:700;line-height:1.05}
+  <meta property="og:site_name" content="Hiroki Murakami">
+  <meta name="twitter:image:alt" content="Hiroki is an independent strategist at the intersection of innovation consulting and creative strategy.">
 
-/* utility text: times, lines, prices, tags */
-.util{
-  font-family:var(--util);
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:.11em;
-  text-transform:uppercase;
-  font-variation-settings:'wdth' 88;
-}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
 
-a{color:var(--ink);text-underline-offset:2px;text-decoration-thickness:1px}
-a:focus-visible,button:focus-visible,summary:focus-visible{
-  outline:2px solid var(--blue);outline-offset:3px;border-radius:2px;
-}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21199631-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-.wrap{max-width:min(100% - 2.2rem, 62rem);margin-inline:auto}
+    gtag('config', 'UA-21199631-1');
+  </script>
 
-/* ============ TOP BAR ============ */
-.bar{
-  position:sticky;top:0;z-index:50;
-  background:rgba(242,243,241,.93);
-  backdrop-filter:saturate(1.6) blur(10px);
-  border-bottom:1px solid var(--rule);
-}
-.bar-in{display:flex;align-items:center;gap:1rem;padding:.55rem 0;min-height:52px}
-.mark{
-  font-family:var(--util);font-weight:800;font-size:12px;
-  letter-spacing:.16em;text-transform:uppercase;
-  font-variation-settings:'wdth' 112;
-  white-space:nowrap;
-}
-.daynav{display:flex;gap:.28rem;margin-left:auto;overflow-x:auto;scrollbar-width:none}
-.daynav::-webkit-scrollbar{display:none}
-.daynav a{
-  font-family:var(--util);font-size:11px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;text-decoration:none;color:var(--ink-2);
-  padding:.34rem .5rem;border-radius:99px;display:flex;align-items:center;gap:.34rem;
-  white-space:nowrap;
-}
-.daynav a:hover{color:var(--ink);background:#fff}
-.daynav a.on{background:var(--ink);color:#fff}
-.pip{width:8px;height:8px;border-radius:99px;background:var(--graphite);flex:none}
-.pip.orange{background:var(--orange)} .pip.blue{background:var(--blue)}
-.pip.yellow{background:var(--yellow)} .pip.green{background:var(--green)}
-.pip.split{background:linear-gradient(90deg,var(--yellow) 50%,var(--green) 50%)}
+  <!-- CDNs -->
 
-/* ============ HERO: the trip as a line ============ */
-.hero{padding:3.2rem 0 2.4rem}
-.eyebrow{color:var(--ink-3);margin-bottom:1.1rem}
-.hero h1{
-  font-size:clamp(2.4rem,9vw,4.6rem);
-  font-variation-settings:'wdth' 118;
-  letter-spacing:-.025em;
-  text-transform:uppercase;
-}
-.hero h1 em{font-style:normal;color:var(--ink-3)}
-.lede{
-  font-size:1.18rem;color:var(--ink-2);max-width:var(--measure);
-  margin:1.1rem 0 0;
-}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="nowplaying.js"></script>
 
-/* route diagram */
-.route{margin:2.6rem 0 0;position:relative}
-.route-line{
-  position:absolute;left:0;right:0;top:11px;height:3px;
-  background:linear-gradient(90deg,
-    var(--graphite) 0 12%, var(--orange) 12% 37%,
-    var(--blue) 37% 62%, var(--yellow) 62% 74%,
-    var(--green) 74% 87%, var(--graphite) 87% 100%);
-}
-.stations{display:flex;position:relative;list-style:none;margin:0;padding:0}
-.stations li{flex:1;text-align:center;min-width:0}
-.stations .dot{
-  width:25px;height:25px;border-radius:99px;background:var(--card);
-  border:3px solid var(--ink);margin:0 auto .6rem;position:relative;
-}
-.stations li:nth-child(1) .dot{border-color:var(--graphite)}
-.stations li:nth-child(2) .dot{border-color:var(--orange)}
-.stations li:nth-child(3) .dot{border-color:var(--blue)}
-.stations li:nth-child(4) .dot{
-  border-color:var(--yellow);
-  box-shadow:inset 0 0 0 3px var(--card), inset -12px 0 0 -9px var(--green);
-}
-.stations li:nth-child(5) .dot{border-color:var(--graphite)}
-.st-day{font-family:var(--util);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;display:block}
-.st-theme{font-size:.86rem;color:var(--ink-3);display:block;line-height:1.25;margin-top:.1rem}
 
-/* ============ SECTIONS ============ */
-section{padding:2.6rem 0;border-top:1px solid var(--rule)}
-.sec-head{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.sec-head h2{
-  font-size:clamp(1.5rem,4.6vw,2.15rem);
-  font-variation-settings:'wdth' 110;letter-spacing:-.015em;text-transform:uppercase;
-}
-.sec-note{color:var(--ink-3);font-size:.95rem;max-width:var(--measure)}
+  <!-- Fonts -->
 
-/* ============ DAY TRACK ============ */
-.day{scroll-margin-top:68px}
-.day-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.35rem;flex-wrap:wrap}
-.day-tag{
-  font-family:var(--util);font-size:11px;font-weight:800;letter-spacing:.13em;
-  text-transform:uppercase;color:#fff;background:var(--graphite);
-  padding:.28rem .58rem;border-radius:3px;
-}
-.day.orange .day-tag{background:var(--orange)}
-.day.blue .day-tag{background:var(--blue)}
-.day.green .day-tag{background:var(--green)}
-.day.yellow .day-tag{background:var(--yellow);color:var(--ink)}
-.day h3{font-size:1.5rem;font-variation-settings:'wdth' 104;letter-spacing:-.01em}
-.day-sub{color:var(--ink-2);margin:.15rem 0 1.4rem;max-width:var(--measure)}
+  <link rel="stylesheet" href="styles.css">
 
-.track{position:relative;padding-left:2rem}
-.track::before{
-  content:'';position:absolute;left:6px;top:.55rem;bottom:.55rem;width:3px;
-  background:var(--graphite);border-radius:2px;
-}
-.day.orange .track::before{background:var(--orange)}
-.day.blue .track::before{background:var(--blue)}
-.day.green .track::before{background:var(--green)}
-.day.yellow .track::before{background:var(--yellow)}
+  <style>
+  </style>
 
-.stop{position:relative;margin-bottom:.85rem}
-.stop::before{
-  content:'';position:absolute;left:-2rem;top:1.15rem;
-  width:15px;height:15px;border-radius:99px;
-  background:var(--card);border:3px solid var(--graphite);
-}
-.day.orange .stop::before{border-color:var(--orange)}
-.day.blue .stop::before{border-color:var(--blue)}
-.day.green .stop::before{border-color:var(--green)}
-.day.yellow .stop::before{border-color:var(--yellow)}
-
-.stop-card{
-  background:var(--card);border:1px solid var(--rule);border-radius:5px;
-  padding:1rem 1.1rem;
-}
-.stop-top{display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap;margin-bottom:.3rem}
-.stop-time{color:var(--ink-3)}
-.stop-card h4{font-size:1.12rem;font-variation-settings:'wdth' 100;letter-spacing:-.005em}
-.stop-card p{margin:.45rem 0 0;color:var(--ink-2);font-size:.98rem}
-.stop-card p:first-of-type{color:var(--ink)}
-
-/* who's in — together / split */
-.mode{
-  display:inline-flex;align-items:center;gap:.35rem;
-  font-family:var(--util);font-size:10px;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;padding:.2rem .45rem;border-radius:3px;
-  border:1px solid var(--rule);color:var(--ink-2);background:var(--paper);
-}
-.mode.together{border-color:var(--ink);color:var(--ink)}
-.mode.split{border-style:dashed}
-
-/* swap disclosure */
-details.swap{margin-top:.75rem;border-top:1px dashed var(--rule);padding-top:.6rem}
-details.swap summary{
-  cursor:pointer;list-style:none;color:var(--ink-2);
-  font-family:var(--util);font-size:11px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;display:inline-flex;align-items:center;gap:.4rem;
-}
-details.swap summary::-webkit-details-marker{display:none}
-details.swap summary::before{content:'＋';font-size:13px;line-height:1}
-details.swap[open] summary::before{content:'−'}
-details.swap summary:hover{color:var(--ink)}
-.alts{margin:.6rem 0 0;padding:0;list-style:none}
-.alts li{
-  font-size:.95rem;color:var(--ink-2);padding:.4rem 0;
-  border-bottom:1px solid var(--rule);
-}
-.alts li:last-child{border-bottom:0;padding-bottom:0}
-.alts b{color:var(--ink);font-weight:600;font-family:var(--body)}
-
-/* anchor / regroup note */
-.anchor{
-  margin-top:1rem;padding:.7rem .9rem;border-left:3px solid var(--ink);
-  background:#fff;font-size:.95rem;color:var(--ink-2);
-}
-.anchor b{color:var(--ink)}
-
-/* ============ SUNDAY FORK ============ */
-.fork{display:grid;gap:1rem;grid-template-columns:1fr}
-.branch{border:1px solid var(--rule);border-radius:5px;background:var(--card);overflow:hidden}
-.branch-top{padding:.55rem .95rem;color:#fff;display:flex;align-items:center;gap:.5rem}
-.branch.y .branch-top{background:var(--yellow);color:var(--ink)}
-.branch.g .branch-top{background:var(--green)}
-.branch-body{padding:.95rem}
-.branch-body h4{font-size:1.08rem;margin-bottom:.3rem}
-.branch-body p{margin:.4rem 0 0;font-size:.96rem;color:var(--ink-2)}
-
-/* ============ RESERVATIONS ============ */
-.res{display:grid;gap:.8rem;grid-template-columns:1fr}
-.res-card{
-  background:var(--card);border:1px solid var(--rule);border-radius:5px;
-  padding:1rem 1.1rem;border-left:4px solid var(--ink);
-}
-.res-card.urgent{border-left-color:#C0392B}
-.res-card h4{font-size:1.1rem}
-.res-meta{color:var(--ink-3);margin-top:.15rem}
-.res-card p{margin:.5rem 0 0;font-size:.95rem;color:var(--ink-2)}
-.how{
-  margin-top:.6rem;font-family:var(--util);font-size:11px;font-weight:600;
-  letter-spacing:.06em;text-transform:none;color:var(--ink);
-}
-
-/* ============ OPTIONS BANK ============ */
-.filters{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.3rem}
-.chip{
-  font-family:var(--util);font-size:11px;font-weight:700;letter-spacing:.09em;
-  text-transform:uppercase;padding:.36rem .62rem;border-radius:99px;
-  border:1px solid var(--rule);background:var(--card);color:var(--ink-2);cursor:pointer;
-}
-.chip:hover{border-color:var(--ink-3);color:var(--ink)}
-.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
-
-.bank{display:grid;gap:.7rem;grid-template-columns:1fr}
-.item{
-  background:var(--card);border:1px solid var(--rule);border-radius:5px;padding:.85rem 1rem;
-}
-.item.hide{display:none}
-.item-top{display:flex;justify-content:space-between;gap:.8rem;align-items:baseline}
-.item h4{font-size:1.04rem;font-variation-settings:'wdth' 100}
-.hood{color:var(--ink-3);white-space:nowrap}
-.item p{margin:.35rem 0 0;font-size:.94rem;color:var(--ink-2)}
-.tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem}
-.tag{
-  font-family:var(--util);font-size:10px;font-weight:700;letter-spacing:.09em;
-  text-transform:uppercase;padding:.16rem .4rem;border-radius:3px;
-  background:var(--paper);color:var(--ink-2);border:1px solid var(--rule);
-}
-.tag.near{border-color:var(--ink);color:var(--ink)}
-.tag.walkin{border-style:dashed}
-.tag.book{background:var(--ink);color:#fff;border-color:var(--ink)}
-
-/* ============ FACT GRID (logistics) ============ */
-.facts{display:grid;gap:1.4rem;grid-template-columns:1fr}
-.fact h4{
-  font-family:var(--util);font-size:11px;font-weight:800;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--ink-3);margin-bottom:.4rem;
-}
-.fact p{margin:0;font-size:.97rem;color:var(--ink-2)}
-.fact b{color:var(--ink);font-weight:600}
-
-/* roots panel */
-.roots{background:var(--card);border:1px solid var(--rule);border-radius:5px;padding:1.2rem}
-.roots dl{margin:0}
-.roots dt{
-  font-family:var(--util);font-size:11px;font-weight:800;letter-spacing:.1em;
-  text-transform:uppercase;margin-top:1rem;
-}
-.roots dt:first-child{margin-top:0}
-.roots dd{margin:.3rem 0 0;font-size:.96rem;color:var(--ink-2)}
-
-/* footer */
-footer{padding:2.4rem 0 3.4rem;border-top:1px solid var(--rule);color:var(--ink-3);font-size:.9rem}
-footer p{margin:0 0 .5rem;max-width:var(--measure)}
-
-/* ============ RESPONSIVE ============ */
-@media (min-width:720px){
-  .fork{grid-template-columns:1fr 1fr}
-  .res{grid-template-columns:repeat(3,1fr)}
-  .bank{grid-template-columns:1fr 1fr}
-  .facts{grid-template-columns:1fr 1fr}
-  .track{padding-left:2.4rem}
-}
-@media (max-width:479px){
-  .st-theme{display:none}
-  .stations .dot{width:19px;height:19px;border-width:3px}
-  .route-line{top:8px}
-}
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-}
-html{scroll-behavior:smooth}
-
-/* ============ PRINT ============ */
-@media print{
-  .bar,.filters,.route,footer{display:none}
-  body{background:#fff;font-size:11pt}
-  section{border-top:1px solid #999;padding:1rem 0;break-inside:avoid}
-  .stop-card,.item,.res-card,.roots{border:1px solid #bbb;break-inside:avoid}
-  details.swap{display:block}
-  details.swap summary{display:none}
-  details.swap .alts{display:block}
-  .item.hide{display:block}
-}
-</style>
 </head>
+
+</html>
+
+<!-- Start of body -->
 
 <body>
 
-<div class="bar">
-  <div class="wrap bar-in">
-    <span class="mark">Montréal · 6 of us</span>
-    <nav class="daynav" aria-label="Jump to a day">
-      <a href="#thu"><span class="pip"></span>Thu</a>
-      <a href="#fri"><span class="pip orange"></span>Fri</a>
-      <a href="#sat"><span class="pip blue"></span>Sat</a>
-      <a href="#sun"><span class="pip split"></span>Sun</a>
-      <a href="#mon"><span class="pip"></span>Mon</a>
-      <a href="#book">Book</a>
-      <a href="#bank">Options</a>
-    </nav>
+
+<!-- !PAGE CONTENT! -->
+
+  <!-- Background start -->
+
+    <div class="background" style="background-color: #000;">
+
+    <!-- Section 0 -->
+
+      <div class="section" style="border-top: 1px white solid; margin-top: 1%;">
+
+      <!-- Section - Header -->
+
+          <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
+
+
+
+          <div class="widebox">
+            <p>
+              Now playing ♫ <u><u><a id="tracktitle"></a></u>
+            </p>
+          </div>
+
+        </div>
+
+
+      <!-- Section - Intro -->
+
+        <div class="grid">
+
+          <div class="break" style="">
+          </div>
+
+          <div class="widebox">
+            <img src="media/placeholder2.png" style="width: 100%;">
+          </div>
+
+          <div class="half-break">
+          </div>
+
+          <div class="widebox">
+            <h2>
+              Hiroki Murakami is an independent strategist at the intersection of innovation consulting and creative strategy.
+            </h2>
+          </div>
+
+          <div class="half-break">
+          </div>
+
+      <!-- Section - TLDR -->
+
+          <div class="leftbox">
+            <p>
+              10 years of strategy experience at NYC product design and advertising agencies
+            </p>
+          </div>
+
+          <div class="mobile-quarter-break">
+          </div>
+
+          <div class="middlebox">
+            <p>
+              Currently practicing strategy at Huge BK
+            </p>
+          </div>
+
+          <div class="mobile-quarter-break">
+          </div>
+
+          <div class="rightbox">
+            <p>
+              hnmurakami at gmail
+            </p>
+          </div>
+
+          <div class="break">
+          </div>
+
+          <div class="line" style="">
+          </div>
+
+        </div>
+
+      <!-- Section - Navigation -->
+
+        <div class="grid" id="navigation">
+
+          <div class="break">
+          </div>
+
+          <div class="widebox">
+            <h2>
+              Start here, end up anywhere
+            </h2>
+          </div>
+
+          <div class="half-break">
+          </div>
+
+          <div class="line">
+          </div>
+
+          <div class="" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
+            <h3><b>
+              <a href="#aboutme" style="text-decoration: none;"> About me</a>
+            </b></h3>
+          </div>
+
+          <div class="" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
+            <h3>
+              01.
+            </h3>
+          </div>
+
+          <div class="line">
+          </div>
+
+          <div class="" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
+            <h3><b>
+              <a href="#practiceareas" style="text-decoration: none;">
+                Practice areas</a>
+            </b></h3>
+          </div>
+
+          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
+            <h3>
+              02.
+            </h3>
+          </div>
+
+          <div class="line">
+          </div>
+
+          <div class="widebox-left" style="grid-column-start: 2; grid-column-end: 5; padding-top: 1em; padding-bottom: 1em;">
+            <h3><b>
+              <a href="#casestudies" style="text-decoration: none;">Case studies</a>
+            </b></h3>
+          </div>
+
+          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
+            <h3>
+              03.
+            </h3>
+          </div>
+
+          <div class="line">
+          </div>
+
+          <div class="widebox-left" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
+            <h3><b>
+              <a href="#workwithme" style="text-decoration: none;">Work with me</a>
+            </b></h3>
+          </div>
+
+          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
+            <h3>
+              04.
+            </h3>
+          </div>
+
+          <div class="line">
+          </div>
+
+          </div>
+
+      <!-- Section - Shout-outs -->
+
+          <div class="grid">
+
+          <div class="break">
+          </div>
+
+          <div class="widebox">
+            <h2>
+              Designed and developed by Hiroki Murakami
+              <br>Digital art by <a href="https://minamir.com" target="_blank">Mina Mir</a>
+              <br><a href="https://github.com/type0001/HirokiMurakami.com" target="_blank">View on Github</a>
+            </h2>
+          </div>
+
+          <div class="break">
+          </div>
+
+        </div>
+
+      </div>
+
+    <!-- Section 1 -->
+
+      <div class="section">
+
+      <!-- Header -->
+
+      <header class="header" id="aboutme">
+
+        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
+
+        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
+          <p>
+            01. About me
+          </p>
+        </div>
+
+        <div class="" style="text-align: right; grid-column-start: 6; grid-column-end: 7; ">
+          <p>
+            <a href="#navigation" style="text-decoration: none;">Back to top</a>
+          </p>
+        </div>
+
+      </div>
+
+      </header>
+
+      <!-- Section content -->
+
+      <div class="grid">
+
+      <!-- Key art -->
+
+        <div class="break" style="height:100vh">
+          <img src="media/warp2.png" style="width: 100%; height: 100%;">
+        </div>
+
+      <!-- Header -->
+
+        <div class="line">
+        </div>
+
+        <div class="break">
+        </div>
+
+        <div class="leftbox">
+          <h1>
+            01.
+          </h1>
+        </div>
+
+        <div class="mobile-half-break">
+        </div>
+
+        <div class="widebox-right">
+          <h3>
+            I’ve spent 10 years as a strategist at NYC product design and advertising agencies. During that time, I’ve spent years learning how to unravel complex problems and help organizations design the next versions of themselves.
+            <br><br>I’ve helped create disruptive products and brands, led multidisciplinary teams, mentor strategy departments, and championed change within large organizations.
+          </h3>
+        </div>
+
+        <div class="break">
+        </div>
+
+      <!-- Tables -->
+
+      <!-- Employers -->
+
+      <div class="mobile-leftbox" style="">
+        <h3><b>
+          Where I’ve been
+        </b></h3>
+      </div>
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Freelance
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Strategist
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Publicis Sapient
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Manager, Customer Experience & Innovation Consulting
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Deutsch
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Strategy Director
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Hillary Clinton
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Senior Strategist
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Edelman Digital
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Strategist
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="break">
+      </div>
+
+      <!-- Clients -->
+
+      <div class="mobile-leftbox" style="">
+        <h3><b>
+          Who I've worked with
+        </b></h3>
+      </div>
+
+      <!-- Consumer goods -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Consumer goods
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Anheuser Busch
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Energizer
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Johnson & Johnson
+        </p>
+      </div>
+
+      <!-- Energy -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Energy
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          GE
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Siemens
+        </p>
+      </div>
+
+      <!-- Financial services -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Financial services
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Citibank
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          PNC
+        </p>
+      </div>
+
+      <!-- Politics -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Politics
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Everytown for Gun Safety
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Hillary Clinton
+        </p>
+      </div>
+
+      <!-- Technology -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Technology
+        </b></p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Comcast
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          eBay
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Mastercard
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Samsung
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          Verizon
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="break">
+      </div>
+
+      </div>
+    </div>
+
+      <!-- Section end -->
+
+    </div>
+
+    <!-- Section 2 -->
+
+      <div class="section">
+
+      <!-- Header -->
+
+      <header class="header" id="practiceareas">
+
+        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
+
+        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
+          <p>
+            02. Practice areas
+          </p>
+        </div>
+
+        <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right">
+          <p>
+            <a href="#navigation" style="text-decoration: none;">Back to top</a>
+          </p>
+        </div>
+
+      </div>
+
+      </header>
+
+      <!-- Section content -->
+
+      <div class="grid">
+
+      <!-- Key art -->
+
+        <div class="break" style="height:100vh">
+          <img src="media/circlestack.png" style="margin-left: 1%; margin-right: 1%; width: 98%; height: 100%;">
+        </div>
+
+      </div>
+
+      <!-- Header -->
+
+      <div class="grid">
+
+        <div class="line">
+        </div>
+
+        <div class="break">
+        </div>
+
+        <div class="leftbox">
+          <h1>
+            02.
+          </h1>
+        </div>
+
+        <div class="mobile-half-break">
+        </div>
+
+        <div class="widebox-right">
+          <h3>
+            I help organizations add structure and substance to their challenges and ambitions. Having trained in multiple strategy methodologies—human-centered design and brand and creative strategy—I bring years of experience applying strategy frameworks to big unknowns.
+            <br><br>But more importantly, I know how to partner with customers, creatives, and executives alike to uncover the unexpected human insights and ambitious ideas that breathe life into any strategic endeavor.
+          </h3>
+        </div>
+
+        <div class="break">
+        </div>
+
+      <!-- Tables -->
+
+      <!-- Methodologies -->
+
+      <div class="mobile-leftbox" style="">
+        <h3><b>
+          Methodologies and artifacts
+        </b></h3>
+      </div>
+
+      <!-- HCD -->
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Human-centered design
+        </b></p>
+        <br>
+        <p>Or,
+        <br>Design thinking
+        <br>Experience strategy
+        <br>Innovation consulting
+        </p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Workshops
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Journey maps
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Personas
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Rapid prototyping
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          North star visioning
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Product roadmapping
+        </p>
+      </div>
+
+      <div class="widebox-right" style="border-top: 3px white solid;">
+      </div>
+
+      <div class="mobile-break">
+      </div>
+
+      <!-- Brand strategy -->
+
+      <div class="mobile-middlebox" style="">
+        <p><b>
+          Brand strategy
+        </b></p>
+        <br>
+        <p>Or,
+        <br>Brand planning
+        <br>Creative strategy
+        </p>
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Brand positioning
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Campaign strategies
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Creative briefs
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+        <p>
+          Customer and channel insights
+        </p>
+      </div>
+
+      <div class="rightbox" style="border-top: 1px white solid;">
+      </div>
+
+      <div class="break">
+      </div>
+
+      </div>
+
+      <!-- Section end -->
+
+    </div>
+
+    <!-- Section 3 -->
+
+    <div class="section">
+
+    <!-- Header -->
+
+      <header class="header" id="casestudies">
+
+        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
+
+        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
+          <p>
+            03. Case studies
+          </p>
+        </div>
+
+        <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right">
+          <p>
+            <a href="#navigation" style="text-decoration: none;">Back to top</a>
+          </p>
+        </div>
+
+      </div>
+
+      </header>
+
+    <!-- Section content -->
+
+    <div class="grid">
+
+    <!-- Key art -->
+
+      <div class="break" style="height:100vh">
+        <img src="media/squarestack.png" style="width: 100%; height: 100%;">
+      </div>
+
+    <!-- Header -->
+
+      <div class="line">
+      </div>
+
+      <div class="break">
+      </div>
+
+      <div class="leftbox">
+        <h1>
+          03.
+        </h1>
+      </div>
+
+      <div class="mobile-half-break">
+      </div>
+
+      <div class="widebox-right">
+        <h3>
+          As a strategist, I’ve had the opportunity to partner with incredible teams and organizations and produce ambitious products and brands.
+          <br><br>These are several of the projects I’m most proud of. If you’d like more details or would like to hear about my experience with a different industry or subject matter, please reach out.
+        </h3>
+      </div>
+
+      <div class="break">
+      </div>
+
+    <!-- Tables -->
+
+    <!-- Methodologies -->
+
+    <div class="mobile-leftbox" style="">
+      <h3><b>
+        Human-centered innovation
+      </b></h3>
+    </div>
+
+    <!-- Innovation strategy -->
+
+    <div class="widebox-right" style="border-top: 3px white solid;">
+    </div>
+
+    <div class="mobile-middlebox" style="">
+      <p>
+        Crafted a 3-year product innovation strategy using human centered design for a global financial technology provider that led to multiple new products being funded for development.
+      </p>
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Customer interviews
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Journey mapping
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Personas
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        North star visioning
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Design sprint workshop
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Business case development
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="break">
+    </div>
+
+    <!-- Experience strategy -->
+
+    <div class="widebox-right" style="border-top: 3px white solid;">
+    </div>
+
+    <div class="mobile-leftbox" style="">
+      <h3><b>
+        Experience strategy
+      </b></h3>
+    </div>
+
+    <div class="mobile-middlebox" style="">
+      <p>
+        Reimagined and redesigned the primary ecommerce channel for a top US telecom provider using iterative prototyping and usability testing which led to increased conversion, revenue per customer, and less time per purchase.
+      </p>
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Customer interviews
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Design sprint workshop
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Iterative prototyping
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Usability testing
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="break">
+    </div>
+
+    <!-- Brand and creative strategy -->
+
+    <div class="widebox-right" style="border-top: 3px white solid;">
+    </div>
+
+    <div class="mobile-leftbox" style="">
+      <h3><b>
+        Brand and creative strategy
+      </b></h3>
+    </div>
+
+    <div class="mobile-middlebox" style="">
+      <p>
+        Pitched, won, and led the rebranding of an iconic dot-com era SaaS provider working directly with the CEO and CMO on a global expansion and reimagined product offering.
+      </p>
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Ethnographies
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Conjoint analysis
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Customer personas
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Brand positioning and purpose
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        North star visioning
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        Logo redesign
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        TV and digital
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
+      <p>
+        CRM
+      </p>
+    </div>
+
+    <div class="rightbox" style="border-top: 1px white solid;">
+    </div>
+
+
+
+    <div class="break">
+    </div>
+
+    </div>
+
+    <!-- Section end -->
+
   </div>
-</div>
 
-<main class="wrap">
+  <!-- Section 4 -->
 
-  <!-- ============ HERO ============ -->
-  <div class="hero">
-    <p class="eyebrow util">Thursday night → Monday afternoon · Le Nomade, Vieux-Montréal</p>
-    <h1>A long weekend,<br><em>mostly together</em></h1>
-    <p class="lede">
-      Five days laid out like a metro line — each stop can be swapped, skipped, or sat out
-      entirely. Nothing here depends on all six of us showing up. The hotel is never more than
-      fifteen minutes away.
+  <div class="section">
+
+  <!-- Header -->
+
+    <header class="header" id="workwithme">
+
+      <div class="grid" style="background: black; border-bottom: 1px white solid; ">
+
+      <div class="" style="grid-column-start: 2; grid-column-end: 5; padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          04. Work with me
+        </p>
+      </div>
+
+      <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right; padding-top: 1em; padding-bottom: 1em;">
+        <p>
+          <a href="#navigation" style="text-decoration: none;">Back to top</a>
+        </p>
+      </div>
+
+    </div>
+
+    </header>
+
+  <!-- Section content -->
+
+  <div class="grid">
+
+    <!-- Key art -->
+
+    <div class="break" style="height:100vh">
+      <img src="media/warpgrid.png" style="width: 100%; height: 100%;">
+    </div>
+
+  <!-- Header -->
+
+    <div class="line">
+    </div>
+
+    <div class="break">
+    </div>
+
+    <div class="leftbox">
+      <h1>
+        04.
+      </h1>
+    </div>
+
+    <div class="mobile-half-break">
+    </div>
+
+    <div class="widebox-right">
+      <h3>
+        I’m excited to learn about what you’re working on. Even if you or your project doesn't sound like any of the descriptions below, let’s talk.
+      </h3>
+    </div>
+
+    <div class="break">
+    </div>
+
+    <div class="break">
+    </div>
+
+  <!-- Tables -->
+
+  <!-- I often work with -->
+
+  <div class="mobile-leftbox" style="">
+    <h3><b>
+      I often work with
+    </b></h3>
+  </div>
+
+  <div class="widebox-right" style="border-top: 3px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Product design agencies
     </p>
-
-    <div class="route" aria-hidden="true">
-      <div class="route-line"></div>
-      <ul class="stations">
-        <li><span class="dot"></span><span class="st-day">Thu</span><span class="st-theme">Land, walk, sleep</span></li>
-        <li><span class="dot"></span><span class="st-day">Fri</span><span class="st-theme">Roots in the old city</span></li>
-        <li><span class="dot"></span><span class="st-day">Sat</span><span class="st-theme">Market &amp; cook-in</span></li>
-        <li><span class="dot"></span><span class="st-day">Sun</span><span class="st-theme">The fork</span></li>
-        <li><span class="dot"></span><span class="st-day">Mon</span><span class="st-theme">Slow, then home</span></li>
-      </ul>
-    </div>
   </div>
 
-  <!-- ============ HOW TO USE ============ -->
-  <section id="how">
-    <div class="sec-head">
-      <h2>How to use this</h2>
-    </div>
-    <div class="facts">
-      <div class="fact">
-        <h4>Swapping</h4>
-        <p>Every block has a <b>“Swap this”</b> link. Open it to see the alternates already researched for that slot — same neighbourhood, same time of day. Swapping one block never breaks the rest of the day.</p>
-      </div>
-      <div class="fact">
-        <h4>Splitting</h4>
-        <p>Blocks are marked <b>Together</b> or <b>Split</b>. Split blocks always have a shopping option and a sitting-down-with-coffee option within a block or two of each other, plus a stated time and place to regroup.</p>
-      </div>
-      <div class="fact">
-        <h4>Opting out</h4>
-        <p>Every day has a low-effort exit. If someone wants a morning in bed or needs to eat at the hotel, the plan absorbs it — the market morning, the roots morning, and one booked dinner are the only fixed points.</p>
-      </div>
-      <div class="fact">
-        <h4>The kitchen</h4>
-        <p>Le Nomade is an aparthotel — the units have <b>full kitchens</b>. That's why Saturday's dinner is a cook-in from Jean-Talon, and why anyone with a restricted menu has an easy fallback any night.</p>
-      </div>
-    </div>
-  </section>
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
 
-  <!-- ============ THURSDAY ============ -->
-  <section id="thu" class="day">
-    <div class="day-head">
-      <span class="day-tag">Thu · on foot</span>
-      <h3>Land, walk, sleep</h3>
-    </div>
-    <p class="day-sub">Late arrival. No plan survives a late arrival, so there isn't one.</p>
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Advertising agencies
+    </p>
+  </div>
 
-    <div class="track">
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <h4>Check in, drop bags</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>Le Nomade MTL, 401 boul. Saint-Laurent. Two minutes to Champ-de-Mars metro, five to Notre-Dame.</p>
-          <p>If anyone has energy for a snack run, the <b>IGA at Complexe Desjardins</b> (150 Ste-Catherine O.) is a 10–12 minute walk north — the closest real supermarket to Old Montreal.</p>
-        </div>
-      </div>
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
 
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">Evening</span>
-            <h4>Old Port promenade, lit up</h4>
-            <span class="mode split util">Optional</span>
-          </div>
-          <p>Seven minutes from the door, along the St. Lawrence. Ten minutes of air after the drive, then bed.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Clandestino</b> — hidden agave bar below Boho, 436 St-François-Xavier, 5–8 min. 100+ mezcals and tequilas, walk-in. Closed Sundays.</li>
-              <li><b>Straight to bed</b> — entirely acceptable and arguably correct.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-    </div>
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Product management groups
+    </p>
+  </div>
 
-    <p class="anchor"><b>Anchor:</b> lobby, 9:30am Friday. That's the only commitment tonight.</p>
-  </section>
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
 
-  <!-- ============ FRIDAY ============ -->
-  <section id="fri" class="day orange">
-    <div class="day-head">
-      <span class="day-tag">Fri · orange line</span>
-      <h3>Roots in the old city</h3>
-    </div>
-    <p class="day-sub">The founding-of-Montréal day, all within a few blocks of the hotel. Shared lunch in the middle, then everyone scatters.</p>
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Brand management group
+    </p>
+  </div>
 
-    <div class="track">
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">9:30am</span>
-            <h4>Notre-Dame Basilica</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>Five-minute walk. C$16 adult, C$15 seniors — timed tickets, buy online the night before. Opens 9am Mon–Sat.</p>
-          <p>The neo-Gothic heart of francophone Catholic Montréal, and the obvious first stop for the family-roots thread.</p>
-        </div>
-      </div>
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
 
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">10:45am</span>
-            <h4>Pointe-à-Callière</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>Seven minutes on. Built over the actual founding site of Ville-Marie — you walk through the excavated foundations. C$29 adult, C$19 students. Closed Mondays, so Friday is the day. Budget 2–2.5 hours.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Château Ramezay</b> — across from City Hall, 6 min. New France governance and daily life. Shorter and lighter.</li>
-              <li><b>BAnQ Vieux-Montréal archives</b> — 10 min. Free, no appointment, and the real genealogy destination. Open Tue/Fri/Sat 9–5, Wed/Thu 9–9. See the roots section below.</li>
-              <li><b>Nothing</b> — sit on the promenade until lunch.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Causes and movements at discounted rates
+    </p>
+  </div>
 
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">1pm · lunch</span>
-            <h4>Crew Collective &amp; Café</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>360 St-Jacques, 6 min. A café inside a 1920s bank hall — vaulted ceilings, marble, brass. No reservations, and Friday is far calmer than the weekend. Brunch runs 10am–3pm.</p>
-          <p>This is the shared meal in the middle of the day, and the point where everyone splits.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Mama C Café</b> — inside Hôtel Nelligan, 100 St-Paul O., 5 min. Airy, open, quieter, easy on a restricted menu.</li>
-              <li><b>Montreal Poutine</b> — Old Montreal courtyard with a projector. Standard food, close, no fuss.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
 
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">Afternoon</span>
-            <h4>Shops, or a bench</h4>
-            <span class="mode split util">Split</span>
-          </div>
-          <p><b>Shopping:</b> Ssense flagship (418 St-Sulpice — five storeys, Chipperfield-designed, browse without an appointment) then Rooney (395 Notre-Dame O. — Acne, Margiela, Comme). Both walk-in, both five minutes from lunch.</p>
-          <p><b>Not shopping:</b> coffee at Mama C, or the Old Port promenade. Everything is inside a ten-minute radius, so joining back up is a two-block walk, not a plan.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Bota Bota</b> — spa on a boat in the Old Port, 10 min. Book by phone, 514-284-0333. Water circuit from ~C$35. 18+.</li>
-              <li><b>Redpath Museum</b> — near McGill, free or by donation. Grand Victorian hall, nice-to-see rather than mandatory.</li>
-              <li><b>Back to the hotel</b> — nap, kitchen, quiet.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
+  <div class="break">
+  </div>
 
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">7pm · booked</span>
-            <h4>Dinner — Bar George</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>1440 Drummond, in the restored Mount Stephen mansion downtown. 12–15 minutes by metro or one taxi split two ways.</p>
-          <p>Chosen because it seats six comfortably, the rooms are spectacular, and the menu runs wide — beet salad, crudo, risotto, mushroom soup on one side, Beef Wellington on the other. Nobody gets stuck with a plate they can't eat. Smart-casual.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Bar Henrietta</b> — Mile End, 115 Laurier O. Portuguese-style small plates. Walk-in only, so no booking to cancel.</li>
-              <li><b>Hiatus</b> — 46th floor of Place Ville Marie, Franco-Japanese, skyline views. Reserve; window seats aren't guaranteed.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
+  <!-- I can help with -->
+
+  <div class="mobile-leftbox" style="">
+    <h3><b>
+      I can help with
+    </b></h3>
+  </div>
+
+  <div class="widebox-right" style="border-top: 3px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Strategy leadership for a project
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Human-centered product innovation
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      End-to-end experience strategy
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Brand positioning and creative strategy
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Customer insights and trendcasting
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="break">
+  </div>
+
+  <!-- Get in touch -->
+
+  <div class="mobile-leftbox" style="">
+    <h3><b>
+      Get in touch
+    </b></h3>
+  </div>
+
+  <div class="widebox-right" style="border-top: 3px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      Contact me for availability and rates
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
+    <p>
+      hnmurakami at gmail 
+    </p>
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="widebox-right" style="border-top: 1px white solid;">
+  </div>
+
+  <div class="break">
+  </div>
+
+  </div>
+
+  <!-- Section end -->
+
+  </div>
+
+  <!-- Footer -->
+
+  <div class="section">
+    <div class="grid">
+
+    <div class="half-break">
     </div>
 
-    <p class="anchor"><b>Split at 1:30pm. Regroup in the lobby at 6:30pm</b> for Bar George.</p>
-  </section>
-
-  <!-- ============ SATURDAY ============ -->
-  <section id="sat" class="day blue">
-    <div class="day-head">
-      <span class="day-tag">Sat · blue line</span>
-      <h3>Market, then cook</h3>
-    </div>
-    <p class="day-sub">The morning everyone said yes to: a big open-air market, no agenda, just walking around. Dinner is whatever we carry home.</p>
-
-    <div class="track">
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">Morning</span>
-            <h4>Jean-Talon Market</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>7070 Henri-Julien, Little Italy. Orange line to Jean-Talon or blue to De Castelnau, about 25 minutes. Open 8am–6pm Saturday.</p>
-          <p>Buy for tonight: produce, cheese, bread, charcuterie. Also solves the snack problem for the rest of the trip, which the touristy end of Old Montreal can't.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Atwater Market</b> — smaller, prettier, on the Lachine Canal. Same idea, less walking.</li>
-              <li><b>IGA at Complexe Desjardins</b> — if the market feels like too much, this is the boring 10-minute version and it works fine.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">On the way back</span>
-            <h4>St-Viateur Bagel</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>Mile End, wood-fired, open essentially around the clock. Buy more than you think. Breakfast for the next two mornings is now handled.</p>
-        </div>
-      </div>
-
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">Afternoon</span>
-            <h4>Three ways to spend it</h4>
-            <span class="mode split util">Split</span>
-          </div>
-          <p><b>Mile End boutiques</b> — Boutique Odeyalo (5687 St-Laurent, slow fashion, on-site alterations) and Ruse (5141 St-Laurent, luxury consignment). Café Olimpico is a block away for whoever isn't shopping, and Dalmata gelato (24 Bernard O.) is the meeting point.</p>
-          <p><b>Bota Bota</b> — back toward the water. Spa on a boat, water circuit from ~C$35, book ahead by phone, 18+.</p>
-          <p><b>Jardin botanique</b> — green line to Pie-IX, ~C$24. Quiet, enormous, and deliberately not on Sunday.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Estudio Niksen</b> — St-Henri, 655 Desnoyers. Unisex, menswear-leaning, quieter than the Mile End strip.</li>
-              <li><b>Parc La Fontaine</b> — Plateau, orange line to Sherbrooke. Ponds, paths, a café. Free, and the closest thing to doing nothing outdoors.</li>
-              <li><b>An afternoon in bed</b> — the market morning stands alone. This costs the day nothing.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">6:30pm</span>
-            <h4>Cook-in at the hotel</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>The whole point of the market run. Full kitchen in the unit, wine from the nearest SAQ, apéro-style so people drift in and out.</p>
-          <p>It's also the easiest meal of the trip for anyone eating carefully — every ingredient is one we chose this morning, and skipping a course is invisible.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Mon Lapin</b> — if the Saturday booking lands, this replaces the cook-in and the market haul becomes Sunday lunch. 150 St-Zotique E., vegetable-forward, Canada's most acclaimed wine bar.</li>
-              <li><b>StillLife</b> — Old Montreal, down an alley at 640 St-Paul O. Cocktails and cheese boards. RSVP by email.</li>
-              <li><b>Delivery</b> — no notes.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
+    <div class="leftbox">
+      <h4>
+        © Hiroki Murakami 2021
+      </h4>
     </div>
 
-    <p class="anchor"><b>Split around 1pm. Regroup at the hotel, 6:30pm,</b> to cook. Whoever's back first starts.</p>
-  </section>
-
-  <!-- ============ SUNDAY ============ -->
-  <section id="sun" class="day yellow">
-    <div class="day-head">
-      <span class="day-tag">Sun · the fork</span>
-      <h3>Beach, then two different days</h3>
-    </div>
-    <p class="day-sub">The one real disagreement in the group, solved by not solving it. Piknic Électronik and a quiet garden are on opposite ends of the city — so the party goes to the islands and the gardens go east.</p>
-
-    <div class="track">
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">Late morning</span>
-            <h4>Clock Tower Beach &amp; the promenade</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>Ten minutes east along the water. Free, open 11am–6pm — sand, blue loungers, misting stations, no swimming. This is the waterway walk that came up on the call.</p>
-          <p>Carry on toward the Lachine Canal if the weather is good; the summer shuttle runs between the Clock Tower and the locks.</p>
-        </div>
-      </div>
+    <div class="mobile-quarter-break">
     </div>
 
-    <div class="fork" style="margin-top:1rem">
-      <div class="branch y">
-        <div class="branch-top util">Yellow line → Jean-Drapeau</div>
-        <div class="branch-body">
-          <h4>Piknic Électronik</h4>
-          <p>Parc Jean-Drapeau, Sundays, 2pm–9:30pm. House and minimal techno on two outdoor stages. Tickets online in advance.</p>
-          <p>Loud, standing, 18+. Worth being clear: this is a party in a park, not a walk in one.</p>
-        </div>
-      </div>
-      <div class="branch g">
-        <div class="branch-top util">Green line → Pie-IX</div>
-        <div class="branch-body">
-          <h4>Château Dufresne + the gardens</h4>
-          <p>Château Dufresne is a four-minute walk from Pie-IX — a Beaux-Arts mansion with Nincheri interiors, ~C$12–14, open Wed–Sun 9:30–5 with last entry at 4.</p>
-          <p>The Jardin botanique is next door, so the two make one unhurried afternoon. Entirely separate from the festival, which is the point.</p>
-        </div>
-      </div>
+
+    <div class="mobile-quarter-break">
     </div>
 
-    <div class="track" style="margin-top:1.2rem">
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">7:30pm</span>
-            <h4>Dinner, wherever everyone lands</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p>Stem Bar in Little Burgundy — natural wine, 300+ bottles, small plates, no reservations. Easy to arrive in twos and threes.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Mon Lapin</b> — if the booking landed on Sunday instead.</li>
-              <li><b>Leftovers from Saturday</b> — the kitchen is still there.</li>
-              <li><b>Maison Intense</b> — Algerian pastries in Hochelaga, easy to grab coming back from Pie-IX. Sells out early.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
+    <div class="rightbox">
+      <h4>
+        Open-source
+        <br><a href="https://github.com/type0001/HirokiMurakami.com" target="_blank">View on Github</a>
+      </h4>
     </div>
 
-    <p class="anchor"><b>No regroup until dinner, 7:30pm.</b> Both branches wind down late afternoon, so text when you're moving.</p>
-  </section>
-
-  <!-- ============ MONDAY ============ -->
-  <section id="mon" class="day">
-    <div class="day-head">
-      <span class="day-tag">Mon · on foot</span>
-      <h3>Slow, then home</h3>
-    </div>
-    <p class="day-sub">Checkout is around 11am and they'll hold bags. Keep everything within walking distance.</p>
-
-    <div class="track">
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">10am</span>
-            <h4>Long breakfast</h4>
-            <span class="mode together util">Together</span>
-          </div>
-          <p><b>Arthur's at Le Cathcart</b> takes reservations — the St-Henri original doesn't, and the line runs forty minutes. Jewish deli classics, the cottage-cheese pancakes, plus gravlax and salads for a lighter plate.</p>
-          <details class="swap">
-            <summary>Swap this</summary>
-            <ul class="alts">
-              <li><b>Dandy</b> — 244 St-Jacques, Old Montreal, walk-in only. Be there at 10 when it opens.</li>
-              <li><b>Bagels and coffee in the room</b> — Saturday's St-Viateur haul, on the balcony, no line.</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-
-      <div class="stop">
-        <div class="stop-card">
-          <div class="stop-top">
-            <span class="stop-time util">Before the car</span>
-            <h4>Last loop</h4>
-            <span class="mode split util">Split</span>
-          </div>
-          <p>Anything from the options bank that never happened. If poutine is still outstanding: Montreal Poutine is around the corner; Patati Patata (4177 St-Laurent) is a genuine trek for a last morning and is better slotted earlier in the trip.</p>
-        </div>
-      </div>
+    <div class="half-break">
     </div>
 
-    <p class="anchor"><b>Bags down by 11am.</b> Everything above is within a ten-minute walk of them.</p>
-  </section>
+  </div>
+  </div>
 
-  <!-- ============ RESERVATIONS ============ -->
-  <section id="book">
-    <div class="sec-head">
-      <h2>Book these three</h2>
-      <p class="sec-note">Two dinners and one breakfast, as planned. For six people on a summer weekend, three to four weeks ahead is the safe window — many rooms cap online bookings at four to six and want a phone call above that.</p>
-    </div>
-    <div class="res">
-      <div class="res-card">
-        <h4>Bar George</h4>
-        <p class="res-meta util">Friday dinner · party of 6</p>
-        <p>Seats six easily, heritage rooms, and a menu wide enough that nobody is stuck. Dining room only — the bar is walk-in.</p>
-        <p class="how">Book on OpenTable. 3–4 weeks out.</p>
-      </div>
-      <div class="res-card urgent">
-        <h4>Mon Lapin</h4>
-        <p class="res-meta util">Saturday dinner · exactly at the cap</p>
-        <p>Books open <b>30 days ahead</b> and go in minutes. Six is the maximum for à-la-carte — we are exactly at the limit, so one extra guest means emailing them instead.</p>
-        <p class="how">Set a 30-day alarm. Direct online or 514-379-4550 · contact@vinmonlapin.com</p>
-      </div>
-      <div class="res-card">
-        <h4>Arthur's — Le Cathcart</h4>
-        <p class="res-meta util">Monday breakfast</p>
-        <p>Only the Le Cathcart location downtown takes reservations. The St-Henri original is walk-in with a real line.</p>
-        <p class="how">OpenTable or direct. 2–3 weeks out.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ ROOTS ============ -->
-  <section id="roots">
-    <div class="sec-head">
-      <h2>The French Montréal thread</h2>
-      <p class="sec-note">If we want to make the roots part real rather than atmospheric, these are the places that hold actual records and actual buildings.</p>
-    </div>
-    <div class="roots">
-      <dl>
-        <dt>BAnQ Vieux-Montréal — the archives</dt>
-        <dd>535 avenue Viger Est, ten minutes on foot. The primary destination for French-Canadian genealogy: Quebec civil-status registers, parish baptisms, marriages and burials to 1917, notarial records, marriage contracts, censuses, city directories. Free, no appointment, 200-seat reading room. <b>Open Tue/Fri/Sat 9–5 and Wed/Thu 9–9 — closed Sunday and Monday,</b> so it has to be Friday or Saturday. Worth doing the online prep first and arriving with names and approximate dates.</dd>
-
-        <dt>Maison Saint-Gabriel</dt>
-        <dd>2146 Place Dublin, Pointe-Saint-Charles. A 1660s fieldstone farmhouse bought by Marguerite Bourgeoys in 1668 that housed the Filles du Roi — the best surviving picture of how the first French families actually lived here. Costumed guides. Open Wed–Fri afternoons and weekends 10–5.</dd>
-
-        <dt>Notre-Dame-des-Neiges Cemetery</dt>
-        <dd>On Mount Royal, the largest cemetery in Canada and where generations of francophone Montrealers are buried. Only worth the half-day if we go in with surnames.</dd>
-
-        <dt>Already on the plan</dt>
-        <dd>Pointe-à-Callière (Friday) sits on the founding site itself. Notre-Dame Basilica and the Sulpician Old Seminary next door are the institutional heart of French Catholic Montréal. Château Ramezay covers colonial governance, and the McCord Stewart Museum downtown holds the city's social-history photography.</dd>
-      </dl>
-    </div>
-  </section>
-
-  <!-- ============ OPTIONS BANK ============ -->
-  <section id="bank">
-    <div class="sec-head">
-      <h2>Everything on the list</h2>
-      <p class="sec-note">Mina's full list, nothing dropped, with the practical details attached. Filter it, then pull anything into any open block above.</p>
-    </div>
-
-    <div class="filters" role="group" aria-label="Filter options">
-      <button class="chip on" data-filter="all">All</button>
-      <button class="chip" data-filter="cafe">Cafés</button>
-      <button class="chip" data-filter="brunch">Brunch</button>
-      <button class="chip" data-filter="classic">Classic MTL</button>
-      <button class="chip" data-filter="dinner">Dinner</button>
-      <button class="chip" data-filter="drinks">Drinks</button>
-      <button class="chip" data-filter="sweets">Sweets</button>
-      <button class="chip" data-filter="sights">Sights</button>
-      <button class="chip" data-filter="shops">Shops</button>
-      <button class="chip" data-filter="near">Near the hotel</button>
-      <button class="chip" data-filter="walkin">No booking needed</button>
-    </div>
-
-    <div class="bank" id="bankGrid">
-
-      <!-- CAFÉS -->
-      <article class="item" data-cat="cafe" data-tags="near walkin">
-        <div class="item-top"><h4>Crew Collective &amp; Café</h4><span class="hood util">Old MTL · 6 min</span></div>
-        <p>A café inside a former Royal Bank hall — vaulted ceiling, marble, brass. Weekdays 8–4, weekend brunch 10–3. Appears closed Thursdays, and weekends get packed.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag walkin">Walk-in</span><span class="tag">Mina's pick</span></div>
-      </article>
-
-      <article class="item" data-cat="cafe" data-tags="walkin">
-        <div class="item-top"><h4>Café Olimpico</h4><span class="hood util">Mile End · 25 min</span></div>
-        <p>124 St-Viateur O. The Euro-style espresso bar, cash-friendly, no table service, open early to late. The obvious pairing for anyone skipping the Mile End shops.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="cafe" data-tags="walkin">
-        <div class="item-top"><h4>Café Brut</h4><span class="hood util">Griffintown · 25 min</span></div>
-        <p>221 rue Murray. Matcha, banana-bread latte, sandwiches. Tiny room plus a terrace, 8am–4pm.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="cafe" data-tags="near walkin">
-        <div class="item-top"><h4>Mama C Café</h4><span class="hood util">Old MTL · 5 min</span></div>
-        <p>Inside Hôtel Nelligan, 100 St-Paul O. Airy and open, café from 7am, lounge by night. The closest quiet place to wait out a shopping trip.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <!-- BRUNCH -->
-      <article class="item" data-cat="brunch" data-tags="near walkin">
-        <div class="item-top"><h4>Dandy</h4><span class="hood util">Old MTL · 8 min</span></div>
-        <p>244 St-Jacques. All-day brunch roughly 10–4, walk-in only, 30–45 minute weekend waits. Arrive at opening or don't bother.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="brunch" data-tags="">
-        <div class="item-top"><h4>Arthur's Nosh Bar</h4><span class="hood util">St-Henri / downtown</span></div>
-        <p>Jewish deli — cottage-cheese pancakes, gravlax, salads. The St-Henri original (4621 Notre-Dame O.) takes no reservations; the Le Cathcart location downtown does.</p>
-        <div class="tags"><span class="tag book">Book it</span></div>
-      </article>
-
-      <!-- CLASSIC -->
-      <article class="item" data-cat="classic" data-tags="walkin">
-        <div class="item-top"><h4>Jean-Talon Market</h4><span class="hood util">Little Italy · 25 min</span></div>
-        <p>7070 Henri-Julien. One of the largest open-air markets in North America. Sat 8–6, Sun 8–5. Metro Jean-Talon or De Castelnau.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span><span class="tag">Mina's pick</span></div>
-      </article>
-
-      <article class="item" data-cat="classic" data-tags="walkin">
-        <div class="item-top"><h4>St-Viateur Bagel</h4><span class="hood util">Mile End · 25 min</span></div>
-        <p>Wood-fired, hand-rolled, open around the clock. Buy a dozen and breakfast is solved for two days.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="classic" data-tags="walkin">
-        <div class="item-top"><h4>Patati Patata</h4><span class="hood util">Plateau · 20 min</span></div>
-        <p>4177 St-Laurent. A dozen seats, poutine under C$10, open 11am–2am, veggie Patatine available. Crowd skews young.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span><span class="tag">Mina's pick</span></div>
-      </article>
-
-      <article class="item" data-cat="classic" data-tags="near walkin">
-        <div class="item-top"><h4>Montreal Poutine</h4><span class="hood util">Old MTL · 5 min</span></div>
-        <p>Courtyard with a projector. The food is standard; the proximity is the feature.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <!-- DINNER -->
-      <article class="item" data-cat="dinner" data-tags="">
-        <div class="item-top"><h4>Bar George</h4><span class="hood util">Golden Sq Mile · 15 min</span></div>
-        <p>1440 Drummond, in the Mount Stephen mansion. British-Québécois, gorgeous rooms, terrace, wide menu. Dining room by reservation; bar is walk-in.</p>
-        <div class="tags"><span class="tag book">Booked — Friday</span></div>
-      </article>
-
-      <article class="item" data-cat="dinner" data-tags="">
-        <div class="item-top"><h4>Mon Lapin</h4><span class="hood util">Little Italy · 25 min</span></div>
-        <p>150 St-Zotique E. Seasonal small plates and natural wine, vegetable-forward. Caps à-la-carte parties at six; books 30 days out and sells out fast.</p>
-        <div class="tags"><span class="tag book">Booked — Saturday</span></div>
-      </article>
-
-      <article class="item" data-cat="dinner" data-tags="walkin">
-        <div class="item-top"><h4>Stem Bar</h4><span class="hood util">Little Burgundy · 30 min</span></div>
-        <p>2475 Notre-Dame O. Natural wine bar, 300+ bottles, small plates. No reservations, with a standing area while you wait.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="dinner" data-tags="walkin">
-        <div class="item-top"><h4>Bar Henrietta</h4><span class="hood util">Mile End · 25 min</span></div>
-        <p>115 Laurier O. Portuguese-style small plates and cocktails. No reservations.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="dinner" data-tags="">
-        <div class="item-top"><h4>Hiatus</h4><span class="hood util">Ville-Marie · 15 min</span></div>
-        <p>46th floor of Place Ville Marie. Franco-Japanese with the full skyline. Dinner Tue–Sat 6–10, lunch weekdays 12–2. Reserve; window seats aren't guaranteed.</p>
-        <div class="tags"><span class="tag book">Book it</span></div>
-      </article>
-
-      <!-- DRINKS -->
-      <article class="item" data-cat="drinks" data-tags="near">
-        <div class="item-top"><h4>StillLife</h4><span class="hood util">Old MTL · 7 min</span></div>
-        <p>640 St-Paul O., down an alley. Cocktail-led with a seasonal fruit programme, cheese and charcuterie to pick at. RSVP by email.</p>
-        <div class="tags"><span class="tag near">Near hotel</span></div>
-      </article>
-
-      <article class="item" data-cat="drinks" data-tags="near walkin">
-        <div class="item-top"><h4>Clandestino</h4><span class="hood util">Old MTL · 6 min</span></div>
-        <p>436 St-François-Xavier, hidden below Boho. Over 100 agave spirits, dim and small. Walk in through the bar upstairs. Closed Sundays.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <!-- SWEETS -->
-      <article class="item" data-cat="sweets" data-tags="walkin">
-        <div class="item-top"><h4>Dalmata Bar Laitier</h4><span class="hood util">Mile End · 25 min</span></div>
-        <p>24 Bernard O. Small-batch gelato. Mon–Fri 1–10, weekends 11–10. The natural regroup point after Mile End shopping.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="sweets" data-tags="walkin">
-        <div class="item-top"><h4>Maison Intense</h4><span class="hood util">Hochelaga · 30 min</span></div>
-        <p>6675 de Marseille. Algerian sweets and trompe-l'œil pastries from a small counter. Sells out early — grab it coming back from Pie-IX.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <!-- SIGHTS -->
-      <article class="item" data-cat="sights" data-tags="near">
-        <div class="item-top"><h4>Notre-Dame Basilica</h4><span class="hood util">Old MTL · 5 min</span></div>
-        <p>C$16 adult, C$15 seniors, C$10 for ages 6–16. Timed tickets. The AURA light show runs Mon–Sat evenings and is ticketed separately.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag book">Timed entry</span></div>
-      </article>
-
-      <article class="item" data-cat="sights" data-tags="">
-        <div class="item-top"><h4>Château Dufresne</h4><span class="hood util">Pie-IX · 25 min</span></div>
-        <p>2929 Jeanne-d'Arc, four minutes from the metro. Beaux-Arts mansion with Nincheri interiors, ~C$12–14, tickets on site. Wed–Sun 9:30–5, last entry 4. Free parking.</p>
-        <div class="tags"><span class="tag">Mina's pick</span></div>
-      </article>
-
-      <article class="item" data-cat="sights" data-tags="walkin">
-        <div class="item-top"><h4>Redpath Museum</h4><span class="hood util">McGill · 15 min</span></div>
-        <p>Victorian natural-history hall, free or by donation. Genuinely lovely, genuinely optional.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="sights" data-tags="">
-        <div class="item-top"><h4>Parc Jean-Drapeau</h4><span class="hood util">Islands · yellow line</span></div>
-        <p>River views and open green space — and the home of Piknic Électronik on Sundays, 2–9:30pm, tickets online. Choose which of those two you're there for.</p>
-        <div class="tags"><span class="tag book">Tickets for Piknic</span></div>
-      </article>
-
-      <article class="item" data-cat="sights" data-tags="">
-        <div class="item-top"><h4>Bota Bota</h4><span class="hood util">Old Port · 10 min</span></div>
-        <p>Spa on a boat. Water circuit from about C$35, treatments extra, 18+. Book by phone on 514-284-0333 — no on-site booking, and Saturdays go early.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag book">Phone ahead</span></div>
-      </article>
-
-      <!-- SHOPS -->
-      <article class="item" data-cat="shops" data-tags="walkin">
-        <div class="item-top"><h4>Boutique Odeyalo</h4><span class="hood util">Mile End · 25 min</span></div>
-        <p>5687 St-Laurent. Slow fashion, made locally, alterations on site. The black button-up dress came from here.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span><span class="tag">Mina's pick</span></div>
-      </article>
-
-      <article class="item" data-cat="shops" data-tags="near walkin">
-        <div class="item-top"><h4>Ssense</h4><span class="hood util">Old MTL · 5 min</span></div>
-        <p>418 St-Sulpice. Five storeys by David Chipperfield, the flagship and only physical location. Browse without an appointment.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="shops" data-tags="near walkin">
-        <div class="item-top"><h4>Rooney</h4><span class="hood util">Old MTL · 6 min</span></div>
-        <p>395 Notre-Dame O. Acne, Margiela, Comme, Our Legacy.</p>
-        <div class="tags"><span class="tag near">Near hotel</span><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="shops" data-tags="walkin">
-        <div class="item-top"><h4>Ruse Boutique</h4><span class="hood util">Mile End · 25 min</span></div>
-        <p>5141 St-Laurent. Luxury designer consignment. Weekdays 11–7, weekends 11–5.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
-
-      <article class="item" data-cat="shops" data-tags="walkin">
-        <div class="item-top"><h4>Estudio Niksen</h4><span class="hood util">St-Henri · 25 min</span></div>
-        <p>655 Desnoyers. Elevated unisex and menswear with a Japanese and Korean lean. Weekdays 12–6, weekends 12–5.</p>
-        <div class="tags"><span class="tag walkin">Walk-in</span></div>
-      </article>
+  <!-- Background end -->
 
     </div>
-  </section>
 
-  <!-- ============ LOGISTICS ============ -->
-  <section id="know">
-    <div class="sec-head">
-      <h2>Things worth knowing</h2>
-    </div>
-    <div class="facts">
-      <div class="fact">
-        <h4>Getting around</h4>
-        <p>Champ-de-Mars is two minutes from the door; Place-d'Armes is five. A single fare is <b>C$3.75</b>, a 24-hour pass about <b>C$11.50</b>, three days about <b>C$22</b>. Buy an OPUS card at any station — with six people hopping across the city, the passes usually win.</p>
-      </div>
-      <div class="fact">
-        <h4>Paying &amp; tipping</h4>
-        <p>Tipping works like home: <b>15–20%</b>. Tax of roughly 15% is added at the register, not shown on the menu. For a table of six, many places <b>add 15–18% automatically</b> — check before tipping twice. Patati Patata and Café Olimpico skew cash.</p>
-      </div>
-      <div class="fact">
-        <h4>Language</h4>
-        <p>Open with <b>bonjour</b> and staff will switch to English immediately. No French needed to get by, but it's the courteous move and it fits why we're here.</p>
-      </div>
-      <div class="fact">
-        <h4>A table for six</h4>
-        <p>The main friction of the trip. Plenty of rooms cap online booking at four or six, or want a phone call above that. For the walk-in places, either arrive at opening or <b>split into two threes</b> and push the tables together.</p>
-      </div>
-      <div class="fact">
-        <h4>Groceries</h4>
-        <p>Old Montreal genuinely has none. The <b>IGA at Complexe Desjardins</b> (150 Ste-Catherine O.) is a 10–12 minute walk with no metro needed. The Chinatown grocers on De la Gauchetière are closer but smaller.</p>
-      </div>
-      <div class="fact">
-        <h4>Eating carefully</h4>
-        <p>Bar George, Mon Lapin and Arthur's all have real vegetable-forward and lighter options, not just a token salad. Saturday's cook-in is the full-control night, and the hotel kitchen is the fallback on any other.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>Prices, hours and opening days drift. Reconfirm Crew Collective's Thursday closure, museum hours, the Bota Bota booking and the exact Piknic Sunday dates before anything gets locked in.</p>
-    <p>Built from Mina's list and the group call. Everything here is a suggestion except the three bookings.</p>
-  </footer>
-
-</main>
-
-<script>
-(function(){
-  'use strict';
-
-  /* --- filter the options bank --- */
-  var chips = document.querySelectorAll('.chip');
-  var items = document.querySelectorAll('#bankGrid .item');
-
-  function applyFilter(f){
-    items.forEach(function(el){
-      var cat  = el.getAttribute('data-cat') || '';
-      var tags = el.getAttribute('data-tags') || '';
-      var show = (f === 'all') || (cat === f) || (tags.split(' ').indexOf(f) > -1);
-      el.classList.toggle('hide', !show);
-    });
-  }
-
-  chips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      chips.forEach(function(c){ c.classList.remove('on'); });
-      chip.classList.add('on');
-      applyFilter(chip.getAttribute('data-filter'));
-    });
-  });
-
-  /* --- highlight the day you're looking at --- */
-  var links = {};
-  document.querySelectorAll('.daynav a').forEach(function(a){
-    links[a.getAttribute('href').slice(1)] = a;
-  });
-
-  var sections = document.querySelectorAll('section[id]');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        var link = links[entry.target.id];
-        if (!link) return;
-        if (entry.isIntersecting) {
-          Object.keys(links).forEach(function(k){ links[k].classList.remove('on'); });
-          link.classList.add('on');
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(function(s){ io.observe(s); });
-  }
-})();
-</script>
+<!-- End page content -->
 
 </body>
 </html>
