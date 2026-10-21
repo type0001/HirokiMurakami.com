@@ -4,15 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hiroki Murakami · Group Strategy Director at Huge</title>
-<meta name="description" content="Hiroki Murakami is a Group Strategy Director at Huge who helps organizations like Google, Nike, PlayStation and Verizon design their future.">
+<meta name="description" content="Hiroki Murakami is a Group Strategy Director at Huge who helps organizations like Google, Nike and PlayStation design their future.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2716%27 fill=%27%23d91642%27/%3E%3C/svg%3E">
 <link rel="canonical" href="https://hirokimurakami.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hirokimurakami.com/">
 <meta property="og:title" content="Hiroki Murakami">
-<meta property="og:description" content="Hiroki Murakami is a Group Strategy Director at Huge who helps organizations like Google, Nike, PlayStation and Verizon design their future.">
+<meta property="og:description" content="Hiroki Murakami is a Group Strategy Director at Huge who helps organizations like Google, Nike and PlayStation design their future.">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Hiroki Murakami","jobTitle":"Group Strategy Director","worksFor":{"@type":"Organization","name":"Huge","url":"https://www.hugeinc.com"},"url":"https://hirokimurakami.com","alumniOf":{"@type":"CollegeOrUniversity","name":"Emerson College"},"knowsAbout":["Experience strategy","Brand strategy","Video game marketing","Human-centered design"],"sameAs":[]}
+{"@context":"https://schema.org","@type":"Person","name":"Hiroki Murakami","jobTitle":"Group Strategy Director","worksFor":{"@type":"Organization","name":"Huge","url":"https://www.hugeinc.com"},"url":"https://hirokimurakami.com","alumniOf":{"@type":"CollegeOrUniversity","name":"Emerson College"},"knowsAbout":["Experience strategy","Brand strategy","Video game marketing","Human-centered design"],"sameAs":["https://www.linkedin.com/in/hnmurakami/"]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,8 +74,8 @@ p { margin: 0; }
 #experience { position: relative; }
 .sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .track {
-  position: absolute; inset: 0; display: flex; align-items: flex-end; gap: clamp(2.5rem, 6vw, 6rem);
-  padding-bottom: 17vh; will-change: transform;
+  position: absolute; inset: 0; display: flex; align-items: flex-start; gap: clamp(2.5rem, 6vw, 6rem);
+  padding-top: 48vh; will-change: transform;
 }
 .panel { flex: 0 0 min(32rem, 80vw); display: grid; gap: 1.25rem; align-content: end; }
 .panel.lead-panel { flex-basis: min(24rem, 80vw); }
@@ -95,6 +96,8 @@ p { margin: 0; }
 #about .inner { display: grid; gap: 3rem; max-width: 44rem; }
 #about .reveal { display: grid; gap: 1.6rem; }
 #about .reveal p { font-size: var(--t-lead); line-height: 1.35; }
+#about .say-hi a { color: var(--white); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+#about .say-hi a:hover { color: var(--red); }
 
 /* ---------- writing ---------- */
 #writing { padding-block: 20vh 16vh; }
@@ -118,7 +121,7 @@ p { margin: 0; }
 .card.soon { cursor: default; }
 
 
-.label.accent { color: var(--red); }
+.label.intro-label { color: var(--black); }
 .statement { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.03em; max-width: 21ch; }
 .cell { position: relative; aspect-ratio: 1; max-width: 100%; container-type: inline-size; }
 .card { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
@@ -144,7 +147,7 @@ p { margin: 0; }
   .cards:has(.cell:last-child .card:is(:hover, :focus-visible)) .cell:first-child .go { opacity: 0; }
 }
 /* experience links: same black text, set heavier */
-.xl { color: inherit; text-decoration: none; font-weight: 600; }
+.xl { color: var(--red); text-decoration: none; font-weight: 500; }
 .xl:focus-visible { outline: 1px solid var(--red); outline-offset: 3px; }
 .conf { cursor: default; }
 .conf:focus-visible { outline: 1px solid var(--grey); outline-offset: 6px; }
@@ -155,6 +158,25 @@ p { margin: 0; }
   opacity: 0; transition: opacity .25s;
 }
 .pill.show { opacity: 1; }
+/* link preview: a small rounded image that follows the cursor */
+.peek {
+  position: fixed; left: 0; top: 0; z-index: 5; pointer-events: none; width: 200px; aspect-ratio: 16 / 9;
+  border-radius: 28px; overflow: hidden; background: var(--stone);
+  opacity: 0; transition: opacity .25s; box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+.peek img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.peek.show { opacity: 1; }
+/* now playing, pinned top left */
+.np {
+  position: fixed; z-index: 4; top: max(16px, env(safe-area-inset-top, 0px), 2.2vh);
+  left: max(16px, env(safe-area-inset-left, 0px), 4vw); max-width: calc(100vw - 32px);
+  font-family: var(--font); font-size: 1rem; line-height: 1.4; color: var(--black); text-decoration: none;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .3s;
+}
+.np #np-state { color: var(--grey); }
+.np.on-dark { color: var(--white); }
+.np.on-dark #np-state { color: rgba(255,255,255,.65); }
+.np:hover #np-track { text-decoration: underline; text-underline-offset: 3px; }
 /* career table on the black section */
 .history { border-collapse: collapse; width: 100%; max-width: 44rem; font-variant-numeric: tabular-nums; }
 .history caption { text-align: left; color: var(--white); opacity: .8; padding-bottom: 1rem; }
@@ -223,7 +245,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
 @media (max-width: 760px) {
   nav.dots { display: none; }
   #intro { align-items: flex-end; padding-block: 50vh 8vh; }
-  .track { padding-bottom: 15vh; }
+  .track { padding-top: 50vh; }
   #about { padding-block: 50vh 12vh; }
   #writing { padding-block: 46vh 10vh; }
   .cards { grid-template-columns: minmax(0, 1fr); }
@@ -252,8 +274,8 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
 <main>
   <section id="intro" class="wrap">
     <div class="copy">
-      <span class="label accent">Hello world.</span>
-      <h1 class="statement">I'm a Group Strategy Director at Huge and I help organizations like Google, Nike, PlayStation, and Verizon design their future.</h1>
+      <span class="label intro-label">Hello world.</span>
+      <h1 class="statement">I'm a Group Strategy Director at Huge and I help organizations like Google, Nike, and PlayStation design their future.</h1>
     </div>
   </section>
 
@@ -265,10 +287,10 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
           <h2>Selected work</h2>
         </div>
         <article class="panel"><span class="who">Google</span><h3 class="conf" tabindex="0" data-pill="Confidential">Experience strategy for billion-user Google products.</h3></article>
-        <article class="panel"><span class="who">PlayStation</span><h3>Launching the biggest video games for PlayStation including <a class="xl" href="https://www.youtube.com/watch?v=0cpg7FCfD1s" target="_blank" rel="noopener" data-pill="YouTube">Marvel's Wolverine</a> and <a class="xl" href="https://www.youtube.com/watch?v=AgTYIkr-GR0" target="_blank" rel="noopener" data-pill="YouTube">Ghost of Yōtei</a>.</h3></article>
-        <article class="panel"><span class="who">Nike</span><h3>Redesigned a <a class="xl" href="https://www.nike.com/a/nike-adapt-bb-release-info" target="_blank" rel="noopener" data-pill="Nike.com">smart shoe app</a> and launched a <a class="xl" href="https://www.inverse.com/input/style/nike-nikeland-metaverse-roblox-virtual-world-digital-sneakers-shoes-clothes" target="_blank" rel="noopener" data-pill="Inverse">Roblox video game</a> for Nike.</h3></article>
-        <article class="panel"><span class="who">Verizon</span><h3>Built <a class="xl" href="https://www.verizon.com/learning" target="_blank" rel="noopener" data-pill="Verizon">digital classroom tools</a> for public school teachers during the COVID-19 pandemic.</h3></article>
-        <article class="panel"><span class="who">Hillary for America, 2016</span><h3 class="conf" tabindex="0" data-pill="Confidential">Communications strategy and ghostwriter for Hillary Clinton during the 2016 presidential election.</h3></article>
+        <article class="panel"><span class="who">PlayStation</span><h3>Launching the biggest video games for PlayStation including <a class="xl" href="https://www.youtube.com/watch?v=AgTYIkr-GR0" target="_blank" rel="noopener" data-img="media/preview-ghost-of-yotei.jpg">Ghost of Yōtei</a> and <a class="xl" href="https://www.youtube.com/watch?v=0cpg7FCfD1s" target="_blank" rel="noopener" data-img="media/preview-wolverine.jpg">Marvel's Wolverine</a>.</h3></article>
+        <article class="panel"><span class="who">Nike</span><h3>Redesigned a <a class="xl" href="https://www.nike.com/a/nike-adapt-bb-release-info" target="_blank" rel="noopener" data-img="media/preview-nike-adapt.jpg">smart shoe app</a> and launched a <a class="xl" href="https://www.inverse.com/input/style/nike-nikeland-metaverse-roblox-virtual-world-digital-sneakers-shoes-clothes" target="_blank" rel="noopener" data-img="media/preview-nikeland.jpg">Roblox video game</a> for Nike.</h3></article>
+        <article class="panel"><span class="who">Verizon</span><h3>Built <a class="xl" href="https://www.verizon.com/learning" target="_blank" rel="noopener" data-img="media/preview-verizon-learning.jpg">digital classroom tools</a> for public school teachers during the COVID-19 pandemic.</h3></article>
+        <article class="panel"><span class="who">Hillary for America</span><h3 class="conf" tabindex="0" data-pill="Confidential">Communications strategy and ghostwriter for Hillary Clinton during the 2016 presidential election.</h3></article>
       </div>
       <div class="hud wrap" aria-hidden="true">
         <span id="count">01 / 05</span>
@@ -282,8 +304,8 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     <div class="inner">
       <span class="label">About</span>
       <div class="reveal">
-        <p>I've spent more than a decade as a strategist at New York product design and advertising agencies. In that time I've learned how to unravel complex problems and help organizations design the next versions of themselves.</p>
-        <p>I know how to partner with customers, creatives and executives alike to uncover the unexpected human insights and ambitious ideas that breathe life into any strategic endeavor.</p>
+        <p>I've spent 15 years as a strategist at New York product design and advertising agencies. I bring deep expertise in mixed-methods research and multiple strategy methodologies including human-centered design, agile delivery, and brand and creative strategy. I've helped create disruptive products and brands, led multidisciplinary teams, mentor strategy departments, and champion change within large organizations.</p>
+        <p class="say-hi"><a href="https://www.linkedin.com/in/hnmurakami/" target="_blank" rel="noopener">Say 👋🏼 on LinkedIn</a></p>
       </div>
       <table class="history">
         <caption class="label">Career</caption>
@@ -305,7 +327,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
       <h2>Writing</h2>
       <div class="cards">
         <div class="cell">
-          <a class="card" href="https://www.hugeinc.com/" target="_blank" rel="noopener"><div class="in">
+          <a class="card" href="https://www.hugeinc.com/ideas/the-new-video-game-marketing-playbook" target="_blank" rel="noopener"><div class="in">
             <div class="top"><h3><span class="ul">The New Video Game Marketing Playbook</span></h3><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
             <div class="bottom"><span class="label">Huge Perspectives</span><span>January 2026</span></div>
           </div></a>
@@ -321,6 +343,8 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
   </section>
 </main>
 <div class="pill" id="pill" aria-hidden="true">Confidential</div>
+<div class="peek" id="peek" aria-hidden="true"><img alt="" width="200" height="113"></div>
+<a class="np" id="np" target="_blank" rel="noopener" hidden><span id="np-state">Now playing</span> <span id="np-track"></span> by <span id="np-artist"></span></a>
 
 <footer class="wrap">
   <div class="foot">
@@ -526,6 +550,9 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
   let travel = 0, PANEL_POS = [];
   const anchorX = () => (wide ? W * 0.04 : 16);
   function sizeExperience() {
+    // tops line up, and the tallest project ends where the row used to sit (17% above the bottom)
+    const tallest = Math.max(...panels.map(p => p.offsetHeight), track.querySelector('.lead-panel').offsetHeight);
+    track.style.paddingTop = Math.max(H * 0.4, H * (wide ? 0.83 : 0.85) - tallest) + 'px';
     // the track slides until the last project reaches the left edge, and every project gets an equal share of the scroll
     const last = panels[panels.length - 1];
     travel = Math.max(1, last.offsetLeft - anchorX());
@@ -581,7 +608,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
   }));
 
-  // ---------- hover pill: names where a link goes, or marks work as confidential ----------
+  // ---------- hover: confidential work gets a pill, links get an image preview ----------
   const pill = document.getElementById('pill');
   const movePill = (x, y) => { pill.style.transform = `translate(${x + 14}px, ${y + 16}px)`; };
   document.querySelectorAll('[data-pill]').forEach(el => {
@@ -591,6 +618,17 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     el.addEventListener('focus', () => { const r = el.getBoundingClientRect(); pill.textContent = el.dataset.pill; movePill(r.left, r.top - 50); pill.classList.add('show'); });
     el.addEventListener('blur', () => pill.classList.remove('show'));
   });
+  const peek = document.getElementById('peek'), peekImg = peek.querySelector('img');
+  const movePeek = (x, y) => { peek.style.transform = `translate(${x + 18}px, ${y - 130}px)`; };
+  document.querySelectorAll('[data-img]').forEach(el => {
+    const pre = new Image(); pre.src = el.dataset.img;   // load ahead so the preview appears instantly
+    el.addEventListener('pointerenter', e => { peekImg.src = el.dataset.img; movePeek(e.clientX, e.clientY); peek.classList.add('show'); });
+    el.addEventListener('pointermove', e => movePeek(e.clientX, e.clientY));
+    el.addEventListener('pointerleave', () => peek.classList.remove('show'));
+    el.addEventListener('focus', () => { const r = el.getBoundingClientRect(); peekImg.src = el.dataset.img; movePeek(r.left, r.top); peek.classList.add('show'); });
+    el.addEventListener('blur', () => peek.classList.remove('show'));
+  });
+  const np = document.getElementById('np');
 
   // ---------- footer: one panel open at a time ----------
   const toggles = [...document.querySelectorAll('.tg')];
@@ -641,6 +679,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     const darkTop = Math.max(0, rr.top), darkBot = Math.min(H, rr.bottom);
     if (darkBot > darkTop) { ctx.fillStyle = BLACK; ctx.fillRect(0, darkTop, W, darkBot - darkTop); }
     nav.classList.toggle('on-dark', H / 2 > darkTop && H / 2 < darkBot);
+    np.classList.toggle('on-dark', 24 > darkTop && 24 < darkBot);
 
     const R = wide ? 100 : 60, R2 = R * R, base = wide ? 2 : 1.6;
     for (let i = 0; i < N; i++) {
@@ -688,5 +727,6 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
 })();
 </script>
 
+<script src="nowplaying.js" defer></script>
 </body>
 </html>

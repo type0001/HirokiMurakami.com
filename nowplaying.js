@@ -1,49 +1,35 @@
 /**
-  Developed by Prashant Shrestha
-  + https://prashant.me
+  Now playing, from Last.fm.
+  Shows "Now playing [song] by [artist]" in the top left corner of the page.
+  If nothing is playing right now, it shows the last song instead ("Last played ...").
+  Originally based on a script by Prashant Shrestha (https://prashant.me), rewritten without jQuery.
 */
-var lastfmData = {
-  baseURL:
-    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
-  // Your Last.fm Username
-  user: "hnmurakami",
-  // Your API key
-  api_key: "964bb1b582830ab51af24a1193218ba7",
-  additional: "&format=json&limit=1"
-};
+(function () {
+  var lastfm = {
+    user: "hnmurakami",
+    apiKey: "964bb1b582830ab51af24a1193218ba7"
+  };
+  var url = "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&format=json&limit=1" +
+            "&user=" + encodeURIComponent(lastfm.user) + "&api_key=" + lastfm.apiKey;
 
-var getSetLastFM = function() {
-  $.ajax({
-    type: "GET",
-    url:
-      lastfmData.baseURL +
-      lastfmData.user +
-      "&api_key=" +
-      lastfmData.api_key +
-      lastfmData.additional,
-    dataType: "json",
-    success: function(resp) {
-      var recentTrack = resp.recenttracks.track[0];
-      var formatted =
-         recentTrack.name;
-      $("a#tracktitle")
-        .html(formatted)
-        .attr("href", recentTrack.url)
-        .attr("title", recentTrack.name + recentTrack.artist["#text"])
-        .attr("target", "_blank");
+  function update() {
+    fetch(url)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var track = data && data.recenttracks && data.recenttracks.track && data.recenttracks.track[0];
+        var box = document.getElementById("np");
+        if (!track || !box) return;
+        var live = track["@attr"] && track["@attr"].nowplaying === "true";
+        document.getElementById("np-state").textContent = live ? "Now playing" : "Last played";
+        document.getElementById("np-track").textContent = track.name;
+        document.getElementById("np-artist").textContent = track.artist["#text"];
+        box.href = track.url;
+        box.title = track.name + " by " + track.artist["#text"];
+        box.hidden = false;
+      })
+      .catch(function () { /* leave the last known song on screen */ });
+  }
 
-      var artistFormatted =
-        recentTrack.artist["#text"];
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("title", "Artist : " + recentTrack.artist["#text"]);
-      $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
-    },
-
-  });
-};
-
-// Get the new one.
-getSetLastFM();
-// Start the countdown.
-setInterval(getSetLastFM, 10 * 1000);
+  update();
+  setInterval(update, 30 * 1000);
+})();

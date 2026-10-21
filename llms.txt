@@ -1,6 +1,6 @@
 # Hiroki Murakami
 
-> Group Strategy Director at Huge, a design and technology agency in New York. Helps organizations like Google, Nike, PlayStation and Verizon design their future.
+> Group Strategy Director at Huge, a design and technology agency in New York. Helps organizations like Google, Nike and PlayStation design their future.
 
 - Name: Hiroki Murakami
 - Role: Group Strategy Director at Huge
@@ -15,5 +15,6 @@
 
 ## Links
 
+- [LinkedIn](https://www.linkedin.com/in/hnmurakami/)
 - [Portfolio](https://hirokimurakami.com/)
 - [Source code](https://github.com/type0001/HirokiMurakami.com)
