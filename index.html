@@ -1,1372 +1,692 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hiroki Murakami · Group Strategy Director at Huge</title>
+<meta name="description" content="Hiroki Murakami is a Group Strategy Director at Huge who helps organizations like Google, Nike, PlayStation and Verizon design their future.">
+<link rel="canonical" href="https://hirokimurakami.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hirokimurakami.com/">
+<meta property="og:title" content="Hiroki Murakami">
+<meta property="og:description" content="Hiroki Murakami is a Group Strategy Director at Huge who helps organizations like Google, Nike, PlayStation and Verizon design their future.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Hiroki Murakami","jobTitle":"Group Strategy Director","worksFor":{"@type":"Organization","name":"Huge","url":"https://www.hugeinc.com"},"url":"https://hirokimurakami.com","alumniOf":{"@type":"CollegeOrUniversity","name":"Emerson College"},"knowsAbout":["Experience strategy","Brand strategy","Video game marketing","Human-centered design"],"sameAs":[]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* STYLE GUIDE
+   Layout: gallery wall. White ground, generous space, one fixed dot canvas behind every section.
+   Text sits left, the dot object sits right on desktop and on top on phones.
+   Color: white and black do the work. Red is a limited accent: small marks, highlights and the progress bar. One section inverts to black.
+   Type: one grotesk at regular weight. Hierarchy comes from size, never from bold. */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --red: #d91642;
+  --stone: #eeeeec;       /* card surface */
+  --grey: #6f6f6f;        /* secondary text */
+  --line: #e1e1df;        /* hairlines */
+  --font: "Hanken Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-<!-- Meta  -->
+  --t-display: clamp(3.25rem, 7vw, 6rem);    /* intro only */
+  --t-h2: clamp(2.5rem, 4.6vw, 4rem);        /* 64px section titles */
+  --t-h3: clamp(1.75rem, 2.8vw, 2.5rem);     /* project statements, card titles */
+  --t-lead: clamp(1.25rem, 1.7vw, 1.5rem);   /* 24px lead and key links */
+  --t-body: 1.125rem;
+  --t-label: 0.8125rem;
 
-<html>
-  <head>
-  <html lang="en">
-  <title>Hiroki Murakami</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hiroki is an independent strategist at the intersection of innovation consulting and creative strategy.">
-  <meta name="keywords" content="Hiroki, Murakami, strategist, strategy, consulting">
-  <meta name="author" content="Hiroki Murakami">
-  <link rel="icon" type="image/png" href="media/favicon.png"/>
-    
-  <!--  Essential META Tags -->
+  color-scheme: light;
+}
+html, body { background: var(--white); color: var(--black); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body { font-family: var(--font); font-weight: 400; font-size: var(--t-body); line-height: 1.55; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--red); color: var(--white); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 1px solid var(--red); outline-offset: 4px; }
 
-  <meta property="og:title" content="Hiroki Murakami">
-  <meta property="og:description" content="Hiroki is an independent strategist at the intersection of innovation consulting and creative strategy.">
-  <meta property="og:image" content="http://hirokimurakami.com/media/warp2.png">
-  <meta property="og:url" content="http://hirokimurakami.com">
-  <meta name="twitter:card" content="summary_large_image">
+canvas#field { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+main, footer { position: relative; z-index: 1; }
+.wrap {
+  padding-left: max(16px, env(safe-area-inset-left, 0px), 4vw);
+  padding-right: max(16px, env(safe-area-inset-right, 0px), 4vw);
+}
+.label { font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--grey); }
+h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
+h1 { font-size: var(--t-display); line-height: 1; letter-spacing: -0.035em; }
+h2 { font-size: var(--t-h2); line-height: 1.05; letter-spacing: -0.03em; }
+h3 { font-size: var(--t-h3); line-height: 1.12; letter-spacing: -0.02em; }
+p { margin: 0; }
+.lead { font-size: var(--t-lead); line-height: 1.3; letter-spacing: -0.005em; }
 
-  <!-- AdSense --> 
+/* ---------- intro ---------- */
+#intro { min-height: 92svh; display: flex; align-items: center; padding-block: 16vh 10vh; }
+#intro .copy { display: grid; gap: 2rem; max-width: 56rem; }
+#intro .lead { max-width: 26ch; }
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7593128865636278"
-     crossorigin="anonymous"></script>
+/* ---------- experience: pinned, scrolls sideways ---------- */
+#experience { position: relative; }
+.sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.track {
+  position: absolute; inset: 0; display: flex; align-items: flex-end; gap: clamp(2.5rem, 6vw, 6rem);
+  padding-bottom: 17vh; will-change: transform;
+}
+.panel { flex: 0 0 min(32rem, 80vw); display: grid; gap: 1.25rem; align-content: end; }
+.panel.lead-panel { flex-basis: min(24rem, 80vw); }
+.panel .who { font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--red); }
+.panel h3 { max-width: 19ch; }
+.hud {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding-bottom: max(6vh, env(safe-area-inset-bottom, 0px));
+  display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem; align-items: center;
+  font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; font-variant-numeric: tabular-nums; color: var(--grey);
+}
+.bar { height: 1px; background: var(--line); position: relative; overflow: hidden; }
+.bar i { position: absolute; inset: 0; background: var(--red); transform-origin: left; transform: scaleX(0); }
 
-  <!--  Non-Essential, But Recommended -->
+/* ---------- about: the one black section ---------- */
+#about { padding-block: 20vh; color: var(--white); }
+#about .label { color: var(--white); opacity: .8; }
+#about .inner { display: grid; gap: 3rem; max-width: 44rem; }
+#about .reveal { display: grid; gap: 1.6rem; }
+#about .reveal p { font-size: var(--t-lead); line-height: 1.35; }
 
-  <meta property="og:site_name" content="Hiroki Murakami">
-  <meta name="twitter:image:alt" content="Hiroki is an independent strategist at the intersection of innovation consulting and creative strategy.">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21199631-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-21199631-1');
-  </script>
-
-  <!-- CDNs -->
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="nowplaying.js"></script>
+/* ---------- writing ---------- */
+#writing { padding-block: 20vh 16vh; }
+#writing .inner { display: grid; gap: 3rem; }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 24rem)); gap: clamp(1rem, 2vw, 1.75rem); }
+.card {
+  border-radius: 28px; background: var(--stone); color: var(--black);
+  text-decoration: none; transition: left .5s cubic-bezier(.2,.7,.2,1), right .5s cubic-bezier(.2,.7,.2,1), background-color .35s, color .35s;
+}
+.card .top { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+.card h3 { min-width: 0; }
+.card .go {
+  flex: 0 0 auto; width: clamp(3rem, 4.5vw, 4rem); aspect-ratio: 1; border-radius: 50%; border: 1px solid currentColor;
+  display: grid; place-items: center;
+}
+.card .bottom { display: grid; gap: .4rem; }
+.card .bottom .label { color: inherit; opacity: .6; }
+.card .go svg { transform: rotate(-45deg); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.card:hover, .card:focus-visible { background: var(--black); color: var(--white); }
+.card:hover .go svg, .card:focus-visible .go svg { transform: rotate(0deg); }
+.card.soon { cursor: default; }
 
 
-  <!-- Fonts -->
+.label.accent { color: var(--red); }
+.statement { font-size: var(--t-h2); line-height: 1.08; letter-spacing: -0.03em; max-width: 21ch; }
+.cell { position: relative; aspect-ratio: 1; max-width: 100%; container-type: inline-size; }
+.card { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.cell:hover .card, .cell:focus-within .card { z-index: 2; }
+/* the hovered card grows toward its neighbor, the neighbor gives up the same space from its facing side,
+   and the text block in both keeps its resting width, so type never reflows. The shrinking card hides its arrow. */
+.card .in { box-sizing: border-box; position: absolute; top: 0; bottom: 0; width: 100cqw; padding: clamp(1.5rem, 3vw, 2.25rem); display: flex; flex-direction: column; justify-content: space-between; }
+.cell:first-child .in { left: 0; }
+.cell:last-child .in { right: 0; }
+.card .go { transition: opacity .3s; }
+.card .ul {
+  background: linear-gradient(currentColor, currentColor) 0 calc(100% - 0.06em) / 0% 2px no-repeat;
+  transition: background-size .55s cubic-bezier(.2,.7,.2,1);
+}
+.card:hover .ul, .card:focus-visible .ul { background-size: 100% 2px; }
+@media (min-width: 761px) {
+  .cards:has(.cell:first-child .card:is(:hover, :focus-visible)) .cell:first-child .card { right: -10%; }
+  .cards:has(.cell:first-child .card:is(:hover, :focus-visible)) .cell:last-child .card { left: 10%; }
+  .cards:has(.cell:first-child .card:is(:hover, :focus-visible)) .cell:last-child .go { opacity: 0; }
+  .cards:has(.cell:first-child .card:is(:hover, :focus-visible)) .cell:last-child .in { left: 0; right: auto; }
+  .cards:has(.cell:last-child .card:is(:hover, :focus-visible)) .cell:last-child .card { left: -10%; }
+  .cards:has(.cell:last-child .card:is(:hover, :focus-visible)) .cell:first-child .card { right: 10%; }
+  .cards:has(.cell:last-child .card:is(:hover, :focus-visible)) .cell:first-child .go { opacity: 0; }
+}
+/* experience links: same black text, set heavier */
+.xl { color: inherit; text-decoration: none; font-weight: 600; }
+.xl:focus-visible { outline: 1px solid var(--red); outline-offset: 3px; }
+.conf { cursor: default; }
+.conf:focus-visible { outline: 1px solid var(--grey); outline-offset: 6px; }
+.pill {
+  position: fixed; left: 0; top: 0; z-index: 5; pointer-events: none;
+  padding: .55rem 1.1rem; border-radius: 999px; background: var(--black); color: var(--white);
+  font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase;
+  opacity: 0; transition: opacity .25s;
+}
+.pill.show { opacity: 1; }
+/* career table on the black section */
+.history { border-collapse: collapse; width: 100%; max-width: 44rem; font-variant-numeric: tabular-nums; }
+.history caption { text-align: left; color: var(--white); opacity: .8; padding-bottom: 1rem; }
+.history tr { border-top: 1px solid rgba(255,255,255,.22); }
+.history tr:last-child { border-bottom: 1px solid rgba(255,255,255,.22); }
+.history td, .history th { padding: .9rem 1.5rem .9rem 0; text-align: left; vertical-align: top; font-weight: 400; }
+.history td:first-child { color: rgba(255,255,255,.6); white-space: nowrap; width: 9rem; }
+.history th { width: 12rem; }
+.history td:last-child { padding-right: 0; color: rgba(255,255,255,.85); }
+/* footer toggles */
+.toggles { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.tg { all: unset; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 1.5rem; font-family: var(--font); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--grey); }
+.tg::after { content: "+"; font-size: 1rem; }
+.tg[aria-expanded="true"] { color: var(--black); }
+.tg[aria-expanded="true"]::after { content: "–"; }
+.tg:focus-visible { outline: 1px solid var(--red); outline-offset: 4px; }
+.tpanel { grid-column: 1 / -1; }
+.agents { display: grid; gap: 1.5rem; max-width: 52rem; }
+.agents-intro { color: var(--grey); max-width: 40rem; }
+.brief { margin: 0; display: grid; }
+.brief > div { display: grid; grid-template-columns: 10rem 1fr; gap: 1.5rem; padding-block: .8rem; border-top: 1px solid var(--line); }
+.brief dt { color: var(--grey); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; padding-top: .2em; }
+.brief dd { margin: 0; min-width: 0; }
+.copyrow { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.copy-btn { all: unset; cursor: pointer; border: 1px solid var(--black); border-radius: 999px; padding: .6rem 1.2rem; font-family: var(--font); font-size: .95rem; }
+.copy-btn:hover { background: var(--black); color: var(--white); }
+.copy-btn:focus-visible { outline: 1px solid var(--red); outline-offset: 3px; }
 
-  <link rel="stylesheet" href="styles.css">
+/* ---------- footer ---------- */
+footer { background: var(--white); border-top: 1px solid var(--line); padding-block: 3.5rem 3rem; }
+.foot { display: grid; gap: 2rem; grid-template-columns: 1fr 1fr; align-items: start; }
+.foot > div { display: grid; gap: .75rem; }
+.foot a.gh { text-decoration: none; }
+.foot a.gh:hover { color: var(--red); }
+.credit { color: var(--grey); }
+.credit a { color: var(--black); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.credit a:hover { color: var(--red); }
+.stack { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .25rem 1.4rem; }
+.guide-body { display: grid; gap: 2.5rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); max-width: 52rem; }
+.sw { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; }
+.sw div { aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--line); }
+.sw-k { background: var(--black); } .sw-w { background: var(--white); } .sw-r { background: var(--red); } .sw-s { background: var(--stone); }
+.sw-names { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; font-size: .75rem; color: var(--grey); font-variant-numeric: tabular-nums; margin-top: .5rem; }
+.scale { display: grid; gap: .6rem; min-width: 0; }
+.scale > div { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--line); padding-bottom: .6rem; overflow: hidden; }
+.scale .n { flex: 0 0 4.5rem; font-size: .75rem; color: var(--grey); }
+.scale .s { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.guide-h { margin-bottom: .9rem; }
 
-  <style>
-  </style>
+/* ---------- section nav ---------- */
+nav.dots {
+  position: fixed; z-index: 3; top: 50%; transform: translateY(-50%);
+  right: max(16px, env(safe-area-inset-right, 0px), 2vw);
+  display: grid; gap: 14px; justify-items: end; --c: var(--black);
+}
+nav.dots.on-dark { --c: var(--white); }
+nav.dots button {
+  all: unset; cursor: pointer; display: flex; align-items: center; gap: 10px;
+  font-family: var(--font); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: transparent; transition: color .3s;
+}
+nav.dots button::after { content: ""; width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--c); transition: background-color .3s, border-color .3s; }
+nav.dots button[aria-current="true"] { color: var(--c); }
+nav.dots button[aria-current="true"]::after { background: var(--c); }
+nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4px; }
+
+@media (max-width: 760px) {
+  nav.dots { display: none; }
+  #intro { align-items: flex-end; padding-block: 50vh 8vh; }
+  .track { padding-bottom: 15vh; }
+  #about { padding-block: 50vh 12vh; }
+  #writing { padding-block: 46vh 10vh; }
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .history td:first-child { width: auto; }
+  .history tr { display: grid; grid-template-columns: 1fr; padding-block: .8rem; }
+  .history td, .history th { padding: 0; }
+  .brief > div { grid-template-columns: 1fr; gap: .25rem; }
+  .foot { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .card .go svg, .card .ul, .card .go { transition: none; }
+}
+</style>
 
 </head>
-
-</html>
-
-<!-- Start of body -->
-
 <body>
+<canvas id="field" aria-hidden="true"></canvas>
 
+<nav class="dots" aria-label="Sections">
+  <button data-i="0" aria-current="true">Intro</button>
+  <button data-i="1">Experience</button>
+  <button data-i="2">About</button>
+  <button data-i="3">Writing</button>
+</nav>
 
-<!-- !PAGE CONTENT! -->
+<main>
+  <section id="intro" class="wrap">
+    <div class="copy">
+      <span class="label accent">Hello world.</span>
+      <h1 class="statement">I'm a Group Strategy Director at Huge and I help organizations like Google, Nike, PlayStation, and Verizon design their future.</h1>
+    </div>
+  </section>
 
-  <!-- Background start -->
-
-    <div class="background" style="background-color: #000;">
-
-    <!-- Section 0 -->
-
-      <div class="section" style="border-top: 1px white solid; margin-top: 1%;">
-
-      <!-- Section - Header -->
-
-          <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
-
-
-
-          <div class="widebox">
-            <p>
-              Now playing ♫ <u><u><a id="tracktitle"></a></u>
-            </p>
-          </div>
-
+  <section id="experience" aria-label="Experience">
+    <div class="sticky">
+      <div class="track wrap" id="track">
+        <div class="panel lead-panel">
+          <span class="label">Experience</span>
+          <h2>Selected work</h2>
         </div>
+        <article class="panel"><span class="who">Google</span><h3 class="conf" tabindex="0" data-pill="Confidential">Experience strategy for billion-user Google products.</h3></article>
+        <article class="panel"><span class="who">PlayStation</span><h3>Launching the biggest video games for PlayStation including <a class="xl" href="https://www.youtube.com/watch?v=0cpg7FCfD1s" target="_blank" rel="noopener" data-pill="YouTube">Marvel's Wolverine</a> and <a class="xl" href="https://www.youtube.com/watch?v=AgTYIkr-GR0" target="_blank" rel="noopener" data-pill="YouTube">Ghost of Yōtei</a>.</h3></article>
+        <article class="panel"><span class="who">Nike</span><h3>Redesigned a <a class="xl" href="https://www.nike.com/a/nike-adapt-bb-release-info" target="_blank" rel="noopener" data-pill="Nike.com">smart shoe app</a> and launched a <a class="xl" href="https://www.inverse.com/input/style/nike-nikeland-metaverse-roblox-virtual-world-digital-sneakers-shoes-clothes" target="_blank" rel="noopener" data-pill="Inverse">Roblox video game</a> for Nike.</h3></article>
+        <article class="panel"><span class="who">Verizon</span><h3>Built <a class="xl" href="https://www.verizon.com/learning" target="_blank" rel="noopener" data-pill="Verizon">digital classroom tools</a> for public school teachers during the COVID-19 pandemic.</h3></article>
+        <article class="panel"><span class="who">Hillary for America, 2016</span><h3 class="conf" tabindex="0" data-pill="Confidential">Communications strategy and ghostwriter for Hillary Clinton during the 2016 presidential election.</h3></article>
+      </div>
+      <div class="hud wrap" aria-hidden="true">
+        <span id="count">01 / 05</span>
+        <div class="bar"><i id="bar"></i></div>
+        <span>Experience</span>
+      </div>
+    </div>
+  </section>
 
+  <section id="about" class="wrap">
+    <div class="inner">
+      <span class="label">About</span>
+      <div class="reveal">
+        <p>I've spent more than a decade as a strategist at New York product design and advertising agencies. In that time I've learned how to unravel complex problems and help organizations design the next versions of themselves.</p>
+        <p>I know how to partner with customers, creatives and executives alike to uncover the unexpected human insights and ambitious ideas that breathe life into any strategic endeavor.</p>
+      </div>
+      <table class="history">
+        <caption class="label">Career</caption>
+        <tbody>
+          <tr><td>2022 – Present</td><th scope="row">Huge</th><td>Group Strategy Director</td></tr>
+          <tr><td>2021 – 2022</td><th scope="row">Instrument</th><td>Strategy Director</td></tr>
+          <tr><td>2019 – 2021</td><th scope="row">Publicis Sapient</th><td>Manager, Customer Experience &amp; Innovation Consulting</td></tr>
+          <tr><td>2017 – 2019</td><th scope="row">Deutsch</th><td>Strategy Director</td></tr>
+          <tr><td>2016</td><th scope="row">Hillary for America</th><td>Senior Strategist</td></tr>
+          <tr><td>2012 – 2016</td><th scope="row">Edelman Digital</th><td>Strategist</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-      <!-- Section - Intro -->
-
-        <div class="grid">
-
-          <div class="break" style="">
-          </div>
-
-          <div class="widebox">
-            <img src="media/placeholder2.png" style="width: 100%;">
-          </div>
-
-          <div class="half-break">
-          </div>
-
-          <div class="widebox">
-            <h2>
-              Hiroki Murakami is an independent strategist at the intersection of innovation consulting and creative strategy.
-            </h2>
-          </div>
-
-          <div class="half-break">
-          </div>
-
-      <!-- Section - TLDR -->
-
-          <div class="leftbox">
-            <p>
-              10 years of strategy experience at NYC product design and advertising agencies
-            </p>
-          </div>
-
-          <div class="mobile-quarter-break">
-          </div>
-
-          <div class="middlebox">
-            <p>
-              Currently practicing strategy at Huge BK
-            </p>
-          </div>
-
-          <div class="mobile-quarter-break">
-          </div>
-
-          <div class="rightbox">
-            <p>
-              hnmurakami at gmail
-            </p>
-          </div>
-
-          <div class="break">
-          </div>
-
-          <div class="line" style="">
-          </div>
-
+  <section id="writing" class="wrap">
+    <div class="inner">
+      <span class="label">Thinking</span>
+      <h2>Writing</h2>
+      <div class="cards">
+        <div class="cell">
+          <a class="card" href="https://www.hugeinc.com/" target="_blank" rel="noopener"><div class="in">
+            <div class="top"><h3><span class="ul">The New Video Game Marketing Playbook</span></h3><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <div class="bottom"><span class="label">Huge Perspectives</span><span>January 2026</span></div>
+          </div></a>
         </div>
-
-      <!-- Section - Navigation -->
-
-        <div class="grid" id="navigation">
-
-          <div class="break">
-          </div>
-
-          <div class="widebox">
-            <h2>
-              Start here, end up anywhere
-            </h2>
-          </div>
-
-          <div class="half-break">
-          </div>
-
-          <div class="line">
-          </div>
-
-          <div class="" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
-            <h3><b>
-              <a href="#aboutme" style="text-decoration: none;"> About me</a>
-            </b></h3>
-          </div>
-
-          <div class="" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
-            <h3>
-              01.
-            </h3>
-          </div>
-
-          <div class="line">
-          </div>
-
-          <div class="" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
-            <h3><b>
-              <a href="#practiceareas" style="text-decoration: none;">
-                Practice areas</a>
-            </b></h3>
-          </div>
-
-          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
-            <h3>
-              02.
-            </h3>
-          </div>
-
-          <div class="line">
-          </div>
-
-          <div class="widebox-left" style="grid-column-start: 2; grid-column-end: 5; padding-top: 1em; padding-bottom: 1em;">
-            <h3><b>
-              <a href="#casestudies" style="text-decoration: none;">Case studies</a>
-            </b></h3>
-          </div>
-
-          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
-            <h3>
-              03.
-            </h3>
-          </div>
-
-          <div class="line">
-          </div>
-
-          <div class="widebox-left" style="grid-column-start: 2; grid-column-end: 5;  padding-top: 1em; padding-bottom: 1em;">
-            <h3><b>
-              <a href="#workwithme" style="text-decoration: none;">Work with me</a>
-            </b></h3>
-          </div>
-
-          <div class="rightbox" style="grid-column-start: 6; grid-column-end: 7;  text-align: right; padding-top: 1em; padding-bottom: 1em;">
-            <h3>
-              04.
-            </h3>
-          </div>
-
-          <div class="line">
-          </div>
-
-          </div>
-
-      <!-- Section - Shout-outs -->
-
-          <div class="grid">
-
-          <div class="break">
-          </div>
-
-          <div class="widebox">
-            <h2>
-              Designed and developed by Hiroki Murakami
-              <br>Digital art by <a href="https://minamir.com" target="_blank">Mina Mir</a>
-              <br><a href="https://github.com/type0001/HirokiMurakami.com" target="_blank">View on Github</a>
-            </h2>
-          </div>
-
-          <div class="break">
-          </div>
-
+        <div class="cell">
+          <div class="card soon" tabindex="0"><div class="in">
+            <div class="top"><h3><span class="ul">Next article</span></h3><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <div class="bottom"><span class="label">In progress</span><span>Coming soon</span></div>
+          </div></div>
         </div>
-
       </div>
+    </div>
+  </section>
+</main>
+<div class="pill" id="pill" aria-hidden="true">Confidential</div>
 
-    <!-- Section 1 -->
-
-      <div class="section">
-
-      <!-- Header -->
-
-      <header class="header" id="aboutme">
-
-        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
-
-        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
-          <p>
-            01. About me
-          </p>
+<footer class="wrap">
+  <div class="foot">
+    <div>
+      <span class="label">Source</span>
+      <a class="gh lead" href="https://github.com/type0001/HirokiMurakami.com" target="_blank" rel="noopener">View project on GitHub →</a>
+      <p class="credit">Visual art direction by <a href="https://minamir.com/" target="_blank" rel="noopener">Mina Mir</a></p>
+    </div>
+    <div>
+      <span class="label">Built with</span>
+      <ul class="stack">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Canvas 2D</li><li>Vercel</li>
+      </ul>
+    </div>
+    <div class="toggles">
+      <button class="tg label" id="tg-style" aria-expanded="false" aria-controls="pg-style">Style guide</button>
+      <button class="tg label" id="tg-agents" aria-expanded="false" aria-controls="pg-agents">For agents</button>
+    </div>
+    <div class="tpanel" id="pg-style" role="region" aria-labelledby="tg-style" hidden>
+      <div class="guide-body">
+        <div>
+          <p class="label guide-h">Color</p>
+          <div class="sw"><div class="sw-w"></div><div class="sw-k"></div><div class="sw-r"></div><div class="sw-s"></div></div>
+          <div class="sw-names"><span>White<br>#FFFFFF</span><span>Black<br>#000000</span><span>Red<br>#D91642</span><span>Stone<br>#EEEEEC</span></div>
         </div>
-
-        <div class="" style="text-align: right; grid-column-start: 6; grid-column-end: 7; ">
-          <p>
-            <a href="#navigation" style="text-decoration: none;">Back to top</a>
-          </p>
+        <div class="scale">
+          <p class="label guide-h">Type · Hanken Grotesk, regular</p>
+          <div><span class="n">Display</span><span class="s" style="font-size:2.6rem;letter-spacing:-.035em;line-height:1">Hello world.</span></div>
+          <div><span class="n">H2 · 64</span><span class="s" style="font-size:2rem;letter-spacing:-.03em">Selected work</span></div>
+          <div><span class="n">H3 · 40</span><span class="s" style="font-size:1.5rem;letter-spacing:-.02em">Launched AAA games</span></div>
+          <div><span class="n">Lead · 24</span><span class="s" style="font-size:1.25rem">Find the real story</span></div>
+          <div><span class="n">Body · 18</span><span class="s">Regular, 1.55 line height</span></div>
+          <div><span class="n">Label · 13</span><span class="s label">Uppercase, tracked</span></div>
         </div>
-
-      </div>
-
-      </header>
-
-      <!-- Section content -->
-
-      <div class="grid">
-
-      <!-- Key art -->
-
-        <div class="break" style="height:100vh">
-          <img src="media/warp2.png" style="width: 100%; height: 100%;">
-        </div>
-
-      <!-- Header -->
-
-        <div class="line">
-        </div>
-
-        <div class="break">
-        </div>
-
-        <div class="leftbox">
-          <h1>
-            01.
-          </h1>
-        </div>
-
-        <div class="mobile-half-break">
-        </div>
-
-        <div class="widebox-right">
-          <h3>
-            I’ve spent 10 years as a strategist at NYC product design and advertising agencies. During that time, I’ve spent years learning how to unravel complex problems and help organizations design the next versions of themselves.
-            <br><br>I’ve helped create disruptive products and brands, led multidisciplinary teams, mentor strategy departments, and championed change within large organizations.
-          </h3>
-        </div>
-
-        <div class="break">
-        </div>
-
-      <!-- Tables -->
-
-      <!-- Employers -->
-
-      <div class="mobile-leftbox" style="">
-        <h3><b>
-          Where I’ve been
-        </b></h3>
-      </div>
-
-      <div class="widebox-right" style="border-top: 3px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Freelance
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Strategist
-        </p>
-      </div>
-
-      <div class="widebox-right" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Publicis Sapient
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Manager, Customer Experience & Innovation Consulting
-        </p>
-      </div>
-
-      <div class="widebox-right" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Deutsch
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Strategy Director
-        </p>
-      </div>
-
-      <div class="widebox-right" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Hillary Clinton
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Senior Strategist
-        </p>
-      </div>
-
-      <div class="widebox-right" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Edelman Digital
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Strategist
-        </p>
-      </div>
-
-      <div class="widebox-right" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="break">
-      </div>
-
-      <!-- Clients -->
-
-      <div class="mobile-leftbox" style="">
-        <h3><b>
-          Who I've worked with
-        </b></h3>
-      </div>
-
-      <!-- Consumer goods -->
-
-      <div class="widebox-right" style="border-top: 3px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Consumer goods
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Anheuser Busch
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Energizer
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          Johnson & Johnson
-        </p>
-      </div>
-
-      <!-- Energy -->
-
-      <div class="widebox-right" style="border-top: 3px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Energy
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          GE
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Siemens
-        </p>
-      </div>
-
-      <!-- Financial services -->
-
-      <div class="widebox-right" style="border-top: 3px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Financial services
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          Citibank
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          PNC
-        </p>
-      </div>
-
-      <!-- Politics -->
-
-      <div class="widebox-right" style="border-top: 3px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Politics
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Everytown for Gun Safety
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Hillary Clinton
-        </p>
-      </div>
-
-      <!-- Technology -->
-
-      <div class="widebox-right" style="border-top: 3px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Technology
-        </b></p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          Comcast
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          eBay
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          Mastercard
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          Samsung
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          Verizon
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="break">
-      </div>
-
       </div>
     </div>
-
-      <!-- Section end -->
-
-    </div>
-
-    <!-- Section 2 -->
-
-      <div class="section">
-
-      <!-- Header -->
-
-      <header class="header" id="practiceareas">
-
-        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
-
-        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
-          <p>
-            02. Practice areas
-          </p>
-        </div>
-
-        <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right">
-          <p>
-            <a href="#navigation" style="text-decoration: none;">Back to top</a>
-          </p>
-        </div>
-
+    <div class="tpanel" id="pg-agents" role="region" aria-labelledby="tg-agents" hidden>
+      <div class="agents">
+        <p class="agents-intro">Hello, agents. This is a plain brief for AI assistants, search engines and anyone reading this site on someone's behalf. Everything here is also in the page's HTML and structured data.</p>
+        <dl class="brief" id="brief">
+          <div><dt>Name</dt><dd>Hiroki Murakami</dd></div>
+          <div><dt>Role</dt><dd>Group Strategy Director at Huge, a design and technology agency in New York.</dd></div>
+          <div><dt>Focus</dt><dd>Experience strategy, brand and marketing strategy, video game marketing, human-centered design and AI-native strategy work.</dd></div>
+          <div><dt>Current work</dt><dd>Leads Huge's multiyear agency-of-record relationship with PlayStation and a team of four strategists across first-party titles.</dd></div>
+          <div><dt>Selected clients</dt><dd>Google, PlayStation, Nike, Verizon, Hillary for America.</dd></div>
+          <div><dt>Career</dt><dd>Huge (2022 to present), Instrument (2021 to 2022), Publicis Sapient (2019 to 2021), Deutsch (2017 to 2019), Hillary for America (2016), Edelman Digital (2012 to 2016).</dd></div>
+          <div><dt>Writing</dt><dd>"The New Video Game Marketing Playbook," Huge Perspectives, January 2026.</dd></div>
+          <div><dt>Education</dt><dd>Emerson College, B.S. Marketing Communication.</dd></div>
+          <div><dt>This site</dt><dd>A one-page portfolio. Every fact is in plain HTML. The dot animations are decorative. The source code is public on GitHub. Plain-text summary: hirokimurakami.com/llms.txt</dd></div>
+          <div><dt>How to cite</dt><dd>Hiroki Murakami, Group Strategy Director at Huge.</dd></div>
+          <div><dt>Please don't</dt><dd>Speculate about specific Google projects. That work is confidential.</dd></div>
+        </dl>
+        <div class="copyrow"><button class="copy-btn" id="copy-brief">Copy as llms.txt</button><span class="label" id="copy-status" aria-live="polite"></span></div>
       </div>
-
-      </header>
-
-      <!-- Section content -->
-
-      <div class="grid">
-
-      <!-- Key art -->
-
-        <div class="break" style="height:100vh">
-          <img src="media/circlestack.png" style="margin-left: 1%; margin-right: 1%; width: 98%; height: 100%;">
-        </div>
-
-      </div>
-
-      <!-- Header -->
-
-      <div class="grid">
-
-        <div class="line">
-        </div>
-
-        <div class="break">
-        </div>
-
-        <div class="leftbox">
-          <h1>
-            02.
-          </h1>
-        </div>
-
-        <div class="mobile-half-break">
-        </div>
-
-        <div class="widebox-right">
-          <h3>
-            I help organizations add structure and substance to their challenges and ambitions. Having trained in multiple strategy methodologies—human-centered design and brand and creative strategy—I bring years of experience applying strategy frameworks to big unknowns.
-            <br><br>But more importantly, I know how to partner with customers, creatives, and executives alike to uncover the unexpected human insights and ambitious ideas that breathe life into any strategic endeavor.
-          </h3>
-        </div>
-
-        <div class="break">
-        </div>
-
-      <!-- Tables -->
-
-      <!-- Methodologies -->
-
-      <div class="mobile-leftbox" style="">
-        <h3><b>
-          Methodologies and artifacts
-        </b></h3>
-      </div>
-
-      <!-- HCD -->
-
-      <div class="widebox-right" style="border-top: 3px white solid;">
-      </div>
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Human-centered design
-        </b></p>
-        <br>
-        <p>Or,
-        <br>Design thinking
-        <br>Experience strategy
-        <br>Innovation consulting
-        </p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Workshops
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Journey maps
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Personas
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Rapid prototyping
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          North star visioning
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Product roadmapping
-        </p>
-      </div>
-
-      <div class="widebox-right" style="border-top: 3px white solid;">
-      </div>
-
-      <div class="mobile-break">
-      </div>
-
-      <!-- Brand strategy -->
-
-      <div class="mobile-middlebox" style="">
-        <p><b>
-          Brand strategy
-        </b></p>
-        <br>
-        <p>Or,
-        <br>Brand planning
-        <br>Creative strategy
-        </p>
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Brand positioning
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Campaign strategies
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Creative briefs
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-        <p>
-          Customer and channel insights
-        </p>
-      </div>
-
-      <div class="rightbox" style="border-top: 1px white solid;">
-      </div>
-
-      <div class="break">
-      </div>
-
-      </div>
-
-      <!-- Section end -->
-
     </div>
-
-    <!-- Section 3 -->
-
-    <div class="section">
-
-    <!-- Header -->
-
-      <header class="header" id="casestudies">
-
-        <div class="grid" style="background: black; border-bottom: 1px white solid; padding-top: 1em; padding-bottom: 1em;">
-
-        <div class="" style="grid-column-start: 2; grid-column-end: 5;">
-          <p>
-            03. Case studies
-          </p>
-        </div>
-
-        <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right">
-          <p>
-            <a href="#navigation" style="text-decoration: none;">Back to top</a>
-          </p>
-        </div>
-
-      </div>
-
-      </header>
-
-    <!-- Section content -->
-
-    <div class="grid">
-
-    <!-- Key art -->
-
-      <div class="break" style="height:100vh">
-        <img src="media/squarestack.png" style="width: 100%; height: 100%;">
-      </div>
-
-    <!-- Header -->
-
-      <div class="line">
-      </div>
-
-      <div class="break">
-      </div>
-
-      <div class="leftbox">
-        <h1>
-          03.
-        </h1>
-      </div>
-
-      <div class="mobile-half-break">
-      </div>
-
-      <div class="widebox-right">
-        <h3>
-          As a strategist, I’ve had the opportunity to partner with incredible teams and organizations and produce ambitious products and brands.
-          <br><br>These are several of the projects I’m most proud of. If you’d like more details or would like to hear about my experience with a different industry or subject matter, please reach out.
-        </h3>
-      </div>
-
-      <div class="break">
-      </div>
-
-    <!-- Tables -->
-
-    <!-- Methodologies -->
-
-    <div class="mobile-leftbox" style="">
-      <h3><b>
-        Human-centered innovation
-      </b></h3>
-    </div>
-
-    <!-- Innovation strategy -->
-
-    <div class="widebox-right" style="border-top: 3px white solid;">
-    </div>
-
-    <div class="mobile-middlebox" style="">
-      <p>
-        Crafted a 3-year product innovation strategy using human centered design for a global financial technology provider that led to multiple new products being funded for development.
-      </p>
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Customer interviews
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Journey mapping
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Personas
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        North star visioning
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Design sprint workshop
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Business case development
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="break">
-    </div>
-
-    <!-- Experience strategy -->
-
-    <div class="widebox-right" style="border-top: 3px white solid;">
-    </div>
-
-    <div class="mobile-leftbox" style="">
-      <h3><b>
-        Experience strategy
-      </b></h3>
-    </div>
-
-    <div class="mobile-middlebox" style="">
-      <p>
-        Reimagined and redesigned the primary ecommerce channel for a top US telecom provider using iterative prototyping and usability testing which led to increased conversion, revenue per customer, and less time per purchase.
-      </p>
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Customer interviews
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Design sprint workshop
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Iterative prototyping
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Usability testing
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="break">
-    </div>
-
-    <!-- Brand and creative strategy -->
-
-    <div class="widebox-right" style="border-top: 3px white solid;">
-    </div>
-
-    <div class="mobile-leftbox" style="">
-      <h3><b>
-        Brand and creative strategy
-      </b></h3>
-    </div>
-
-    <div class="mobile-middlebox" style="">
-      <p>
-        Pitched, won, and led the rebranding of an iconic dot-com era SaaS provider working directly with the CEO and CMO on a global expansion and reimagined product offering.
-      </p>
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Ethnographies
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Conjoint analysis
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Customer personas
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Brand positioning and purpose
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        North star visioning
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        Logo redesign
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        TV and digital
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-    <div class="rightbox" style="padding-top: 1em; padding-bottom: 1em; ">
-      <p>
-        CRM
-      </p>
-    </div>
-
-    <div class="rightbox" style="border-top: 1px white solid;">
-    </div>
-
-
-
-    <div class="break">
-    </div>
-
-    </div>
-
-    <!-- Section end -->
-
   </div>
-
-  <!-- Section 4 -->
-
-  <div class="section">
-
-  <!-- Header -->
-
-    <header class="header" id="workwithme">
-
-      <div class="grid" style="background: black; border-bottom: 1px white solid; ">
-
-      <div class="" style="grid-column-start: 2; grid-column-end: 5; padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          04. Work with me
-        </p>
-      </div>
-
-      <div class="" style="grid-column-start: 6; grid-column-end: 7; text-align: right; padding-top: 1em; padding-bottom: 1em;">
-        <p>
-          <a href="#navigation" style="text-decoration: none;">Back to top</a>
-        </p>
-      </div>
-
-    </div>
-
-    </header>
-
-  <!-- Section content -->
-
-  <div class="grid">
-
-    <!-- Key art -->
-
-    <div class="break" style="height:100vh">
-      <img src="media/warpgrid.png" style="width: 100%; height: 100%;">
-    </div>
-
-  <!-- Header -->
-
-    <div class="line">
-    </div>
-
-    <div class="break">
-    </div>
-
-    <div class="leftbox">
-      <h1>
-        04.
-      </h1>
-    </div>
-
-    <div class="mobile-half-break">
-    </div>
-
-    <div class="widebox-right">
-      <h3>
-        I’m excited to learn about what you’re working on. Even if you or your project doesn't sound like any of the descriptions below, let’s talk.
-      </h3>
-    </div>
-
-    <div class="break">
-    </div>
-
-    <div class="break">
-    </div>
-
-  <!-- Tables -->
-
-  <!-- I often work with -->
-
-  <div class="mobile-leftbox" style="">
-    <h3><b>
-      I often work with
-    </b></h3>
-  </div>
-
-  <div class="widebox-right" style="border-top: 3px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Product design agencies
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Advertising agencies
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Product management groups
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Brand management group
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Causes and movements at discounted rates
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="break">
-  </div>
-
-  <!-- I can help with -->
-
-  <div class="mobile-leftbox" style="">
-    <h3><b>
-      I can help with
-    </b></h3>
-  </div>
-
-  <div class="widebox-right" style="border-top: 3px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Strategy leadership for a project
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Human-centered product innovation
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      End-to-end experience strategy
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Brand positioning and creative strategy
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Customer insights and trendcasting
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="break">
-  </div>
-
-  <!-- Get in touch -->
-
-  <div class="mobile-leftbox" style="">
-    <h3><b>
-      Get in touch
-    </b></h3>
-  </div>
-
-  <div class="widebox-right" style="border-top: 3px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      Contact me for availability and rates
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="padding-top: 1em; padding-bottom: 1em;">
-    <p>
-      hnmurakami at gmail 
-    </p>
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="widebox-right" style="border-top: 1px white solid;">
-  </div>
-
-  <div class="break">
-  </div>
-
-  </div>
-
-  <!-- Section end -->
-
-  </div>
-
-  <!-- Footer -->
-
-  <div class="section">
-    <div class="grid">
-
-    <div class="half-break">
-    </div>
-
-    <div class="leftbox">
-      <h4>
-        © Hiroki Murakami 2021
-      </h4>
-    </div>
-
-    <div class="mobile-quarter-break">
-    </div>
-
-
-    <div class="mobile-quarter-break">
-    </div>
-
-    <div class="rightbox">
-      <h4>
-        Open-source
-        <br><a href="https://github.com/type0001/HirokiMurakami.com" target="_blank">View on Github</a>
-      </h4>
-    </div>
-
-    <div class="half-break">
-    </div>
-
-  </div>
-  </div>
-
-
-  <!-- Background end -->
-
-    </div>
-
-<!-- End page content -->
+</footer>
+
+<script>
+(() => {
+  const canvas = document.getElementById('field');
+  const ctx = canvas.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = getComputedStyle(document.documentElement);
+  const tok = (n, f) => css.getPropertyValue(n).trim() || f;
+  const WHITE = tok('--white', '#fff'), BLACK = tok('--black', '#000'), RED = tok('--red', '#d91642');
+
+  const intro = document.getElementById('intro');
+  const exp = document.getElementById('experience');
+  const about = document.getElementById('about');
+  const writing = document.getElementById('writing');
+  const track = document.getElementById('track');
+  const bar = document.getElementById('bar');
+  const count = document.getElementById('count');
+  const nav = document.querySelector('nav.dots');
+  const navBtns = [...nav.querySelectorAll('button')];
+  const panels = [...track.querySelectorAll('article.panel')];
+
+  let W = 0, H = 0, DPR = 1, N = 900, wide = true, P = [], STOPS = [], EXP_F = 0;
+  const mouse = { x: -9999, y: -9999 };
+  const TAU = Math.PI * 2;
+  const ease = f => f < 0.5 ? 4 * f * f * f : 1 - Math.pow(-2 * f + 2, 3) / 2;
+
+  // ---------- 3D helpers ----------
+  function rot(p, ry, rx) {
+    let { x, y, z } = p;
+    const cy = Math.cos(ry), sy = Math.sin(ry); const x1 = x * cy + z * sy; z = -x * sy + z * cy; x = x1;
+    const cx = Math.cos(rx), sx = Math.sin(rx); const y1 = y * cx - z * sx; z = y * sx + z * cx; y = y1;
+    return { x, y, z };
+  }
+  function persp(v, f = 1.8) { const k = f / (f - v.z); return { x: v.x * k, y: v.y * k, z: v.z, k }; }
+
+  // Each shape fills o = {x, y (unit space), k (depth scale), al (alpha), red}
+
+  // Intro · pulse: dotted circles on a floor plane, expanding outward.
+  const PR = 6;
+  function pulse(i, t, o) {
+    const ring = i % PR, j = Math.floor(i / PR), per = Math.ceil(N / PR);
+    const u = ((ring + t * 0.22) / PR) % 1;
+    const r = 0.06 + u * 0.75, a = (j / per) * TAU;
+    const v = persp(rot({ x: Math.cos(a) * r, y: 0, z: Math.sin(a) * r }, 0, 1.05), 2.6);
+    o.x = v.x; o.y = v.y; o.k = v.k; o.al = Math.min(1, u * 6) * (1 - u) * 1.2; o.red = ring % 3 === 1;
+  }
+
+  // Experience · a 3D cluster of dotted planets. Each project turns the cluster and lights up a different planet.
+  let PLANETS = [], PDOTS = [], HIGHLIGHT = [];
+  const VIEWS = [[0.3, 0.3], [1.55, -0.55], [2.8, 0.6], [4.05, -0.25], [5.3, 0.5]]; // [turn, tilt] per project
+  function buildCluster() {
+    PLANETS = [];
+    let guard = 0;
+    while (PLANETS.length < 14 && guard++ < 6000) {
+      const u = Math.random(), v = Math.random(), w = 0.12 + Math.cbrt(Math.random()) * 0.34;
+      const th = u * TAU, ph = Math.acos(2 * v - 1);
+      const c = { x: Math.sin(ph) * Math.cos(th) * w, y: Math.cos(ph) * w * 0.75, z: Math.sin(ph) * Math.sin(th) * w,
+                  r: 0.03 + Math.pow(Math.random(), 1.6) * 0.06 };
+      if (PLANETS.every(p => Math.hypot(p.x - c.x, p.y - c.y, p.z - c.z) > p.r + c.r + 0.04)) PLANETS.push(c);
+    }
+    // the five largest planets each stand for one project, in a shuffled order
+    HIGHLIGHT = PLANETS.map((p, i) => i).sort((a, b) => PLANETS[b].r - PLANETS[a].r).slice(0, 5).sort(() => Math.random() - 0.5);
+    HIGHLIGHT.forEach(i => { PLANETS[i].r = Math.max(PLANETS[i].r, 0.055); });
+    const wsum = PLANETS.reduce((s, p) => s + p.r * p.r, 0);
+    PDOTS = [];
+    const ga = Math.PI * (3 - Math.sqrt(5));
+    PLANETS.forEach((p, pi) => {
+      const n = Math.max(8, Math.round(N * p.r * p.r / wsum));
+      for (let j = 0; j < n; j++) {
+        const y = 1 - (j / (n - 1)) * 2, rr = Math.sqrt(Math.max(0, 1 - y * y)), th = ga * j;
+        PDOTS.push({ pi, ux: Math.cos(th) * rr, uy: y, uz: Math.sin(th) * rr });
+      }
+    });
+    while (PDOTS.length < N) PDOTS.push(PDOTS[PDOTS.length % 60]);
+    PDOTS.length = N;
+  }
+  const smooth = x => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
+  function cluster(i, t, o) {
+    const d = PDOTS[i], p = PLANETS[d.pi];
+    // hold still while a project is in place, turn in the gap between projects
+    const i0 = Math.max(0, Math.min(VIEWS.length - 1, Math.floor(EXP_F))), i1 = Math.min(VIEWS.length - 1, i0 + 1);
+    const fr = smooth((EXP_F - i0 - 0.2) / 0.6);
+    const turn = VIEWS[i0][0] + (VIEWS[i1][0] - VIEWS[i0][0]) * fr + t * 0.02;
+    const tilt = VIEWS[i0][1] + (VIEWS[i1][1] - VIEWS[i0][1]) * fr;
+    const hk = HIGHLIGHT.indexOf(d.pi);
+    const glow = hk < 0 ? 0 : smooth((0.6 - Math.abs(EXP_F - hk)) / 0.3);
+    const r = p.r * (1 + glow * 0.3);
+    const v = persp(rot({ x: p.x + d.ux * r, y: p.y + d.uy * r, z: p.z + d.uz * r }, turn, tilt));
+    // dots on the far side of each planet fade, which makes every planet read as a round ball
+    const facing = rot({ x: d.ux, y: d.uy, z: d.uz }, turn, tilt).z;
+    o.x = v.x; o.y = v.y; o.k = v.k * (1 + glow * 0.35);
+    o.al = (0.35 + 0.65 * Math.min(1, Math.max(0, (v.z + 0.45) / 0.9))) * (0.35 + 0.65 * (facing + 1) / 2);
+    o.red = glow > 0.5;
+  }
+
+  // About · a slowly swirling dust cloud. Inner dust turns faster than outer dust.
+  let DUST = [];
+  const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * v); };
+  function buildDust() {
+    DUST = Array.from({ length: N }, (_, i) => {
+      const stray = i % 9 === 0;
+      const r = stray ? 0.18 + Math.random() * 0.3 : Math.abs(gauss()) * 0.17 + 0.015;
+      return { r, a0: Math.random() * TAU + r * 9, y: gauss() * (stray ? 0.12 : 0.05) * (1 - Math.min(0.8, r * 1.5)),
+               sz: 0.55 + Math.random() * 0.9, fl: Math.random() * TAU, al: 0.35 + Math.random() * 0.65 };
+    });
+  }
+  function dust(i, t, o) {
+    const d = DUST[i];
+    const a = d.a0 + t * 0.06 / (0.08 + d.r);
+    const p = { x: Math.cos(a) * d.r * 1.25, y: d.y + Math.sin(t * 0.4 + d.fl) * 0.006, z: Math.sin(a) * d.r };
+    const v = persp(rot(p, 0.2, 0.48));
+    o.x = v.x; o.y = v.y; o.k = v.k * d.sz;
+    o.al = d.al * (0.7 + 0.3 * Math.sin(t * 1.3 + d.fl));
+    o.red = false;
+  }
+
+  // Writing · infinity mirror: rounded squares receding down an angled tunnel.
+  const RINGS = 11;
+  function infinity(i, t, o) {
+    const ring = i % RINGS, j = Math.floor(i / RINGS), per = Math.ceil(N / RINGS);
+    const u = ((ring + t * 0.55) / RINGS) % 1;          // 0 = far, 1 = near
+    const s = (j / per) * 4, h = 0.3, r = 0.08;
+    const side = Math.floor(s), f = s - side;
+    let x, y;
+    if (side === 0) { x = -h + f * 2 * h; y = -h; } else if (side === 1) { x = h; y = -h + f * 2 * h; }
+    else if (side === 2) { x = h - f * 2 * h; y = h; } else { x = -h; y = h - f * 2 * h; }
+    if (Math.abs(x) > h - r && Math.abs(y) > h - r) { const cx = Math.sign(x) * (h - r), cy = Math.sign(y) * (h - r), a = Math.atan2(y - cy, x - cx); x = cx + Math.cos(a) * r; y = cy + Math.sin(a) * r; }
+    const v = persp(rot({ x, y, z: -2.6 * (1 - u) + 0.1 }, -0.42, 0.16), 1.25);
+    o.x = v.x + 0.08; o.y = v.y + 0.02; o.k = v.k;
+    o.al = Math.min(1, u * 3) * Math.min(1, (1 - u) * 8);
+    o.red = ring === 0;
+  }
+
+  const SHAPES = [pulse, cluster, dust, infinity];
+
+  // ---------- where each shape sits on screen ----------
+  function place(si) {
+    if (si === 0) return wide ? { cx: W * 0.62, cy: H * 0.42, s: Math.max(W, H) * 0.95 } : { cx: W * 0.5, cy: H * 0.3, s: H * 0.95 };
+    if (!wide) return { cx: W * 0.5, cy: H * 0.25, s: Math.min(W * 1.05, H * 0.5) };
+    if (si === 1) return { cx: W * 0.7, cy: H * 0.4, s: Math.min(W * 0.6, H * 0.95) };
+    if (si === 2) return { cx: W * 0.74, cy: H * 0.5, s: Math.min(W * 0.62, H * 1.05) };
+    return { cx: W * 0.78, cy: H * 0.5, s: Math.min(W * 0.42, H * 0.8) };
+  }
+
+  // ---------- horizontal scroll-jack ----------
+  let travel = 0, PANEL_POS = [];
+  const anchorX = () => (wide ? W * 0.04 : 16);
+  function sizeExperience() {
+    // the track slides until the last project reaches the left edge, and every project gets an equal share of the scroll
+    const last = panels[panels.length - 1];
+    travel = Math.max(1, last.offsetLeft - anchorX());
+    exp.style.height = (H + travel) + 'px';
+    PANEL_POS = panels.map(p => Math.min(1, Math.max(0, (p.offsetLeft - anchorX()) / travel)));
+  }
+  function updateExperience() {
+    const top = exp.getBoundingClientRect().top;
+    const prog = travel ? Math.min(1, Math.max(0, -top / travel)) : 0;
+    track.style.transform = `translate3d(${-prog * travel}px,0,0)`;
+    bar.style.transform = `scaleX(${prog})`;
+    // fractional project index: 0 = first project, 4 = last
+    let f = 0;
+    if (prog <= PANEL_POS[0]) f = 0;
+    else if (prog >= PANEL_POS[PANEL_POS.length - 1]) f = PANEL_POS.length - 1;
+    else for (let k = 0; k < PANEL_POS.length - 1; k++)
+      if (prog < PANEL_POS[k + 1]) { f = k + (prog - PANEL_POS[k]) / Math.max(1e-6, PANEL_POS[k + 1] - PANEL_POS[k]); break; }
+    EXP_F = f;
+    count.textContent = String(Math.round(f) + 1).padStart(2, '0') + ' / ' + String(panels.length).padStart(2, '0');
+  }
+
+  // ---------- scroll position → which two shapes, and how far between them ----------
+  function buildStops() {
+    const mid = el => el.offsetTop + el.offsetHeight / 2;
+    const hold = H * 0.15;
+    STOPS = [
+      { a: mid(intro) - hold, b: mid(intro) + hold },
+      { a: exp.offsetTop + H * 0.1, b: exp.offsetTop + travel + H * 0.6 },   // cluster holds while the projects slide
+      { a: mid(about) - hold, b: mid(about) + hold },
+      { a: mid(writing) - hold, b: mid(writing) + hold },
+    ];
+    for (let i = 1; i < STOPS.length; i++) if (STOPS[i].a < STOPS[i - 1].b) STOPS[i].a = STOPS[i - 1].b + 1;
+  }
+  function scrollState() {
+    const m = scrollY + H / 2;
+    if (m <= STOPS[0].b) return [0, 0, 0];
+    for (let i = 1; i < STOPS.length; i++) {
+      if (m < STOPS[i].a) return [i - 1, i, (m - STOPS[i - 1].b) / (STOPS[i].a - STOPS[i - 1].b)];
+      if (m <= STOPS[i].b) return [i, i, 0];
+    }
+    const L = STOPS.length - 1; return [L, L, 0];
+  }
+
+  let current = -1;
+  function setNav(i) {
+    if (i === current) return; current = i;
+    navBtns.forEach((b, k) => b.setAttribute('aria-current', k === i ? 'true' : 'false'));
+  }
+  const navTargets = [intro, exp, about, writing];
+  navBtns.forEach(b => b.addEventListener('click', () => {
+    const el = navTargets[+b.dataset.i];
+    const y = el === exp ? el.offsetTop : el.offsetTop + el.offsetHeight / 2 - H / 2;
+    scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  }));
+
+  // ---------- hover pill: names where a link goes, or marks work as confidential ----------
+  const pill = document.getElementById('pill');
+  const movePill = (x, y) => { pill.style.transform = `translate(${x + 14}px, ${y + 16}px)`; };
+  document.querySelectorAll('[data-pill]').forEach(el => {
+    el.addEventListener('pointerenter', e => { pill.textContent = el.dataset.pill; movePill(e.clientX, e.clientY); pill.classList.add('show'); });
+    el.addEventListener('pointermove', e => movePill(e.clientX, e.clientY));
+    el.addEventListener('pointerleave', () => pill.classList.remove('show'));
+    el.addEventListener('focus', () => { const r = el.getBoundingClientRect(); pill.textContent = el.dataset.pill; movePill(r.left, r.top - 50); pill.classList.add('show'); });
+    el.addEventListener('blur', () => pill.classList.remove('show'));
+  });
+
+  // ---------- footer: one panel open at a time ----------
+  const toggles = [...document.querySelectorAll('.tg')];
+  toggles.forEach(b => b.addEventListener('click', () => {
+    const open = b.getAttribute('aria-expanded') !== 'true';
+    toggles.forEach(o => { o.setAttribute('aria-expanded', 'false'); document.getElementById(o.getAttribute('aria-controls')).hidden = true; });
+    if (open) { b.setAttribute('aria-expanded', 'true'); document.getElementById(b.getAttribute('aria-controls')).hidden = false; }
+    resize();
+  }));
+
+  // ---------- For agents: copy the brief as llms.txt ----------
+  const brief = document.getElementById('brief'), status = document.getElementById('copy-status');
+  document.getElementById('copy-brief').addEventListener('click', () => {
+    const lines = ['# Hiroki Murakami', '', '> Group Strategy Director at Huge.', ''];
+    brief.querySelectorAll('div').forEach(d => lines.push(`- ${d.querySelector('dt').textContent}: ${d.querySelector('dd').textContent}`));
+    const text = lines.join('\n');
+    const done = () => { status.textContent = 'Copied'; setTimeout(() => status.textContent = '', 2000); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(brief); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); status.textContent = 'Selected. Press copy.'; };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight; wide = W > 760;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    sizeExperience(); buildStops();
+  }
+
+  addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  document.addEventListener('pointerout', e => { if (!e.relatedTarget) mouse.x = mouse.y = -9999; });
+  addEventListener('resize', resize);
+
+  // ---------- draw loop ----------
+  const A = {}, B = {};
+  function frame(now) {
+    const t = reduce ? 4 : now / 1000;
+    updateExperience();
+    const [from, to, f] = scrollState();
+    const e = ease(Math.min(1, Math.max(0, f)));
+    setNav(e < 0.5 ? from : to);
+    const LA = place(from), LB = place(to);
+    const bump = Math.sin(Math.PI * e) * Math.min(W, H) * 0.28;
+
+    ctx.clearRect(0, 0, W, H);
+    // the black About section is painted on the canvas so the dots stay visible over it
+    const rr = about.getBoundingClientRect();
+    const darkTop = Math.max(0, rr.top), darkBot = Math.min(H, rr.bottom);
+    if (darkBot > darkTop) { ctx.fillStyle = BLACK; ctx.fillRect(0, darkTop, W, darkBot - darkTop); }
+    nav.classList.toggle('on-dark', H / 2 > darkTop && H / 2 < darkBot);
+
+    const R = wide ? 100 : 60, R2 = R * R, base = wide ? 2 : 1.6;
+    for (let i = 0; i < N; i++) {
+      const q = P[i];
+      SHAPES[from](i, t, A); SHAPES[to](i, t, B);
+      const ax = LA.cx + A.x * LA.s, ay = LA.cy + A.y * LA.s, bx = LB.cx + B.x * LB.s, by = LB.cy + B.y * LB.s;
+      const tx = ax + (bx - ax) * e + q.sx * bump, ty = ay + (by - ay) * e + q.sy * bump;
+      if (reduce) { q.x = tx; q.y = ty; }
+      else {
+        q.vx += (tx - q.x) * q.k; q.vy += (ty - q.y) * q.k;
+        const dx = q.x - mouse.x, dy = q.y - mouse.y, d2 = dx * dx + dy * dy;
+        if (d2 < R2 && d2 > 0.01) { const d = Math.sqrt(d2), push = (1 - d / R) * 3; q.vx += dx / d * push; q.vy += dy / d * push; }
+        q.vx *= 0.82; q.vy *= 0.82; q.x += q.vx; q.y += q.vy;
+      }
+      const al = A.al + (B.al - A.al) * e;
+      if (al < 0.03) continue;
+      const k = A.k + (B.k - A.k) * e;
+      const red = (e < 0.5 ? A.red : B.red) || q.accent;
+      const onDark = q.y > darkTop && q.y < darkBot;
+      ctx.globalAlpha = Math.min(1, al);
+      ctx.fillStyle = red ? RED : (onDark ? WHITE : BLACK);
+      const size = Math.max(1, base * Math.pow(k, 0.9));
+      ctx.fillRect(q.x - size / 2, q.y - size / 2, size, size);
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+
+  async function start() {
+    N = innerWidth < 760 ? 650 : 950;
+    resize();
+    buildCluster(); buildDust();
+    const [from] = scrollState(), L = place(from), tmp = {};
+    P = Array.from({ length: N }, (_, i) => {
+      SHAPES[from](i, 0, tmp);
+      const a = Math.random() * TAU, r = 0.4 + Math.random() * 0.6;
+      return { x: L.cx + tmp.x * L.s, y: L.cy + tmp.y * L.s, vx: 0, vy: 0,
+               sx: Math.cos(a) * r, sy: Math.sin(a) * r, k: 0.045 + Math.random() * 0.04, accent: Math.random() < 0.04 };
+    });
+    requestAnimationFrame(frame);
+    try { await document.fonts.ready; } catch (e) {}
+    resize();
+  }
+  start();
+})();
+</script>
 
 </body>
 </html>
