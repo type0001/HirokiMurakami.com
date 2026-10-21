@@ -160,11 +160,12 @@ p { margin: 0; }
 .pill.show { opacity: 1; }
 /* link preview: a small rounded image that follows the cursor */
 .peek {
-  position: fixed; left: 0; top: 0; z-index: 5; pointer-events: none; width: 200px; aspect-ratio: 16 / 9;
+  position: fixed; left: 0; top: 0; z-index: 5; pointer-events: none; width: 200px;
   border-radius: 28px; overflow: hidden; background: var(--stone);
   opacity: 0; transition: opacity .25s; box-shadow: 0 10px 30px rgba(0,0,0,.12);
 }
-.peek img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.peek img { display: block; width: 100%; height: auto; }
+.bio { cursor: default; }
 .peek.show { opacity: 1; }
 /* now playing, pinned top left */
 .np {
@@ -268,7 +269,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
   <button data-i="0" aria-current="true">Intro</button>
   <button data-i="1">Experience</button>
   <button data-i="2">About</button>
-  <button data-i="3">Writing</button>
+  <button data-i="3">Ideas</button>
 </nav>
 
 <main>
@@ -287,9 +288,9 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
           <h2>Selected work</h2>
         </div>
         <article class="panel"><span class="who">Google</span><h3 class="conf" tabindex="0" data-pill="Confidential">Experience strategy for billion-user Google products.</h3></article>
-        <article class="panel"><span class="who">PlayStation</span><h3>Launching the biggest video games for PlayStation including <a class="xl" href="https://www.youtube.com/watch?v=AgTYIkr-GR0" target="_blank" rel="noopener" data-img="media/yotei.jpg">Ghost of Yōtei</a> and <a class="xl" href="https://www.youtube.com/watch?v=0cpg7FCfD1s" target="_blank" rel="noopener" data-img="media/wolverine.jpg">Marvel's Wolverine</a>.</h3></article>
-        <article class="panel"><span class="who">Nike</span><h3>Redesigned a <a class="xl" href="https://www.nike.com/a/nike-adapt-bb-release-info" target="_blank" rel="noopener" data-img="media/www.nike.com_a_nike-adapt-bb-release-info.png">smart shoe app</a> and launched a <a class="xl" href="https://www.inverse.com/input/style/nike-nikeland-metaverse-roblox-virtual-world-digital-sneakers-shoes-clothes" target="_blank" rel="noopener" data-img="media/www.inverse.com_input_style_nike-nikeland-metaverse-roblox-virtual-world-digital-sneakers-shoes-clothes.png">Roblox video game</a> for Nike.</h3></article>
-        <article class="panel"><span class="who">Verizon</span><h3>Built <a class="xl" href="https://www.verizon.com/learning" target="_blank" rel="noopener" data-img="media/www.verizon.com_learning.png">digital classroom tools</a> for public school teachers during the COVID-19 pandemic.</h3></article>
+        <article class="panel"><span class="who">PlayStation</span><h3>Launching the biggest video games for PlayStation including <a class="xl" href="https://www.youtube.com/watch?v=AgTYIkr-GR0" target="_blank" rel="noopener" data-img="media/preview-ghost-of-yotei.jpg">Ghost of Yōtei</a> and <a class="xl" href="https://www.youtube.com/watch?v=0cpg7FCfD1s" target="_blank" rel="noopener" data-img="media/preview-wolverine.jpg">Marvel's Wolverine</a>.</h3></article>
+        <article class="panel"><span class="who">Nike</span><h3>Redesigned a <a class="xl" href="https://www.nike.com/a/nike-adapt-bb-release-info" target="_blank" rel="noopener" data-img="media/preview-nike-adapt.jpg">smart shoe app</a> and launched a <a class="xl" href="https://www.inverse.com/input/style/nike-nikeland-metaverse-roblox-virtual-world-digital-sneakers-shoes-clothes" target="_blank" rel="noopener" data-img="media/preview-nikeland.jpg">Roblox video game</a> for Nike.</h3></article>
+        <article class="panel"><span class="who">Verizon</span><h3>Built <a class="xl" href="https://www.verizon.com/learning" target="_blank" rel="noopener" data-img="media/preview-verizon-learning.jpg">digital classroom tools</a> for public school teachers during the COVID-19 pandemic.</h3></article>
         <article class="panel"><span class="who">Hillary for America</span><h3 class="conf" tabindex="0" data-pill="Confidential">Communications strategy and ghostwriter for Hillary Clinton during the 2016 presidential election.</h3></article>
       </div>
       <div class="hud wrap" aria-hidden="true">
@@ -304,8 +305,8 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     <div class="inner">
       <span class="label">About</span>
       <div class="reveal">
-        <p>I've spent 15 years as a strategist at New York product design and advertising agencies. I bring deep expertise in mixed-methods research and multiple strategy methodologies including human-centered design, agile delivery, and brand and creative strategy. I've helped create disruptive products and brands, led multidisciplinary teams, mentor strategy departments, and champion change within large organizations.</p>
-        <p class="say-hi"><a href="https://www.linkedin.com/in/hnmurakami/" target="_blank" rel="noopener">Say 👋🏼 on LinkedIn</a></p>
+        <p class="bio" data-img="media/hm.jpeg">I've spent 15 years as a strategist at New York product design and advertising agencies. I bring deep expertise in mixed-methods research and multiple strategy methodologies including human-centered design, agile delivery, and brand and creative strategy. I've helped create disruptive products and brands, led multidisciplinary teams, mentor strategy departments, and champion change within large organizations.</p>
+        <p class="say-hi"><a href="https://www.linkedin.com/in/hnmurakami/" target="_blank" rel="noopener">Say 👋🏼 on LinkedIn →</a></p>
       </div>
       <table class="history">
         <caption class="label">Career</caption>
@@ -323,20 +324,20 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
 
   <section id="writing" class="wrap">
     <div class="inner">
-      <span class="label">Thinking</span>
-      <h2>Writing</h2>
+      <span class="label">Ideas</span>
+      <h2>Writing, music, everything else worth sharing</h2>
       <div class="cards">
         <div class="cell">
           <a class="card" href="https://www.hugeinc.com/ideas/the-new-video-game-marketing-playbook" target="_blank" rel="noopener"><div class="in">
             <div class="top"><h3><span class="ul">The New Video Game Marketing Playbook</span></h3><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-            <div class="bottom"><span class="label">Huge Perspectives</span><span>January 2026</span></div>
+            <div class="bottom"><span class="label">Article</span><span>Huge</span></div>
           </div></a>
         </div>
         <div class="cell">
-          <div class="card soon" tabindex="0"><div class="in">
-            <div class="top"><h3><span class="ul">Next article</span></h3><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-            <div class="bottom"><span class="label">In progress</span><span>Coming soon</span></div>
-          </div></div>
+          <a class="card" href="https://soundcloud.com/fastcaj/howhotishousemusic" target="_blank" rel="noopener"><div class="in">
+            <div class="top"><h3><span class="ul">FastCasual mixtape 1.0</span></h3><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <div class="bottom"><span class="label">Music</span><span>SoundCloud</span></div>
+          </div></a>
         </div>
       </div>
     </div>
@@ -392,6 +393,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
           <div><dt>Selected clients</dt><dd>Google, PlayStation, Nike, Verizon, Hillary for America.</dd></div>
           <div><dt>Career</dt><dd>Huge (2022 to present), Instrument (2021 to 2022), Publicis Sapient (2019 to 2021), Deutsch (2017 to 2019), Hillary for America (2016), Edelman Digital (2012 to 2016).</dd></div>
           <div><dt>Writing</dt><dd>"The New Video Game Marketing Playbook," Huge Perspectives, January 2026.</dd></div>
+          <div><dt>Music</dt><dd>DJ mix "FastCasual mixtape 1.0" on SoundCloud.</dd></div>
           <div><dt>Education</dt><dd>Emerson College, B.S. Marketing Communication.</dd></div>
           <div><dt>This site</dt><dd>A one-page portfolio. Every fact is in plain HTML. The dot animations are decorative. The source code is public on GitHub. Plain-text summary: hirokimurakami.com/llms.txt</dd></div>
           <div><dt>How to cite</dt><dd>Hiroki Murakami, Group Strategy Director at Huge.</dd></div>
@@ -619,7 +621,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     el.addEventListener('blur', () => pill.classList.remove('show'));
   });
   const peek = document.getElementById('peek'), peekImg = peek.querySelector('img');
-  const movePeek = (x, y) => { peek.style.transform = `translate(${x + 18}px, ${y - 130}px)`; };
+  const movePeek = (x, y) => { peek.style.transform = `translate(${x + 18}px, ${y - (peek.offsetHeight || 113) - 16}px)`; };
   document.querySelectorAll('[data-img]').forEach(el => {
     const pre = new Image(); pre.src = el.dataset.img;   // load ahead so the preview appears instantly
     el.addEventListener('pointerenter', e => { peekImg.src = el.dataset.img; movePeek(e.clientX, e.clientY); peek.classList.add('show'); });
