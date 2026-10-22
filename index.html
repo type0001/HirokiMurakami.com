@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hiroki Murakami · Group Strategy Director at Huge</title>
 <meta name="description" content="Hiroki Murakami is a Group Strategy Director at Huge who helps organizations like Google, Nike and PlayStation design their future.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2716%27 fill=%27%23d91642%27/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2716%27 fill=%27%230064e6%27/%3E%3C/svg%3E">
 <link rel="canonical" href="https://hirokimurakami.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hirokimurakami.com/">
@@ -22,12 +22,12 @@
 /* STYLE GUIDE
    Layout: gallery wall. White ground, generous space, one fixed dot canvas behind every section.
    Text sits left, the dot object sits right on desktop and on top on phones.
-   Color: white and black do the work. Red is a limited accent: small marks, highlights and the progress bar. One section inverts to black.
+   Color: white and black do the work. Blue is the one accent: small marks, highlights and the progress bar. One section inverts to black.
    Type: one grotesk at regular weight. Hierarchy comes from size, never from bold. */
 :root {
   --white: #ffffff;
   --black: #000000;
-  --red: #d91642;
+  --red: #0064e6;          /* the accent (kept under its old name so nothing else has to change) */
   --stone: #eeeeec;       /* card surface */
   --grey: #6f6f6f;        /* secondary text */
   --line: #e1e1df;        /* hairlines */
@@ -369,7 +369,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
         <div>
           <p class="label guide-h">Color</p>
           <div class="sw"><div class="sw-w"></div><div class="sw-k"></div><div class="sw-r"></div><div class="sw-s"></div></div>
-          <div class="sw-names"><span>White<br>#FFFFFF</span><span>Black<br>#000000</span><span>Red<br>#D91642</span><span>Stone<br>#EEEEEC</span></div>
+          <div class="sw-names"><span>White<br>#FFFFFF</span><span>Black<br>#000000</span><span>Blue<br>#0064E6</span><span>Stone<br>#EEEEEC</span></div>
         </div>
         <div class="scale">
           <p class="label guide-h">Type · Hanken Grotesk, regular</p>
@@ -412,7 +412,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const css = getComputedStyle(document.documentElement);
   const tok = (n, f) => css.getPropertyValue(n).trim() || f;
-  const WHITE = tok('--white', '#fff'), BLACK = tok('--black', '#000'), RED = tok('--red', '#d91642');
+  const WHITE = tok('--white', '#fff'), BLACK = tok('--black', '#000'), RED = tok('--red', '#0064e6');
 
   const intro = document.getElementById('intro');
   const exp = document.getElementById('experience');
@@ -425,128 +425,259 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
   const navBtns = [...nav.querySelectorAll('button')];
   const panels = [...track.querySelectorAll('article.panel')];
 
-  let W = 0, H = 0, DPR = 1, N = 900, wide = true, P = [], STOPS = [], EXP_F = 0;
+  let W = 0, H = 0, DPR = 1, wide = true, STOPS = [], EXP_F = 0;
   const mouse = { x: -9999, y: -9999 };
   const TAU = Math.PI * 2;
   const ease = f => f < 0.5 ? 4 * f * f * f : 1 - Math.pow(-2 * f + 2, 3) / 2;
 
-  // ---------- 3D helpers ----------
+  // =========================================================
+  // DOT ENGINE: four scenes that crossfade as you scroll
+  // =========================================================
+  const TUNE_DEFAULTS = { size: 2.2, gap: 9, hoverR: 170, hoverF: 48, flight: 1 };
+  const S = Object.assign({}, TUNE_DEFAULTS);
+  const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+  const gauss = (x, c, s) => Math.exp(-((x - c) * (x - c)) / (2 * s * s));
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+  // noise that can repeat seamlessly in one direction (used for the endless flyover)
+  const hash = (i, j) => { let h = (i * 374761393 + j * 668265263) | 0; h = (h ^ (h >>> 13)) * 1274126177 | 0; return ((h ^ (h >>> 16)) >>> 0) / 4294967295; };
+  const sm = t => t * t * (3 - 2 * t);
+  function noise(x, y, py = 0) {
+    const i = Math.floor(x), j = Math.floor(y), u = sm(x - i), v = sm(y - j);
+    const j0 = py ? ((j % py) + py) % py : j, j1 = py ? (((j + 1) % py) + py) % py : j + 1;
+    const a = hash(i, j0), b = hash(i + 1, j0), c = hash(i, j1), d = hash(i + 1, j1);
+    return (a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v) * 2 - 1;
+  }
+  const fbm = (x, y, o = 4) => { let s = 0, a = 0.5, f = 1; for (let k = 0; k < o; k++) { s += a * noise(x * f, y * f); f *= 2.02; a *= 0.5; } return s; };
+  const ridged = (x, y, o = 5) => { let s = 0, a = 0.5, f = 1; for (let k = 0; k < o; k++) { s += a * (1 - Math.abs(noise(x * f + 31, y * f - 17))); f *= 2.1; a *= 0.5; } return s; };
+  function ridgedLoop(x, z, period, o = 5) {          // repeats exactly every `period` units of z
+    let s = 0, a = 0.5, f = 1;
+    for (let k = 0; k < o; k++) { s += a * (1 - Math.abs(noise(x * f + 31, z * f, period * f))); f *= 2; a *= 0.5; }
+    return s;
+  }
+
+  // ---------- cursor: dots part around it, eased so they glide ----------
+  const M = { x: -9999, y: -9999, k: 0 };
+  let PX = 0, PY = 0;
+  function push(x, y) {
+    PX = x; PY = y; if (M.k < 0.01) return;
+    const dx = x - M.x, dy = y - M.y, d2 = dx * dx + dy * dy, R0 = S.hoverR;
+    if (d2 > R0 * R0 || d2 < 0.01) return;
+    const d = Math.sqrt(d2), f = 0.5 + 0.5 * Math.cos(Math.PI * d / R0), p = f * S.hoverF * M.k;
+    PX = x + dx / d * p; PY = y + dy / d * p;
+  }
+
+  // ---------- batching: paths by alpha step and color, filled once per frame ----------
+  const STEPS = 10;
+  let paths = [], darkTop = 0, darkBot = 0;
+  function resetPaths() { paths = Array.from({ length: (STEPS + 1) * 3 }, () => null); }
+  function dot(x, y, r, a, red) {
+    if (a < 0.04) return;
+    push(x, y);
+    const onDark = PY > darkTop && PY < darkBot;
+    const col = red ? 2 : (onDark ? 1 : 0), idx = Math.min(STEPS, Math.round(a * STEPS)) * 3 + col;
+    const p = paths[idx] || (paths[idx] = new Path2D());
+    p.moveTo(PX + r, PY); p.arc(PX, PY, r, 0, TAU);
+  }
+  function flush() {
+    for (let s = 1; s <= STEPS; s++) for (let c = 0; c < 3; c++) {
+      const p = paths[s * 3 + c]; if (!p) continue;
+      ctx.globalAlpha = s / STEPS; ctx.fillStyle = c === 2 ? RED : (c === 1 ? WHITE : BLACK); ctx.fill(p);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // ---------- shared 3D helpers ----------
   function rot(p, ry, rx) {
     let { x, y, z } = p;
     const cy = Math.cos(ry), sy = Math.sin(ry); const x1 = x * cy + z * sy; z = -x * sy + z * cy; x = x1;
     const cx = Math.cos(rx), sx = Math.sin(rx); const y1 = y * cx - z * sx; z = y * sx + z * cx; y = y1;
     return { x, y, z };
   }
-  function persp(v, f = 1.8) { const k = f / (f - v.z); return { x: v.x * k, y: v.y * k, z: v.z, k }; }
+  const gaussR = () => { let u = 0, v = 0; while (!u) u = rnd(); while (!v) v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * v); };
+  const fontF = () => '500 10px ' + getComputedStyle(document.body).fontFamily;
 
-  // Each shape fills o = {x, y (unit space), k (depth scale), al (alpha), red}
-
-  // Intro · pulse: dotted circles on a floor plane, expanding outward.
-  const PR = 6;
-  function pulse(i, t, o) {
-    const ring = i % PR, j = Math.floor(i / PR), per = Math.ceil(N / PR);
-    const u = ((ring + t * 0.22) / PR) % 1;
-    const r = 0.06 + u * 0.75, a = (j / per) * TAU;
-    const v = persp(rot({ x: Math.cos(a) * r, y: 0, z: Math.sin(a) * r }, 0, 1.05), 2.6);
-    o.x = v.x; o.y = v.y; o.k = v.k; o.al = Math.min(1, u * 6) * (1 - u) * 1.2; o.red = ring % 3 === 1;
-  }
-
-  // Experience · a 3D cluster of dotted planets. Each project turns the cluster and lights up a different planet.
-  let PLANETS = [], PDOTS = [], HIGHLIGHT = [];
-  const VIEWS = [[0.3, 0.3], [1.55, -0.55], [2.8, 0.6], [4.05, -0.25], [5.3, 0.5]]; // [turn, tilt] per project
-  function buildCluster() {
-    PLANETS = [];
-    let guard = 0;
-    while (PLANETS.length < 14 && guard++ < 6000) {
-      const u = Math.random(), v = Math.random(), w = 0.12 + Math.cbrt(Math.random()) * 0.34;
-      const th = u * TAU, ph = Math.acos(2 * v - 1);
-      const c = { x: Math.sin(ph) * Math.cos(th) * w, y: Math.cos(ph) * w * 0.75, z: Math.sin(ph) * Math.sin(th) * w,
-                  r: 0.03 + Math.pow(Math.random(), 1.6) * 0.06 };
-      if (PLANETS.every(p => Math.hypot(p.x - c.x, p.y - c.y, p.z - c.z) > p.r + c.r + 0.04)) PLANETS.push(c);
+  // ---------- 1 · Intro: a slow universe of dotted planets, watched by a detection model ----------
+  let UNI = null;
+  const UNI_TRACK = [2, 7, 13, 21, 30, 38];
+  function buildUni() {
+    seed = 9; const planets = []; let guard = 0;
+    while (planets.length < 46 && guard++ < 12000) {
+      const c = { x: (rnd() * 2 - 1) * 1.7, y: (rnd() * 2 - 1) * 0.85, z: (rnd() * 2 - 1) * 1.0, r: 0.03 + Math.pow(rnd(), 2) * 0.09, conf: 0.8 + rnd() * 0.19 };
+      if (planets.every(p => Math.hypot(p.x - c.x, p.y - c.y, p.z - c.z) > p.r + c.r + 0.08)) planets.push(c);
     }
-    // the five largest planets each stand for one project, in a shuffled order
-    HIGHLIGHT = PLANETS.map((p, i) => i).sort((a, b) => PLANETS[b].r - PLANETS[a].r).slice(0, 5).sort(() => Math.random() - 0.5);
-    HIGHLIGHT.forEach(i => { PLANETS[i].r = Math.max(PLANETS[i].r, 0.055); });
-    const wsum = PLANETS.reduce((s, p) => s + p.r * p.r, 0);
-    PDOTS = [];
-    const ga = Math.PI * (3 - Math.sqrt(5));
-    PLANETS.forEach((p, pi) => {
-      const n = Math.max(8, Math.round(N * p.r * p.r / wsum));
-      for (let j = 0; j < n; j++) {
-        const y = 1 - (j / (n - 1)) * 2, rr = Math.sqrt(Math.max(0, 1 - y * y)), th = ga * j;
-        PDOTS.push({ pi, ux: Math.cos(th) * rr, uy: y, uz: Math.sin(th) * rr });
+    const N = wide ? 5600 : 3200, wsum = planets.reduce((a, p) => a + p.r * p.r, 0), ga = Math.PI * (3 - Math.sqrt(5)), pts = [];
+    planets.forEach((p, pi) => {
+      const n = Math.max(40, Math.round(N * p.r * p.r / wsum));   // every planet gets enough dots to read as a solid ball
+      for (let j = 0; j < n; j++) { const y = 1 - (j / (n - 1)) * 2, rr = Math.sqrt(Math.max(0, 1 - y * y)), a = ga * j; pts.push({ pi, ux: Math.cos(a) * rr, uy: y, uz: Math.sin(a) * rr }); }
+    });
+    UNI = { planets, pts, wide };
+  }
+  function drawUni(t, dt, wgt) {
+    if (!UNI || UNI.wide !== wide) buildUni();
+    const tt = t * 0.15;                                     // a very slow drift
+    const yaw = 0.3 + tt * 0.25, tilt = 0.22 + 0.08 * Math.sin(tt * 0.5), r0 = S.size / 2;
+    const cx = wide ? W * 0.6 : W * 0.5, cy = wide ? H * 0.5 : H * 0.3, sc = wide ? W * 0.34 : W * 0.42;
+    const proj = v => { const k = 3.2 / (3.2 - v.z); return [cx + v.x * sc * k, cy + v.y * sc * k, k]; };
+    const C = UNI.planets.map(p => rot(p, yaw, tilt));
+    for (const d of UNI.pts) {
+      const p = UNI.planets[d.pi], c = C[d.pi], u = rot({ x: d.ux, y: d.uy, z: d.uz }, yaw, tilt);
+      const [x, y, k] = proj({ x: c.x + u.x * p.r, y: c.y + u.y * p.r, z: c.z + u.z * p.r });
+      if (x < -20 || x > W + 20 || y < -20 || y > H + 20) continue;
+      const depth = 0.35 + 0.65 * Math.min(1, Math.max(0, (c.z + 1.2) / 2.4)), facing = 0.3 + 0.7 * (u.z + 1) / 2;
+      dot(x, y, r0 * 0.62 * k, depth * facing * mask(x, y) * wgt, d.pi === UNI_TRACK[0]);
+    }
+    const picks = [];
+    UNI_TRACK.forEach(i => {
+      const p = UNI.planets[i]; if (!p) return;
+      const [x, y, k] = proj(C[i]), m = mask(x, y);
+      if (m > 0.75 && x > 0 && x < W && y > 0 && y < H) picks.push({ x, y, sz: Math.max(0.2, (p.r * sc * k + 4 - 9) / 6), conf: p.conf });
+    });
+    return () => drawBoxes(picks, wgt, t);
+  }
+  // keep the copy readable: dots fade toward the intro text
+  const mask = (x, y) => wide ? smooth(W * 0.3, W * 0.56, x) : smooth(H * 0.62, H * 0.42, y);
+
+  // ---------- flocking (used by Ideas) ----------
+  function makeFlock(n, sd) {
+    seed = sd;
+    return { birds: Array.from({ length: n }, (_, i) => ({ x: W * (0.55 + rnd() * 0.3), y: H * (0.2 + rnd() * 0.35), vx: rnd() - 0.5, vy: rnd() - 0.5, sz: 0.55 + rnd() * 0.8, conf: 0.8 + rnd() * 0.19, g: i % 3 })), W, H, boost: 0, panel: -1 };
+  }
+  let F2 = null;
+  function stepFlock(F, P, tx, ty, step) {
+    const B = F.birds, max = P.max * (1 + F.boost);
+    for (const b of B) {
+      let ax = 0, ay = 0, cx = 0, cy = 0, n = 0, sx = 0, sy = 0;
+      for (const o of B) {
+        if (o === b) continue;
+        const dx = o.x - b.x, dy = o.y - b.y; if (dx > 70 || dx < -70 || dy > 70 || dy < -70) continue;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < P.see && o.g === b.g) { ax += o.vx; ay += o.vy; cx += o.x; cy += o.y; n++; }
+        if (d2 < P.sep) { sx -= dx / (d2 + 1); sy -= dy / (d2 + 1); }
+      }
+      if (n) { b.vx += (ax / n - b.vx) * P.align + (cx / n - b.x) * 0.0007; b.vy += (ay / n - b.vy) * P.align + (cy / n - b.y) * 0.0007; }
+      // three loose sub-flocks circle the target, so the shape keeps splitting and rejoining
+      const ga = b.g * 2.09 + performance.now() / 4000;
+      const gx = tx + Math.cos(ga) * P.spread, gy = ty + Math.sin(ga) * P.spread * 0.6;
+      b.vx += sx * 0.9 + (gx - b.x) * P.pull + (rnd() - 0.5) * 0.07;
+      b.vy += sy * 0.9 + (gy - b.y) * P.pull + (rnd() - 0.5) * 0.07;
+      // flee the cursor
+      if (M.k > 0.05) { const dx = b.x - M.x, dy = b.y - M.y, d2 = dx * dx + dy * dy, R0 = S.hoverR; if (d2 < R0 * R0 && d2 > 1) { const d = Math.sqrt(d2); b.vx += dx / d * 0.5 * (1 - d / R0); b.vy += dy / d * 0.5 * (1 - d / R0); } }
+      const sp = Math.hypot(b.vx, b.vy); if (sp > max) { b.vx *= max / sp; b.vy *= max / sp; }
+      b.x += b.vx * step; b.y += b.vy * step;
+    }
+    F.boost *= 0.97;
+  }
+  function drawBoxes(list, a, t) {
+    if (a < 0.05) return;
+    ctx.font = '500 10px ' + getComputedStyle(document.body).fontFamily; ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.4 * a; ctx.strokeStyle = BLACK; ctx.beginPath();
+    list.forEach((b, k) => { push(b.x, b.y); k ? ctx.lineTo(PX, PY) : ctx.moveTo(PX, PY); }); ctx.stroke();
+    list.forEach((b, k) => {
+      push(b.x, b.y); const s = 9 + b.sz * 6, red = k === 0;
+      ctx.globalAlpha = a; ctx.strokeStyle = red ? RED : BLACK; ctx.fillStyle = red ? RED : BLACK;
+      ctx.strokeRect(PX - s, PY - s, s * 2, s * 2);
+      ctx.fillText(String(k + 1).padStart(2, '0') + ' · ' + (b.conf + 0.01 * Math.sin(t * 3 + k)).toFixed(2), PX + s + 4, PY - s + 8);
+    });
+    ctx.globalAlpha = 1;
+  }
+  // ---------- 2 · Experience: a dotted cube that assembles, turns with each project and lights one face ----------
+  let CUBE = null;
+  const CUBE_VIEWS = [[0.6, 0.45], [1.9, -0.4], [3.2, 0.6], [4.4, -0.35], [5.6, 0.5]];
+  const CUBE_FACE = [0, 3, 1, 4, 2];                  // which face lights up for each project
+  function buildCube() {
+    const n = 10, pts = [];
+    [[0, 1], [0, -1], [1, 1], [1, -1], [2, 1], [2, -1]].forEach(([ax, sg], fi) => {
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+        const u = -1 + 2 * i / (n - 1), v = -1 + 2 * j / (n - 1), p = [0, 0, 0];
+        p[ax] = sg; p[(ax + 1) % 3] = u; p[(ax + 2) % 3] = v;
+        pts.push({ x: p[0], y: p[1], z: p[2], f: fi, edge: Math.abs(u) === 1 || Math.abs(v) === 1, px: 0, py: 0, vx: 0, vy: 0, k: 0.045 + Math.random() * 0.04 });
       }
     });
-    while (PDOTS.length < N) PDOTS.push(PDOTS[PDOTS.length % 60]);
-    PDOTS.length = N;
+    CUBE = { pts, last: -1e9 };
   }
-  const smooth = x => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
-  function cluster(i, t, o) {
-    const d = PDOTS[i], p = PLANETS[d.pi];
-    // hold still while a project is in place, turn in the gap between projects
-    const i0 = Math.max(0, Math.min(VIEWS.length - 1, Math.floor(EXP_F))), i1 = Math.min(VIEWS.length - 1, i0 + 1);
-    const fr = smooth((EXP_F - i0 - 0.2) / 0.6);
-    const turn = VIEWS[i0][0] + (VIEWS[i1][0] - VIEWS[i0][0]) * fr + t * 0.02;
-    const tilt = VIEWS[i0][1] + (VIEWS[i1][1] - VIEWS[i0][1]) * fr;
-    const hk = HIGHLIGHT.indexOf(d.pi);
-    const glow = hk < 0 ? 0 : smooth((0.6 - Math.abs(EXP_F - hk)) / 0.3);
-    const r = p.r * (1 + glow * 0.3);
-    const v = persp(rot({ x: p.x + d.ux * r, y: p.y + d.uy * r, z: p.z + d.uz * r }, turn, tilt));
-    // dots on the far side of each planet fade, which makes every planet read as a round ball
-    const facing = rot({ x: d.ux, y: d.uy, z: d.uz }, turn, tilt).z;
-    o.x = v.x; o.y = v.y; o.k = v.k * (1 + glow * 0.35);
-    o.al = (0.35 + 0.65 * Math.min(1, Math.max(0, (v.z + 0.45) / 0.9))) * (0.35 + 0.65 * (facing + 1) / 2);
-    o.red = glow > 0.5;
+  function scatterCube() {                            // throw the dots wide so the cube builds itself again
+    for (const p of CUBE.pts) { const a = Math.random() * TAU, d = Math.max(W, H) * (0.3 + Math.random() * 0.5); p.px = W * 0.7 + Math.cos(a) * d; p.py = H * 0.4 + Math.sin(a) * d; p.vx = p.vy = 0; }
   }
-
-  // About · a slowly swirling dust cloud. Inner dust turns faster than outer dust.
-  let DUST = [];
-  const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * v); };
-  function buildDust() {
-    DUST = Array.from({ length: N }, (_, i) => {
-      const stray = i % 9 === 0;
-      const r = stray ? 0.18 + Math.random() * 0.3 : Math.abs(gauss()) * 0.17 + 0.015;
-      return { r, a0: Math.random() * TAU + r * 9, y: gauss() * (stray ? 0.12 : 0.05) * (1 - Math.min(0.8, r * 1.5)),
-               sz: 0.55 + Math.random() * 0.9, fl: Math.random() * TAU, al: 0.35 + Math.random() * 0.65 };
-    });
-  }
-  function dust(i, t, o) {
-    const d = DUST[i];
-    const a = d.a0 + t * 0.06 / (0.08 + d.r);
-    const p = { x: Math.cos(a) * d.r * 1.25, y: d.y + Math.sin(t * 0.4 + d.fl) * 0.006, z: Math.sin(a) * d.r };
-    const v = persp(rot(p, 0.2, 0.48));
-    o.x = v.x; o.y = v.y; o.k = v.k * d.sz;
-    o.al = d.al * (0.7 + 0.3 * Math.sin(t * 1.3 + d.fl));
-    o.red = false;
+  function drawCube(t, dt, wgt) {
+    if (!CUBE) buildCube();
+    const now = performance.now(); if (now - CUBE.last > 400) scatterCube(); CUBE.last = now;
+    const i0 = Math.max(0, Math.min(4, Math.floor(EXP_F))), i1 = Math.min(4, i0 + 1);
+    const fr = smooth(0.35, 0.65, EXP_F - i0);         // hold on a project, snap across in the gap; the springs add the overshoot
+    const turn = CUBE_VIEWS[i0][0] + (CUBE_VIEWS[i1][0] - CUBE_VIEWS[i0][0]) * fr + t * 0.05 + 0.08 * Math.sin(t * 0.4);
+    const tilt = CUBE_VIEWS[i0][1] + (CUBE_VIEWS[i1][1] - CUBE_VIEWS[i0][1]) * fr + 0.06 * Math.sin(t * 0.33);
+    const cx = wide ? W * 0.72 : W * 0.5, cy = wide ? H * 0.36 : H * 0.24, s0 = wide ? Math.min(W * 0.1, H * 0.17) : Math.min(W * 0.2, H * 0.11), r0 = S.size / 2;
+    const glow = CUBE_FACE.map((f, k) => smooth(0.6, 0.3, Math.abs(EXP_F - k)));
+    for (const p of CUBE.pts) {
+      const v = rot(p, turn, tilt), k = 4 / (4 - v.z), tx = cx + v.x * s0 * k, ty = cy + v.y * s0 * k;
+      if (reduce) { p.px = tx; p.py = ty; } else { p.vx = (p.vx + (tx - p.px) * p.k) * 0.82; p.vy = (p.vy + (ty - p.py) * p.k) * 0.82; p.px += p.vx; p.py += p.vy; }
+      let g = 0; for (let j = 0; j < 5; j++) if (CUBE_FACE[j] === p.f && glow[j] > g) g = glow[j];
+      const depth = 0.3 + 0.7 * (v.z + 1.4) / 2.8;
+      dot(p.px, p.py, r0 * (p.edge ? 1.1 : 0.85) * (1 + g * 0.3) * k, Math.min(1, depth * (p.edge ? 1 : 0.8) + g * 0.3) * wgt, g > 0.5);
+    }
   }
 
-  // Writing · infinity mirror: rounded squares receding down an angled tunnel.
-  const RINGS = 11;
-  function infinity(i, t, o) {
-    const ring = i % RINGS, j = Math.floor(i / RINGS), per = Math.ceil(N / RINGS);
-    const u = ((ring + t * 0.55) / RINGS) % 1;          // 0 = far, 1 = near
-    const s = (j / per) * 4, h = 0.3, r = 0.08;
-    const side = Math.floor(s), f = s - side;
-    let x, y;
-    if (side === 0) { x = -h + f * 2 * h; y = -h; } else if (side === 1) { x = h; y = -h + f * 2 * h; }
-    else if (side === 2) { x = h - f * 2 * h; y = h; } else { x = -h; y = h - f * 2 * h; }
-    if (Math.abs(x) > h - r && Math.abs(y) > h - r) { const cx = Math.sign(x) * (h - r), cy = Math.sign(y) * (h - r), a = Math.atan2(y - cy, x - cx); x = cx + Math.cos(a) * r; y = cy + Math.sin(a) * r; }
-    const v = persp(rot({ x, y, z: -2.6 * (1 - u) + 0.1 }, -0.42, 0.16), 1.25);
-    o.x = v.x + 0.08; o.y = v.y + 0.02; o.k = v.k;
-    o.al = Math.min(1, u * 3) * Math.min(1, (1 - u) * 8);
-    o.red = ring === 0;
+  // ---------- 3 · About: a slowly turning orb with two map designators ----------
+  let ORB = null;
+  function buildOrb() {
+    const n = wide ? 2800 : 1700, ga = Math.PI * (3 - Math.sqrt(5));
+    ORB = Array.from({ length: n }, (_, i) => { const y = 1 - (i / (n - 1)) * 2, r = Math.sqrt(1 - y * y), a = ga * i; return { x: Math.cos(a) * r, y, z: Math.sin(a) * r }; });
+    ORB.n = n;
+  }
+  const latlon = (la, lo) => { const A = la * Math.PI / 180, B = lo * Math.PI / 180; return { x: Math.cos(A) * Math.cos(B), y: -Math.sin(A), z: Math.cos(A) * Math.sin(B) }; };
+  const SITES = [
+    { p: latlon(22, 40), name: 'DESIGNATE 07', loc: '22.0N  40.0E', dx: 60, dy: -58 },
+    { p: latlon(-28, 150), name: 'DESIGNATE 11', loc: '28.0S  150.0E', dx: 54, dy: 52 },
+    { p: latlon(50, 255), name: 'SURVEY 03', loc: '50.0N  105.0W', dx: 66, dy: -44 },
+  ];
+  function drawOrb(t, dt, wgt) {
+    if (!ORB || ORB.n !== (wide ? 2800 : 1700)) buildOrb();
+    const yaw = t * 0.08, tilt = 0.3, r0 = S.size / 2;
+    const ox = wide ? W * 0.74 : W * 0.5, oy = wide ? H * 0.5 : H * 0.27, R = wide ? Math.min(W * 0.2, H * 0.33) : Math.min(W * 0.36, H * 0.2);
+    const P = v => { const k = 3 / (3 - v.z); return [ox + v.x * R * k, oy + v.y * R * k, k]; };
+    const m = x => wide ? smooth(W * 0.46, W * 0.56, x) : 1;
+    for (const p of ORB) {
+      const v = rot(p, yaw, tilt), [x, y, k] = P(v);
+      dot(x, y, r0 * 0.7 * k, (v.z > 0 ? 0.3 + 0.7 * v.z : 0.12) * m(x) * wgt, false);
+    }
+    // a tilted dotted orbit with a tracked marker
+    const orbitAt = a => rot(rot({ x: Math.cos(a) * 1.38, y: 0, z: Math.sin(a) * 1.38 }, -0.5, 1.15), yaw * 0.25, 0);
+    for (let k = 0; k < 120; k++) { const v = orbitAt(k / 120 * TAU), [x, y] = P(v); dot(x, y, r0 * 0.5, (v.z > 0 ? 0.55 : 0.2) * m(x) * wgt, false); }
+    const mv = orbitAt(t * 0.25), [mx, my] = P(mv);
+    const sites = SITES.map(S_ => { const v = rot(S_.p, yaw, tilt), [x, y] = P(v); return { ...S_, x, y, vis: smooth(0.1, 0.35, v.z) * m(x) * wgt }; });
+    return () => {
+      ctx.font = fontF(); ctx.lineWidth = 1;
+      // marker on the orbit
+      push(mx, my); const ma = (mv.z > 0 ? 1 : 0.35) * m(mx) * wgt;
+      ctx.globalAlpha = ma; ctx.fillStyle = RED; ctx.beginPath(); ctx.moveTo(PX, PY - 6); ctx.lineTo(PX + 5, PY + 4); ctx.lineTo(PX - 5, PY + 4); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = WHITE; ctx.fillText('TRK 02', PX + 10, PY + 3);
+      // designated sites on the surface: brackets, a leader line, a readout
+      sites.forEach(st => {
+        if (st.vis < 0.02) return;
+        push(st.x, st.y); const b = 9, c = 4, up = st.dy < 0 ? -1 : 1;
+        ctx.globalAlpha = st.vis; ctx.strokeStyle = RED; ctx.beginPath();
+        [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(([u, v]) => { ctx.moveTo(PX + u * b, PY + v * (b - c)); ctx.lineTo(PX + u * b, PY + v * b); ctx.lineTo(PX + u * (b - c), PY + v * b); });
+        ctx.stroke();
+        ctx.strokeStyle = WHITE; ctx.globalAlpha = st.vis * 0.7; ctx.beginPath(); ctx.moveTo(PX + b, PY + up * b); ctx.lineTo(PX + st.dx, PY + st.dy); ctx.lineTo(PX + st.dx + 110, PY + st.dy); ctx.stroke();
+        ctx.globalAlpha = st.vis; ctx.fillStyle = WHITE; ctx.fillText(st.name, PX + st.dx + 4, PY + st.dy - 6); ctx.fillStyle = RED; ctx.fillText(st.loc, PX + st.dx + 4, PY + st.dy + 14);
+      });
+      ctx.globalAlpha = 1;
+    };
   }
 
-  const SHAPES = [pulse, cluster, dust, infinity];
-
-  // ---------- where each shape sits on screen ----------
-  function place(si) {
-    if (si === 0) return wide ? { cx: W * 0.62, cy: H * 0.42, s: Math.max(W, H) * 0.95 } : { cx: W * 0.5, cy: H * 0.3, s: H * 0.95 };
-    if (!wide) return { cx: W * 0.5, cy: H * 0.25, s: Math.min(W * 1.05, H * 0.5) };
-    if (si === 1) return { cx: W * 0.7, cy: H * 0.4, s: Math.min(W * 0.6, H * 0.95) };
-    if (si === 2) return { cx: W * 0.74, cy: H * 0.5, s: Math.min(W * 0.62, H * 1.05) };
-    return { cx: W * 0.78, cy: H * 0.5, s: Math.min(W * 0.42, H * 0.8) };
+  // ---------- 4 · Ideas: a looser flock that glides in long figure-eights ----------
+  function drawIdeasFlock(t, dt, wgt) {
+    if (!F2) F2 = makeFlock(290, 29);
+    const step = reduce ? 0 : Math.min(3, dt * 60);
+    const tx = wide ? W * (0.76 + 0.12 * Math.sin(t * 0.21)) : W * (0.5 + 0.25 * Math.sin(t * 0.21));
+    const ty = wide ? H * (0.36 + 0.16 * Math.sin(t * 0.42)) : H * (0.18 + 0.08 * Math.sin(t * 0.42));
+    if (step) stepFlock(F2, { see: 2000, sep: 160, align: 0.06, pull: 0.0004, max: 2.3, spread: Math.min(W, H) * 0.08 }, tx, ty, step);
+    const r = S.size / 2;
+    for (const b of F2.birds) dot(b.x, b.y, r * b.sz * 1.1, 0.9 * wgt, false);
+    return () => drawBoxes([5, 80, 160, 220].map(i => F2.birds[i]), wgt, t);
   }
+
+  const SCENES = [drawUni, drawCube, drawOrb, drawIdeasFlock];
 
   // ---------- horizontal scroll-jack ----------
   let travel = 0, PANEL_POS = [];
@@ -582,7 +713,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     const hold = H * 0.15;
     STOPS = [
       { a: mid(intro) - hold, b: mid(intro) + hold },
-      { a: exp.offsetTop + H * 0.1, b: exp.offsetTop + travel + H * 0.6 },   // cluster holds while the projects slide
+      { a: exp.offsetTop + H * 0.1, b: exp.offsetTop + travel + H * 0.6 },   // the flock holds while the projects slide
       { a: mid(about) - hold, b: mid(about) + hold },
       { a: mid(writing) - hold, b: mid(writing) + hold },
     ];
@@ -665,65 +796,36 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
   addEventListener('resize', resize);
 
   // ---------- draw loop ----------
-  const A = {}, B = {};
   function frame(now) {
-    const t = reduce ? 4 : now / 1000;
+    const dt = Math.min(0.05, (now - (frame.last || now)) / 1000); frame.last = now;
+    frame.T = (frame.T || 4) + (reduce ? 0 : dt * S.flight); const t = frame.T;   // a motion clock the speed setting can slow down
     updateExperience();
     const [from, to, f] = scrollState();
     const e = ease(Math.min(1, Math.max(0, f)));
     setNav(e < 0.5 ? from : to);
-    const LA = place(from), LB = place(to);
-    const bump = Math.sin(Math.PI * e) * Math.min(W, H) * 0.28;
+    M.x += (mouse.x - M.x) * 0.2; M.y += (mouse.y - M.y) * 0.2; M.k += ((mouse.x > -9000 ? 1 : 0) - M.k) * 0.08;
 
     ctx.clearRect(0, 0, W, H);
     // the black About section is painted on the canvas so the dots stay visible over it
     const rr = about.getBoundingClientRect();
-    const darkTop = Math.max(0, rr.top), darkBot = Math.min(H, rr.bottom);
+    darkTop = Math.max(0, rr.top); darkBot = Math.min(H, rr.bottom);
     if (darkBot > darkTop) { ctx.fillStyle = BLACK; ctx.fillRect(0, darkTop, W, darkBot - darkTop); }
     nav.classList.toggle('on-dark', H / 2 > darkTop && H / 2 < darkBot);
     np.classList.toggle('on-dark', 24 > darkTop && 24 < darkBot);
 
-    const R = wide ? 100 : 60, R2 = R * R, base = wide ? 2 : 1.6;
-    for (let i = 0; i < N; i++) {
-      const q = P[i];
-      SHAPES[from](i, t, A); SHAPES[to](i, t, B);
-      const ax = LA.cx + A.x * LA.s, ay = LA.cy + A.y * LA.s, bx = LB.cx + B.x * LB.s, by = LB.cy + B.y * LB.s;
-      const tx = ax + (bx - ax) * e + q.sx * bump, ty = ay + (by - ay) * e + q.sy * bump;
-      if (reduce) { q.x = tx; q.y = ty; }
-      else {
-        q.vx += (tx - q.x) * q.k; q.vy += (ty - q.y) * q.k;
-        const dx = q.x - mouse.x, dy = q.y - mouse.y, d2 = dx * dx + dy * dy;
-        if (d2 < R2 && d2 > 0.01) { const d = Math.sqrt(d2), push = (1 - d / R) * 3; q.vx += dx / d * push; q.vy += dy / d * push; }
-        q.vx *= 0.82; q.vy *= 0.82; q.x += q.vx; q.y += q.vy;
-      }
-      const al = A.al + (B.al - A.al) * e;
-      if (al < 0.03) continue;
-      const k = A.k + (B.k - A.k) * e;
-      const red = (e < 0.5 ? A.red : B.red) || q.accent;
-      const onDark = q.y > darkTop && q.y < darkBot;
-      ctx.globalAlpha = Math.min(1, al);
-      ctx.fillStyle = red ? RED : (onDark ? WHITE : BLACK);
-      const size = Math.max(1, base * Math.pow(k, 0.9));
-      ctx.fillRect(q.x - size / 2, q.y - size / 2, size, size);
-    }
-    ctx.globalAlpha = 1;
+    resetPaths();
+    const overlays = [];
+    const weights = [0, 0, 0, 0]; weights[from] += 1 - e; weights[to] += e;
+    weights.forEach((wgt, i) => { if (wgt > 0.01) { const o = SCENES[i](t, dt, wgt); if (o) overlays.push(o); } });
+    flush();
+    overlays.forEach(o => o());
     requestAnimationFrame(frame);
   }
 
-  async function start() {
-    N = innerWidth < 760 ? 650 : 950;
+  function start() {
     resize();
-    buildCluster(); buildDust();
-    const [from] = scrollState(), L = place(from), tmp = {};
-    P = Array.from({ length: N }, (_, i) => {
-      SHAPES[from](i, 0, tmp);
-      const a = Math.random() * TAU, r = 0.4 + Math.random() * 0.6;
-      return { x: L.cx + tmp.x * L.s, y: L.cy + tmp.y * L.s, vx: 0, vy: 0,
-               sx: Math.cos(a) * r, sy: Math.sin(a) * r, k: 0.045 + Math.random() * 0.04, accent: Math.random() < 0.04 };
-    });
     requestAnimationFrame(frame);
-    try { await document.fonts.ready; } catch (e) {}
-    resize();
+    if (document.fonts) document.fonts.ready.then(resize, () => {});
   }
   start();
 })();
