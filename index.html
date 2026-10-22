@@ -165,7 +165,6 @@ p { margin: 0; }
   opacity: 0; transition: opacity .25s; box-shadow: 0 10px 30px rgba(0,0,0,.12);
 }
 .peek img { display: block; width: 100%; height: auto; }
-.bio { cursor: default; }
 .peek.show { opacity: 1; }
 /* now playing, pinned top left */
 .np {
@@ -305,7 +304,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     <div class="inner">
       <span class="label">About</span>
       <div class="reveal">
-        <p class="bio" data-img="media/hm.jpeg">I've spent 15 years as a strategist at New York product design and advertising agencies. I bring deep expertise in mixed-methods research and multiple strategy methodologies including human-centered design, agile delivery, and brand and creative strategy. I've helped create disruptive products and brands, led multidisciplinary teams, mentor strategy departments, and champion change within large organizations.</p>
+        <p>I've spent 15 years as a strategist at New York product design and advertising agencies. I bring deep expertise in mixed-methods research and multiple strategy methodologies including human-centered design, agile delivery, and brand and creative strategy. I've helped create disruptive products and brands, led multidisciplinary teams, mentor strategy departments, and champion change within large organizations.</p>
         <p class="say-hi"><a href="https://www.linkedin.com/in/hnmurakami/" target="_blank" rel="noopener">Say 👋🏼 on LinkedIn →</a></p>
       </div>
       <table class="history">
@@ -515,7 +514,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
   }
   function drawUni(t, dt, wgt) {
     if (!UNI || UNI.wide !== wide) buildUni();
-    const tt = t * 0.15;                                     // a very slow drift
+    const tt = (t + 56) * 0.15;                              // a very slow drift, starting from the view it settles into after a minute
     const yaw = 0.3 + tt * 0.25, tilt = 0.22 + 0.08 * Math.sin(tt * 0.5), r0 = S.size / 2;
     const cx = wide ? W * 0.6 : W * 0.5, cy = wide ? H * 0.5 : H * 0.3, sc = wide ? W * 0.34 : W * 0.42;
     const proj = v => { const k = 3.2 / (3.2 - v.z); return [cx + v.x * sc * k, cy + v.y * sc * k, k]; };
@@ -630,9 +629,11 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     { p: latlon(-28, 150), name: 'DESIGNATE 11', loc: '28.0S  150.0E', dx: 54, dy: 52 },
     { p: latlon(50, 255), name: 'SURVEY 03', loc: '50.0N  105.0W', dx: 66, dy: -44 },
   ];
+  let orbIn = -1;
   function drawOrb(t, dt, wgt) {
     if (!ORB || ORB.n !== (wide ? 2800 : 1700)) buildOrb();
-    const yaw = t * 0.08, tilt = 0.3, r0 = S.size / 2;
+    const now = performance.now(); if (now - (drawOrb.last || 0) > 1500) orbIn = t; drawOrb.last = now;   // a fresh visit restarts the turn
+    const yaw = 0.17 + (t - orbIn) * 0.08, tilt = 0.3, r0 = S.size / 2;
     const ox = wide ? W * 0.74 : W * 0.5, oy = wide ? H * 0.5 : H * 0.27, R = wide ? Math.min(W * 0.2, H * 0.33) : Math.min(W * 0.36, H * 0.2);
     const P = v => { const k = 3 / (3 - v.z); return [ox + v.x * R * k, oy + v.y * R * k, k]; };
     const m = x => wide ? smooth(W * 0.46, W * 0.56, x) : 1;
@@ -644,7 +645,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
     const orbitAt = a => rot(rot({ x: Math.cos(a) * 1.38, y: 0, z: Math.sin(a) * 1.38 }, -0.5, 1.15), yaw * 0.25, 0);
     for (let k = 0; k < 120; k++) { const v = orbitAt(k / 120 * TAU), [x, y] = P(v); dot(x, y, r0 * 0.5, (v.z > 0 ? 0.55 : 0.2) * m(x) * wgt, false); }
     const mv = orbitAt(t * 0.25), [mx, my] = P(mv);
-    const sites = SITES.map(S_ => { const v = rot(S_.p, yaw, tilt), [x, y] = P(v); return { ...S_, x, y, vis: smooth(0.1, 0.35, v.z) * m(x) * wgt }; });
+    const sites = SITES.map(S_ => { const v = rot(S_.p, yaw, tilt), [x, y] = P(v); return { ...S_, x, y, vis: smooth(-0.05, 0.2, v.z) * m(x) * wgt }; });
     return () => {
       ctx.font = fontF(); ctx.lineWidth = 1;
       // marker on the orbit
