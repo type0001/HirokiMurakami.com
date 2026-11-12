@@ -102,7 +102,7 @@ p { margin: 0; }
 /* ---------- writing ---------- */
 #writing { padding-block: 20vh 16vh; }
 #writing .inner { display: grid; gap: 3rem; }
-.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 24rem)); gap: clamp(1rem, 2vw, 1.75rem); }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 24rem)); gap: clamp(1rem, 2vw, 1.75rem); }
 .card {
   border-radius: 28px; background: var(--stone); color: var(--black);
   text-decoration: none; transition: left .5s cubic-bezier(.2,.7,.2,1), right .5s cubic-bezier(.2,.7,.2,1), background-color .35s, color .35s;
@@ -129,7 +129,6 @@ p { margin: 0; }
 /* the hovered card grows toward its neighbor, the neighbor gives up the same space from its facing side,
    and the text block in both keeps its resting width, so type never reflows. The shrinking card hides its arrow. */
 .card .in { box-sizing: border-box; position: absolute; top: 0; bottom: 0; width: 100cqw; padding: clamp(1.5rem, 3vw, 2.25rem); display: flex; flex-direction: column; justify-content: space-between; }
-.cell:first-child .in { left: 0; }
 .cell:last-child .in { right: 0; }
 .card .go { transition: opacity .3s; }
 .card .ul {
@@ -138,14 +137,17 @@ p { margin: 0; }
 }
 .card:hover .ul, .card:focus-visible .ul { background-size: 100% 2px; }
 @media (min-width: 761px) {
-  .cards:has(.cell:first-child .card:is(:hover, :focus-visible)) .cell:first-child .card { right: -10%; }
-  .cards:has(.cell:first-child .card:is(:hover, :focus-visible)) .cell:last-child .card { left: 10%; }
-  .cards:has(.cell:first-child .card:is(:hover, :focus-visible)) .cell:last-child .go { opacity: 0; }
-  .cards:has(.cell:first-child .card:is(:hover, :focus-visible)) .cell:last-child .in { left: 0; right: auto; }
-  .cards:has(.cell:last-child .card:is(:hover, :focus-visible)) .cell:last-child .card { left: -10%; }
-  .cards:has(.cell:last-child .card:is(:hover, :focus-visible)) .cell:first-child .card { right: 10%; }
-  .cards:has(.cell:last-child .card:is(:hover, :focus-visible)) .cell:first-child .go { opacity: 0; }
+  /* any card with a card after it grows to the right and the next card gives up the space;
+     the last card grows to the left and the one before it gives up the space. Works for any number in a row. */
+  .cell:not(:last-child):has(.card:is(:hover, :focus-visible)) .card { right: -10%; }
+  .cell:not(:last-child):has(.card:is(:hover, :focus-visible)) + .cell .card { left: 10%; }
+  .cell:not(:last-child):has(.card:is(:hover, :focus-visible)) + .cell .go { opacity: 0; }
+  .cell:not(:last-child):has(.card:is(:hover, :focus-visible)) + .cell .in { left: 0; right: auto; }
+  .cell:last-child:has(.card:is(:hover, :focus-visible)) .card { left: -10%; }
+  .cell:has(+ .cell:last-child .card:is(:hover, :focus-visible)) .card { right: 10%; }
+  .cell:has(+ .cell:last-child .card:is(:hover, :focus-visible)) .go { opacity: 0; }
 }
+@media (min-width: 761px) and (max-width: 1100px) { .card h3 { font-size: 2.6vw; } }
 /* experience links: same black text, set heavier */
 .xl { color: var(--red); text-decoration: none; font-weight: 500; }
 .xl:focus-visible { outline: 1px solid var(--red); outline-offset: 3px; }
@@ -327,6 +329,12 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
       <h2>Writing, music, and everything else worth sharing</h2>
       <div class="cards">
         <div class="cell">
+          <a class="card" href="https://www.hugeinc.com/ideas/the-culture-marketing-flywheel" target="_blank" rel="noopener"><div class="in">
+            <div class="top"><h3><span class="ul">The Culture Marketing Flywheel</span></h3><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <div class="bottom"><span class="label">Article</span><span>Huge</span></div>
+          </div></a>
+        </div>
+        <div class="cell">
           <a class="card" href="https://www.hugeinc.com/ideas/the-new-video-game-marketing-playbook" target="_blank" rel="noopener"><div class="in">
             <div class="top"><h3><span class="ul">The New Video Game Marketing Playbook</span></h3><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
             <div class="bottom"><span class="label">Article</span><span>Huge</span></div>
@@ -390,7 +398,7 @@ nav.dots button:focus-visible { outline: 1px solid var(--red); outline-offset: 4
           <div><dt>Current work</dt><dd>Leads Huge's multiyear agency-of-record relationship with PlayStation and a team of four strategists across first-party titles.</dd></div>
           <div><dt>Selected clients</dt><dd>Google, PlayStation, Nike, Verizon, Hillary for America.</dd></div>
           <div><dt>Career</dt><dd>Huge (2022 to present), Instrument (2021 to 2022), Publicis Sapient (2019 to 2021), Deutsch (2017 to 2019), Hillary for America (2016), Edelman Digital (2012 to 2016).</dd></div>
-          <div><dt>Writing</dt><dd>"The New Video Game Marketing Playbook," Huge Perspectives, January 2026.</dd></div>
+          <div><dt>Writing</dt><dd>"The Culture Marketing Flywheel," Huge Ideas, 2026. "The New Video Game Marketing Playbook," Huge Perspectives, January 2026.</dd></div>
           <div><dt>Music</dt><dd>DJ mix "FastCasual mixtape 1.0" on SoundCloud.</dd></div>
           <div><dt>Education</dt><dd>Emerson College, B.S. Marketing Communication.</dd></div>
           <div><dt>This site</dt><dd>A one-page portfolio. Every fact is in plain HTML. The dot animations are decorative. The source code is public on GitHub. Plain-text summary: hirokimurakami.com/llms.txt</dd></div>
